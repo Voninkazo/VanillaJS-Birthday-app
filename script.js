@@ -130,6 +130,7 @@ const deletePerson = e => {
         const idToDelete = tableRow.dataset.id;
         deletePersonPopup(idToDelete);
     }
+    parent.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
 // show delete popup and delete a specific person
@@ -173,3 +174,22 @@ const deletePersonPopup = idToDelete => {
 // for for a click on the icon delete
 window.addEventListener('click', deletePerson);
 displayPeople(people);
+
+
+// store in local storage
+async function mirrorLocalStorage() {
+    const allPeople = await fetchPeople();
+    console.info('Saving items to LS');
+    localStorage.setItem('items', JSON.stringify(allPeople));
+};
+
+async function storeFromLocalStorage() {
+    const allPeople = await fetchPeople();
+    const listItem = JSON.parse(localStorage.getItem('items'));
+    if (allPeople) {
+        allPeople.push(...listItem);
+    }
+    parent.dispatchEvent(new CustomEvent('itemsUpdated'));
+}
+
+mirrorLocalStorage();
