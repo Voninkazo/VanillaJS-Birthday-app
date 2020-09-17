@@ -10,32 +10,30 @@ async function fetchPeople() {
     const response = await fetch(`${people}`);
     const data = await response.json();
     // return data;
-    let myPeople = data;
+    let myPeople = [];
+    myPeople.push(data)
+    console.log(myPeople);
 
-    // async function init() {
-    //     const objPeople = await fetchPeople();
-    //     console.log(objPeople);
-    // }
-    // init();
-
-    // store in local storage
-    async function mirrorLocalStorage() {
+    function mirrorLocalStorage() {
         // const allPeople = await fetchPeople();
         console.info('Saving items to LS');
-        localStorage.setItem(myPeople, JSON.stringify(myPeople));
+        localStorage.setItem('myPeople', JSON.stringify(myPeople));
     };
 
-    async function storeFromLocalStorage() {
-
+    function storeFromLocalStorage() {
         // const allPeople = await fetchPeople();
-        const listItem = JSON.parse(localStorage.getItem(myPeople));
-        console.log(listItem);
+        const listItem = JSON.parse(localStorage.getItem('myPeople'));
+        console.log(myPeople);
+        // console.log(listItem);
         if (listItem) {
-            myPeople.push(...listItem);
+            console.log("mmmmm");
+            myPeople = listItem;
+            displayPeople(myPeople);
         }
+        container.dispatchEvent(new CustomEvent('itemsUpdated'));
+
         // parent.dispatchEvent(new CustomEvent('itemsUpdated'));
     }
-    // display people list
     async function displayPeople() {
         // const allPeople = await fetchPeople();
         const sortedPeople = myPeople.sort((a, b) => a.birthday - b.birthday);
@@ -63,8 +61,10 @@ async function fetchPeople() {
         </tr>
     `
             }).join(' ');
-        container.insertAdjacentHTML('beforebegin', html);
+        container.innerHTML = html;
+        container.dispatchEvent(new CustomEvent('itemsUpdated'));
     }
+
 
     // destroy popup
     async function destroyPopup(popup) {
@@ -114,7 +114,7 @@ async function fetchPeople() {
             <button class="cancel">Cancel</button>
         </div>
         `;
-            popup.insertAdjacentHTML('afterbegin', html);
+            popup.innerHTML = html;
             parent.appendChild(popup);
             popup.classList.add('popup');
             popup.classList.add('open');
@@ -128,6 +128,8 @@ async function fetchPeople() {
                     displayPeople(myPeople);
                 resolve(e.target.remove(myPeople));
                 destroyPopup(popup);
+                // container.dispatchEvent(new CustomEvent('itemsUpdated'));
+
             }, { once: true });
             if (popup.cancel) {
                 popup.cancel.addEventListener('click', function() {
@@ -147,6 +149,7 @@ async function fetchPeople() {
             const tableRow = e.target.closest('tr');
             const idToDelete = tableRow.dataset.id;
             deletePersonPopup(idToDelete);
+            console.log(idToDelete);
         }
         parent.dispatchEvent(new CustomEvent('itemsUpdated'));
     }
@@ -154,9 +157,9 @@ async function fetchPeople() {
     // show delete popup and delete a specific person
     const deletePersonPopup = idToDelete => {
         return new Promise(async function(resolve) {
-            const allPeople = await fetchPeople();
+            // const allPeople = await fetchPeople();
             const popup = document.createElement('div');
-            let personToDelte = allPeople.find(person => person.id === idToDelete);
+            let personToDelte = myPeople.find(person => person.id === idToDelete);
             popup.classList.add('popup');
             // popup delete
             const html = `
@@ -174,8 +177,9 @@ async function fetchPeople() {
             popup.insertAdjacentHTML('afterbegin', html);
             popup.addEventListener('click', e => {
                 if (e.target.matches('.yes')) {
-                    let filteredPerson = allPeople.filter(person => person.id !== idToDelete);
-                    displayPeople(filteredPerson);
+                    myPeople = myPeople.filter(person => person.id !== idToDelete);
+                    container.dispatchEvent(new CustomEvent('itemsUpdated'));
+                    displayPeople();
                     destroyPopup(popup);
                 }
                 if (e.target.matches('.cancel')) {
@@ -191,8 +195,8 @@ async function fetchPeople() {
 
     // for for a click on the icon delete
     window.addEventListener('click', deletePerson);
-    displayPeople(people);
-    parent.addEventListener('itemsUpdated', mirrorLocalStorage);
+    displayPeople(myPeople);
+    container.addEventListener('itemsUpdated', mirrorLocalStorage);
     storeFromLocalStorage();
 }
 fetchPeople();
