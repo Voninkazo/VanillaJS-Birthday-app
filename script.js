@@ -45,11 +45,32 @@ async function storeFromLocalStorage() {
 
 // display people list
 async function displayPeople() {
-    // sort bu birthday
+    // sort by birthday
     const sortedPeople = myPeople.sort((a, b) => a.birthday - b.birthday);
     console.log(myPeople);
     const html = sortedPeople
         .map(people => {
+            // set the condition to set the right date symbols
+            function getdateSymbol(date) {
+                if (date < 3 && date > 21) return "th";
+                switch (day % 2) {
+                    case 1:
+                        return "st";
+                    case 2:
+                        return "nd";
+                    case 3:
+                        return "rd";
+                    default:
+                        return "th";
+                }
+            }
+            const date = new Date();
+            let now = new Date(people.birthday);
+            const day = now.getDate();
+            let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][now.getMonth()];
+            let year = now.getFullYear();
+            const fullDate = `${day} / ${months} / ${year}`;
+            let age = date.getFullYear() - year;
             return `
                 <tr data-id="${people.id}">
                     <td class="image">
@@ -57,9 +78,9 @@ async function displayPeople() {
                     </td>
                     <td class="name">
                         ${people.lastName} ${people.firstName}<br>
-                        <span>Turn</span>
+                        <span>Turn ${age} on the ${day}${getdateSymbol(day)} of ${months} ${year} </span>
                     </td>
-                    <td class="days-left">${people.birthday}</td>
+                    <td class="days-left">${fullDate}</td>
                     <td>
                         <button class="edit" value="${people.id}">
                             <svg viewBox="0 0 20 20" fill="currentColor" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
@@ -210,19 +231,19 @@ function addingPeople() {
                     <ul class="form">
                         <li>
                             <label>Last name</label>
-                            <input type="text" name="lastName">
+                            <input type="text" name="lastName" required>
                         </li>
                         <li>
                             <label>First name</label>
-                            <input type="text" name="firstname">
+                            <input type="text" name="firstname" required>
                         </li>
                         <li>
                             <label>Birthday</label>
-                            <input type="text" name="birthday">
+                            <input type="text" name="birthday" required>
                         </li>
                         <li>
                             <label>Picture</label>
-                            <input type="url" name="image">
+                            <input type="url" name="image" required>
                         </li>
                     </ul>
                     <button type="submit">Save</button>
