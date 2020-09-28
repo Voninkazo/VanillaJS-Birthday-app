@@ -50,27 +50,51 @@ async function displayPeople() {
     console.log(myPeople);
     const html = sortedPeople
         .map(people => {
+            let date = new Date(people.birthday);
+            let day = date.getDate();
+            let month = date.getMonth();
+
             // set the condition to set the right date symbols
-            function getdateSymbol(date) {
-                if (date < 3 && date > 21) return "th";
-                switch (day % 2) {
-                    case 1:
-                        return "st";
-                    case 2:
-                        return "nd";
-                    case 3:
-                        return "rd";
-                    default:
-                        return "th";
-                }
+            if (day == 1 || day == 21 || day == 31) {
+                day = day + "st";
+            } else if (day == 2 || day == 22 || day == 32) {
+                day = day + "nd";
+            } else if (day == 3 || day == 23) {
+                day = day + "rd";
+            } else {
+                day = day + "th";
+            };
+
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            // get fulldate
+            const str = months[month] + ' ' + day;
+            // number of the days
+            const oneDay = 1000 * 60 * 60 * 24;
+            // current year
+            let today = new Date();
+            let birthYear;
+            // number of days from now till the birthday comes back
+            if (date.getMonth() < today.getMonth()) {
+                birthYear = today.getFullYear() + 1;
+            } else if (date.getMonth() == today.getMonth() && date.getDate() > today.getDate()) {
+                birthYear = today.getFullYear();
+            } else if (date.getMonth() == today.getMonth() && date.getDate() < today.getDate()) {
+                birthYear = today.getFullYear() + 1;
+            } else {
+                birthYear = today.getFullYear();
             }
-            const date = new Date();
-            let now = new Date(people.birthday);
-            const day = now.getDate();
-            let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][now.getMonth()];
-            let year = now.getFullYear();
-            const fullDate = `${day} / ${months} / ${year}`;
-            let age = date.getFullYear() - year;
+
+            const birthDate = new Date(birthYear, date.getMonth(), date.getDate());
+            const daysLeft = Math.ceil((birthDate.getTime() - today.getTime()) / (oneDay));
+            const myPerson = {
+                firstName: people.firstName,
+                lastName: people.lastName,
+                id: people.id,
+                birthday: people.birthday,
+                picture: people.picture,
+                date: str,
+                days: daysLeft,
+            }
             return `
                 <tr data-id="${people.id}">
                     <td class="image">
@@ -78,9 +102,9 @@ async function displayPeople() {
                     </td>
                     <td class="name">
                         ${people.lastName} ${people.firstName}<br>
-                        <span>Turn ${age} on the ${day}${getdateSymbol(day)} of ${months} ${year} </span>
+                        <span>Turn ${myPerson.date} </span>
                     </td>
-                    <td class="days-left">${fullDate}</td>
+                    <td class="days-left">${myPerson.days} days</td>
                     <td>
                         <button class="edit" value="${people.id}">
                             <svg viewBox="0 0 20 20" fill="currentColor" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
