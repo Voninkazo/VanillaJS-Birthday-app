@@ -5,9 +5,9 @@ const container = document.querySelector('tbody');
 const parent = document.querySelector('body');
 const form = document.querySelector('form');
 const addBtn = document.querySelector('.add');
+let myPeople = []; // mama array
 
-let myPeople = [];
-
+///////////////////// FETCHING FUNCTION ///////////////////////////
 // fetch data
 async function fetchPeople() {
     const response = await fetch(`${people}`);
@@ -18,6 +18,8 @@ async function fetchPeople() {
     container.dispatchEvent(new CustomEvent('itemsUpdated'));
     return data;
 }
+
+//////////////////////  LOCAL STORGE FUNCTIONS /////////////////////////////
 
 // mirror from LS
 function mirrorLocalStorage() {
@@ -43,58 +45,96 @@ async function storeFromLocalStorage() {
     container.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
+/////////////////////// DISPLAY PEOPLE LIST//////////////////////////////////
 // display people list
 async function displayPeople() {
     // sort by birthday
     const sortedPeople = myPeople.sort((a, b) => a.birthday - b.birthday);
-    console.log(myPeople);
     const html = sortedPeople
         .map(people => {
-            let date = new Date(people.birthday);
-            let day = date.getDate();
-            let month = date.getMonth();
-
+            ///////////////DATE FUNCTION/////////////////////
+            let age = new Date().getFullYear() - new Date(people.birthday).getFullYear();
+            // dayOfbirth
+            let dateOfBirth = new Date(people.birthday).getDate();
+            let date;
+            let month;
             // set the condition to set the right date symbols
-            if (day == 1 || day == 21 || day == 31) {
-                day = day + "st";
-            } else if (day == 2 || day == 22 || day == 32) {
-                day = day + "nd";
-            } else if (day == 3 || day == 23) {
-                day = day + "rd";
+            if (dateOfBirth > 3) {
+                date = `${dateOfBirth}th`;
+            }
+            switch (dateOfBirth % 10) {
+                case 1:
+                    date = `${dateOfBirth}st`;
+                    break;
+                case 2:
+                    date = `${dateOfBirth}nd`;
+                    break;
+                case 3:
+                    date = `${dateOfBirth}rd`;
+            };
+            // find the current month of birth
+            const monthOfBirth = new Date(people.birthday).getMonth();
+            switch (monthOfBirth) {
+                case 0:
+                    month = "January";
+                    break;
+                case 1:
+                    month = "February";
+                    break;
+                case 2:
+                    month = "March";
+                    break;
+                case 3:
+                    month = "April";
+                    break;
+                case 4:
+                    month = "May";
+                    break;
+                case 5:
+                    month = "June";
+                    break;
+                case 6:
+                    month = "July";
+                case 7:
+                    month = "August";
+                    break;
+                case 8:
+                    month = "September";
+                    break;
+                case 9:
+                    month = "October";
+                    break;
+                case 10:
+                    month = "November";
+                    break;
+                case 11:
+                    month = "December";
+            };
+            // calculate one day
+            const oneDay = 24 * 60 * 60 * 1000;
+            // today = date now
+            let today = new Date();
+            let year;
+            // if the current month is bigger than the month of birth, then add one more month
+            if (today.getMonth() > monthOfBirth) {
+                year = today.getFullYear() + 1;
+                // if it's the same, then stay the same
+            } else if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
+                year = today.getFullYear();
             } else {
-                day = day + "th";
+                // the same as the before
+                year = today.getFullYear();
+            }
+
+            // calculate the day of birth
+            let dayOfBirth = new Date(year, monthOfBirth, dateOfBirth);
+            if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
+                dayOfBirth.setFullYear(dayOfBirth.getFullYear() + 1);
+                age = (new Date().getFullYear() + 1) - new Date(people.birthday).getFullYear();
             };
 
-            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            // get fulldate
-            const str = months[month] + ' ' + day;
-            // number of the days
-            const oneDay = 1000 * 60 * 60 * 24;
-            // current year
-            let today = new Date();
-            let birthYear;
-            // number of days from now till the birthday comes back
-            if (date.getMonth() < today.getMonth()) {
-                birthYear = today.getFullYear() + 1;
-            } else if (date.getMonth() == today.getMonth() && date.getDate() > today.getDate()) {
-                birthYear = today.getFullYear();
-            } else if (date.getMonth() == today.getMonth() && date.getDate() < today.getDate()) {
-                birthYear = today.getFullYear() + 1;
-            } else {
-                birthYear = today.getFullYear();
-            }
-
-            const birthDate = new Date(birthYear, date.getMonth(), date.getDate());
-            const daysLeft = Math.ceil((birthDate.getTime() - today.getTime()) / (oneDay));
-            const myPerson = {
-                firstName: people.firstName,
-                lastName: people.lastName,
-                id: people.id,
-                birthday: people.birthday,
-                picture: people.picture,
-                date: str,
-                days: daysLeft,
-            }
+            // claulcation of the day difference from now(today)
+            let dayDiffer = Math.round(Math.abs((new Date(dayOfBirth) - new Date(today)) / oneDay));
             return `
                 <tr data-id="${people.id}">
                     <td class="image">
@@ -102,9 +142,9 @@ async function displayPeople() {
                     </td>
                     <td class="name">
                         ${people.lastName} ${people.firstName}<br>
-                        <span>Turn ${myPerson.date} </span>
+                        <span>Turn ${age} on the ${date} of ${month} </span>
                     </td>
-                    <td class="days-left">${myPerson.days} days</td>
+                    <td class="days-left">${dayDiffer} days</td>
                     <td>
                         <button class="edit" value="${people.id}">
                             <svg viewBox="0 0 20 20" fill="currentColor" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
@@ -126,6 +166,8 @@ async function destroyPopup(popup) {
     popup.remove();
     popup = null;
 }
+
+///////////////////// EDIT PERSON DATA /////////////////////////////
 
 // edit person data
 async function editPeople(e) {
@@ -155,7 +197,7 @@ async function editPeoplePopup(idToEdit) {
             </li>
             <li>
 			    <label for="birthday">Birthday:</label>
-                <input type="text" name="birthday" id="birthday" value="${personToEdit.birthday}">
+                <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday}">
             </li>
             <li>
 			    <label for="image">Image:</label>
@@ -194,6 +236,8 @@ async function editPeoplePopup(idToEdit) {
 }
 // listen for a click on the edit button
 window.addEventListener('click', editPeople);
+
+//////////////////// DELETE PERSONS ////////////////////////
 
 // delete a person
 const deletePerson = e => {
@@ -246,6 +290,8 @@ const deletePersonPopup = idToDelete => {
     });
 }
 
+///////////////////////// ADD A NEW PERSON /////////////////////////
+
 function addingPeople() {
     return new Promise(async function(resolve) {
         const myForm = document.createElement('form');
@@ -263,7 +309,7 @@ function addingPeople() {
                         </li>
                         <li>
                             <label>Birthday</label>
-                            <input type="text" name="birthday" required>
+                            <input type="date" name="birthday" required>
                         </li>
                         <li>
                             <label>Picture</label>
