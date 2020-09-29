@@ -4,6 +4,21 @@ html {
     background-color: lightgray;
 }
 
+div>ul li {
+    display: flex;
+    flex-direction: column;
+}
+
+div>ul li input {
+    width: 400px;
+    padding: 0.5rem;
+}
+
+div>ul li select {
+    width: 400px;
+    padding: 0.5rem;
+}
+
 tr {
     display: grid;
     grid-auto-flow: column;

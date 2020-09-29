@@ -10,6 +10,32 @@
 
 <body>
     <button class="add">Add</button>
+    <div class="filter-form">
+        <ul>
+            <li>
+                <label for="name">Filter by name:</label>
+                <input type="text" name="name" id="filter-name">
+            </li>
+            <li>
+                <label for="month">Select a month:</label>
+                <select name="month" id="month">
+                    <option value="jan">January</option>
+                    <option value="feb">February</option>
+                    <option value="march">March</option>
+                    <option value="apr">April</option>
+                    <option value="mai">May</option>
+                    <option value="june">June</option>
+                    <option value="jul">July</option>
+                    <option value="Aug">August</option>
+                    <option value="sept">September</option>
+                    <option value="oct">October</option>
+                    <option value="nov">November</option>
+                    <option value="dec">December</option>
+                </select>
+            </li>
+        </ul>
+        <button id="reset"> Reset</button>
+    </div>
     <table>
         <tbody class="parent">
         </tbody>

@@ -5,7 +5,18 @@ const container = document.querySelector('tbody');
 const parent = document.querySelector('body');
 const form = document.querySelector('form');
 const addBtn = document.querySelector('.add');
+const filterInputName = document.querySelector('#filter-name');
+const buttonFilter = document.querySelector('#reset'); // btn reset
+const filterForm = document.querySelector('.filter-form');
 let myPeople = []; // mama array
+
+const filterPeople = (e) => {
+    displayPeople(e, filterInputName.value);
+}
+const resetFilter = e => {
+    displayPeople();
+    filterInputName.reset();
+}
 
 ///////////////////// FETCHING FUNCTION ///////////////////////////
 // fetch data
@@ -47,9 +58,22 @@ async function storeFromLocalStorage() {
 
 /////////////////////// DISPLAY PEOPLE LIST//////////////////////////////////
 // display people list
-async function displayPeople() {
+async function displayPeople(e, filterByName) {
     // sort by birthday
-    const sortedPeople = myPeople.sort((a, b) => a.birthday - b.birthday);
+    let sortedPeople = myPeople.sort((a, b) => a.birthday - b.birthday);
+    if (filterByName) {
+        sortedPeople = sortedPeople.filter(person => {
+            let lowerCaseTitle = person.lastName.toLowerCase();
+            // jerusalem
+            let lowerCaseFilter = filterByName.toLowerCase();
+            // jeru
+            if (lowerCaseTitle.includes(lowerCaseFilter)) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
     const html = sortedPeople
         .map(people => {
             ///////////////DATE FUNCTION/////////////////////
@@ -349,9 +373,12 @@ function addingPeople() {
         resolve();
         parent.appendChild(myForm);
         myForm.classList.add('open');
-    })
-}
+    });
+};
 
+
+buttonFilter.addEventListener('click', resetFilter);
+filterInputName.addEventListener('keyup', filterPeople);
 addBtn.addEventListener('click', addingPeople);
 window.addEventListener('click', deletePerson);
 displayPeople(myPeople);
