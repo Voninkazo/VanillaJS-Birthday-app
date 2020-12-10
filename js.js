@@ -1,3 +1,6 @@
+console.log('it works');
+// main elements
+// const people = './people.json';
 const container = document.querySelector('tbody');
 const parent = document.querySelector('body');
 const form = document.querySelector('form');
@@ -5,7 +8,6 @@ const addBtn = document.querySelector('.add');
 const filterInputName = document.querySelector('#filter-name');
 const buttonFilter = document.querySelector('#reset'); // btn reset
 const filterForm = document.querySelector('.filter-form');
-// const filterByMonth = document.querySelector('.filter-month')
 let myPeople = []; // mama array
 
 const filterPeople = (e) => {
@@ -18,9 +20,9 @@ const resetFilter = e => {
 
 ///////////////////// FETCHING FUNCTION ///////////////////////////
 // fetch data
-const url = "https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json"
+const API_URL = "https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json"
 async function fetchPeople() {
-    const response = await fetch(url);
+    const response = await fetch(API_URL);
     const data = await response.json();
     myPeople = [...data];
     storeFromLocalStorage(myPeople);
@@ -29,11 +31,13 @@ async function fetchPeople() {
     return data;
 }
 
+console.log(myPeople)
+
 //////////////////////  LOCAL STORGE FUNCTIONS /////////////////////////////
 
 // mirror from LS
 function mirrorLocalStorage() {
-    console.info('Saving items to LS');
+    // console.info('Saving items to LS');
     localStorage.setItem('myPeople', JSON.stringify(myPeople));
 };
 
@@ -202,18 +206,6 @@ async function editPeople(e) {
     }
 }
 
-// ****** FILER BY MONTH **********
-
-// const filterByMonth = persons => {
-//     if (filterMonthFilter.value !== '') {
-//         persons = persons.filter(person => {
-//             let birthday = new Date(person.birthday);
-//             return birthday.getMonth() === Number(filterMonthFilter.value);
-//         });
-//     }
-//     return persons;
-// };
-
 // show popup and edit data
 async function editPeoplePopup(idToEdit) {
     return new Promise(async function(resolve) {
@@ -232,8 +224,7 @@ async function editPeoplePopup(idToEdit) {
             </li>
             <li>
 			    <label for="birthday">Birthday:</label>
-                <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday ? new Date(personToEdit.birthday).toISOString().substring(0, 10) : ''
-            }">
+                <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday}">
             </li>
             <li>
 			    <label for="image">Image:</label>
@@ -389,7 +380,7 @@ function addingPeople() {
 };
 
 
-// buttonFilter.addEventListener('click', resetFilter);
+buttonFilter.addEventListener('click', resetFilter);
 filterInputName.addEventListener('keyup', filterPeople);
 addBtn.addEventListener('click', addingPeople);
 window.addEventListener('click', deletePerson);

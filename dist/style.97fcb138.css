@@ -1,0 +1,114 @@
+html {
+  font-family: Roboto;
+  font-size: 20px;
+  background-color: lightgray;
+}
+
+.section_filtering {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+tr {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  place-items: center center;
+  gap: 20px;
+  padding: 1rem 2rem;
+}
+
+td img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+td button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+td svg {
+  height: 25px;
+  color: #ff8e3c;
+}
+
+svg:hover {
+  color: #d9376e;
+}
+
+.popup,
+div.popup {
+  background: gray;
+  width: auto;
+  height: auto;
+  box-shadow: 2px 5px 5px gray;
+  position: absolute;
+  transition: all 0.25s;
+  top: 50%;
+  left: 30%;
+  --opacity: 0;
+  opacity: var(--opacity);
+  padding: 3rem;
+}
+
+.popup.open,
+.deletepopup.open {
+  --opacity: 1;
+  pointer-events: all;
+}
+
+p {
+  color: #000000;
+  font-size: 18px;
+  padding-inline-start: 2rem;
+}
+
+button {
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+  padding-block-end: 0.75rem;
+  padding-block-start: 0.75rem;
+  background-color: #ff8e3c;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+ul.buttonDelt {
+  display: flex;
+  flex-direction: row;
+}
+
+ul.buttonDelt li {
+  margin-inline-start: 1rem;
+}
+
+.form li {
+  display: flex;
+  flex-direction: column;
+}
+
+.form li:not(:nth-child(1)) {
+  margin-block-start: 1rem;
+}
+
+input {
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+  padding-block-end: 0.75rem;
+  padding-block-start: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+label {
+  font-weight: 600;
+  margin-block-end: 0.5rem;
+  color: #ffff;
+}
+
+/*# sourceMappingURL=/style.97fcb138.css.map */
