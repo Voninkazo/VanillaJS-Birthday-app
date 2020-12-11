@@ -5,7 +5,7 @@ const addBtn = document.querySelector('.add');
 const filterInputName = document.querySelector('#filter-name');
 const buttonFilter = document.querySelector('#reset'); // btn reset
 const filterForm = document.querySelector('.filter-form');
-// const filterByMonth = document.querySelector('.filter-month')
+const filterByMonthSelect = document.querySelector('#filter-month')
 let myPeople = []; // mama array
 
 const filterPeople = (e) => {
@@ -23,13 +23,14 @@ async function fetchPeople() {
     const response = await fetch(url);
     const data = await response.json();
     myPeople = [...data];
+    console.log(myPeople)
     storeFromLocalStorage(myPeople);
     displayPeople(myPeople);
     container.dispatchEvent(new CustomEvent('itemsUpdated'));
     return data;
 }
 
-//////////////////////  LOCAL STORGE FUNCTIONS /////////////////////////////
+//////////////////////  LOCAL STORAGE FUNCTIONS /////////////////////////////
 
 // mirror from LS
 function mirrorLocalStorage() {
@@ -47,7 +48,7 @@ async function storeFromLocalStorage() {
 
     // if there is no data in the local, then fetch again
     if (!listItem) {
-        const response = await fetch(`${people}`);
+        const response = await fetch(url);
         const data = await response.json();
         myPeople = [...data];
         displayPeople(myPeople);
@@ -180,7 +181,7 @@ async function displayPeople(e, filterByName) {
             `
         }).join(' ');
     container.innerHTML = html;
-    container.dispatchEvent(new CustomEvent('itemsUpdated'));
+    // container.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 displayPeople()
     // destroy popup
@@ -204,15 +205,17 @@ async function editPeople(e) {
 
 // ****** FILER BY MONTH **********
 
-// const filterByMonth = persons => {
-//     if (filterMonthFilter.value !== '') {
-//         persons = persons.filter(person => {
-//             let birthday = new Date(person.birthday);
-//             return birthday.getMonth() === Number(filterMonthFilter.value);
-//         });
-//     }
-//     return persons;
-// };
+const filterByMonth = () => {
+    let selectedValue = filterByMonthSelect.value;
+    console.log(selectedValue)
+    const filteredByMonth = myPeople.filter(person => {
+        let birthday = new Date(person.birthday);
+        return birthday.getMonth() === Number(selectedValue);
+    });
+    console.log(filteredByMonth)
+    myPeople = filteredByMonth
+    return displayPeople(myPeople)
+}
 
 // show popup and edit data
 async function editPeoplePopup(idToEdit) {
@@ -270,9 +273,6 @@ async function editPeoplePopup(idToEdit) {
         }
     })
 }
-// listen for a click on the edit button
-window.addEventListener('click', editPeople);
-
 //////////////////// DELETE PERSONS ////////////////////////
 
 // delete a person
@@ -390,6 +390,9 @@ function addingPeople() {
 
 
 // buttonFilter.addEventListener('click', resetFilter);
+// listen for a click on the edit button
+window.addEventListener('click', editPeople);
+filterByMonthSelect.addEventListener("input", filterByMonth)
 filterInputName.addEventListener('keyup', filterPeople);
 addBtn.addEventListener('click', addingPeople);
 window.addEventListener('click', deletePerson);

@@ -52,16 +52,17 @@ h1 {
     width: 100%;
 }
 
-button.add {
+.section_filtering button {
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
     color: #FFFFFE;
     padding: 15px 18px;
     background: #EF4565;
-    border-radius: 5px;
+    cursor: pointer;
     outline: none;
     border: none;
+    border-radius: 5px;
     margin-top: 12px;
 }
 
@@ -105,12 +106,11 @@ svg:hover {
 
 .popup,
 div.popup {
+    outline: 0 none;
+    position: fixed !important;
+    top: 10% !important;
     background: gray;
-    width: auto;
-    height: auto;
     box-shadow: 2px 5px 5px gray;
-    position: absolute;
-    transition: all 0.25s;
     top: 50%;
     left: 30%;
     --opacity: 0;

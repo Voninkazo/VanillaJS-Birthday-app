@@ -118,84 +118,42 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"script.js":[function(require,module,exports) {
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+const container = document.querySelector('tbody');
+const parent = document.querySelector('body');
+const form = document.querySelector('form');
+const addBtn = document.querySelector('.add');
+const filterInputName = document.querySelector('#filter-name');
+const buttonFilter = document.querySelector('#reset'); // btn reset
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+const filterForm = document.querySelector('.filter-form');
+const filterByMonthSelect = document.querySelector('#filter-month');
+let myPeople = []; // mama array
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var container = document.querySelector('tbody');
-var parent = document.querySelector('body');
-var form = document.querySelector('form');
-var addBtn = document.querySelector('.add');
-var filterInputName = document.querySelector('#filter-name');
-var buttonFilter = document.querySelector('#reset'); // btn reset
-
-var filterForm = document.querySelector('.filter-form'); // const filterByMonth = document.querySelector('.filter-month')
-
-var myPeople = []; // mama array
-
-var filterPeople = function filterPeople(e) {
+const filterPeople = e => {
   displayPeople(e, filterInputName.value);
 };
 
-var resetFilter = function resetFilter(e) {
+const resetFilter = e => {
   displayPeople();
   filterInputName.reset();
 }; ///////////////////// FETCHING FUNCTION ///////////////////////////
 // fetch data
 
 
-var url = "https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json";
+const url = "https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json";
 
-function fetchPeople() {
-  return _fetchPeople.apply(this, arguments);
-} //////////////////////  LOCAL STORGE FUNCTIONS /////////////////////////////
+async function fetchPeople() {
+  const response = await fetch(url);
+  const data = await response.json();
+  myPeople = [...data];
+  console.log(myPeople);
+  storeFromLocalStorage(myPeople);
+  displayPeople(myPeople);
+  container.dispatchEvent(new CustomEvent('itemsUpdated'));
+  return data;
+} //////////////////////  LOCAL STORAGE FUNCTIONS /////////////////////////////
 // mirror from LS
 
-
-function _fetchPeople() {
-  _fetchPeople = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-    var response, data;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return fetch(url);
-
-          case 2:
-            response = _context3.sent;
-            _context3.next = 5;
-            return response.json();
-
-          case 5:
-            data = _context3.sent;
-            myPeople = _toConsumableArray(data);
-            storeFromLocalStorage(myPeople);
-            displayPeople(myPeople);
-            container.dispatchEvent(new CustomEvent('itemsUpdated'));
-            return _context3.abrupt("return", data);
-
-          case 11:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _fetchPeople.apply(this, arguments);
-}
 
 function mirrorLocalStorage() {
   console.info('Saving items to LS');
@@ -204,358 +162,273 @@ function mirrorLocalStorage() {
 
 ; // store from LS
 
-function storeFromLocalStorage() {
-  return _storeFromLocalStorage.apply(this, arguments);
+async function storeFromLocalStorage() {
+  // if there is data in the LS
+  const listItem = JSON.parse(localStorage.getItem('myPeople'));
+
+  if (listItem) {
+    myPeople = listItem;
+  } // if there is no data in the local, then fetch again
+
+
+  if (!listItem) {
+    const response = await fetch(url);
+    const data = await response.json();
+    myPeople = [...data];
+    displayPeople(myPeople);
+  }
+
+  container.dispatchEvent(new CustomEvent('itemsUpdated'));
 } /////////////////////// DISPLAY PEOPLE LIST//////////////////////////////////
 // display people list
 
 
-function _storeFromLocalStorage() {
-  _storeFromLocalStorage = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-    var listItem, response, data;
-    return regeneratorRuntime.wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            // if there is data in the LS
-            listItem = JSON.parse(localStorage.getItem('myPeople'));
+async function displayPeople(e, filterByName) {
+  // sort by birthday
+  let sortedPeople = myPeople.sort((a, b) => a.birthday - b.birthday);
 
-            if (listItem) {
-              myPeople = listItem;
-            } // if there is no data in the local, then fetch again
+  if (filterByName) {
+    sortedPeople = sortedPeople.filter(person => {
+      let lowerCaseTitle = person.lastName.toLowerCase(); // jerusalem
 
+      let lowerCaseFilter = filterByName.toLowerCase(); // jeru
 
-            if (listItem) {
-              _context4.next = 11;
-              break;
-            }
-
-            _context4.next = 5;
-            return fetch("".concat(people));
-
-          case 5:
-            response = _context4.sent;
-            _context4.next = 8;
-            return response.json();
-
-          case 8:
-            data = _context4.sent;
-            myPeople = _toConsumableArray(data);
-            displayPeople(myPeople);
-
-          case 11:
-            container.dispatchEvent(new CustomEvent('itemsUpdated'));
-
-          case 12:
-          case "end":
-            return _context4.stop();
-        }
+      if (lowerCaseTitle.includes(lowerCaseFilter)) {
+        return true;
+      } else {
+        return false;
       }
-    }, _callee4);
-  }));
-  return _storeFromLocalStorage.apply(this, arguments);
-}
+    });
+  }
 
-function displayPeople(_x, _x2) {
-  return _displayPeople.apply(this, arguments);
-}
+  const html = sortedPeople.map(people => {
+    ///////////////DATE FUNCTION/////////////////////
+    let age = new Date().getFullYear() - new Date(people.birthday).getFullYear(); // dayOfbirth
 
-function _displayPeople() {
-  _displayPeople = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(e, filterByName) {
-    var sortedPeople, html;
-    return regeneratorRuntime.wrap(function _callee5$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            // sort by birthday
-            sortedPeople = myPeople.sort(function (a, b) {
-              return a.birthday - b.birthday;
-            });
+    let dateOfBirth = new Date(people.birthday).getDate();
+    let date;
+    let month; // set the condition to set the right date symbols
 
-            if (filterByName) {
-              sortedPeople = sortedPeople.filter(function (person) {
-                var lowerCaseTitle = person.lastName.toLowerCase(); // jerusalem
+    if (dateOfBirth > 3) {
+      date = `${dateOfBirth}th`;
+    }
 
-                var lowerCaseFilter = filterByName.toLowerCase(); // jeru
+    switch (dateOfBirth % 10) {
+      case 1:
+        date = `${dateOfBirth}st`;
+        break;
 
-                if (lowerCaseTitle.includes(lowerCaseFilter)) {
-                  return true;
-                } else {
-                  return false;
-                }
-              });
-            }
+      case 2:
+        date = `${dateOfBirth}nd`;
+        break;
 
-            html = sortedPeople.map(function (people) {
-              ///////////////DATE FUNCTION/////////////////////
-              var age = new Date().getFullYear() - new Date(people.birthday).getFullYear(); // dayOfbirth
+      case 3:
+        date = `${dateOfBirth}rd`;
+    }
 
-              var dateOfBirth = new Date(people.birthday).getDate();
-              var date;
-              var month; // set the condition to set the right date symbols
+    ; // find the current month of birth
 
-              if (dateOfBirth > 3) {
-                date = "".concat(dateOfBirth, "th");
-              }
+    const monthOfBirth = new Date(people.birthday).getMonth();
 
-              switch (dateOfBirth % 10) {
-                case 1:
-                  date = "".concat(dateOfBirth, "st");
-                  break;
+    switch (monthOfBirth) {
+      case 0:
+        month = "January";
+        break;
 
-                case 2:
-                  date = "".concat(dateOfBirth, "nd");
-                  break;
+      case 1:
+        month = "February";
+        break;
 
-                case 3:
-                  date = "".concat(dateOfBirth, "rd");
-              }
+      case 2:
+        month = "March";
+        break;
 
-              ; // find the current month of birth
+      case 3:
+        month = "April";
+        break;
 
-              var monthOfBirth = new Date(people.birthday).getMonth();
+      case 4:
+        month = "May";
+        break;
 
-              switch (monthOfBirth) {
-                case 0:
-                  month = "January";
-                  break;
+      case 5:
+        month = "June";
+        break;
 
-                case 1:
-                  month = "February";
-                  break;
+      case 6:
+        month = "July";
 
-                case 2:
-                  month = "March";
-                  break;
+      case 7:
+        month = "August";
+        break;
 
-                case 3:
-                  month = "April";
-                  break;
+      case 8:
+        month = "September";
+        break;
 
-                case 4:
-                  month = "May";
-                  break;
+      case 9:
+        month = "October";
+        break;
 
-                case 5:
-                  month = "June";
-                  break;
+      case 10:
+        month = "November";
+        break;
 
-                case 6:
-                  month = "July";
+      case 11:
+        month = "December";
+    }
 
-                case 7:
-                  month = "August";
-                  break;
+    ; // calculate one day
 
-                case 8:
-                  month = "September";
-                  break;
+    const oneDay = 24 * 60 * 60 * 1000; // today = date now
 
-                case 9:
-                  month = "October";
-                  break;
+    let today = new Date();
+    let year; // if the current month is bigger than the month of birth, then add one more month
 
-                case 10:
-                  month = "November";
-                  break;
-
-                case 11:
-                  month = "December";
-              }
-
-              ; // calculate one day
-
-              var oneDay = 24 * 60 * 60 * 1000; // today = date now
-
-              var today = new Date();
-              var year; // if the current month is bigger than the month of birth, then add one more month
-
-              if (today.getMonth() > monthOfBirth) {
-                year = today.getFullYear() + 1; // if it's the same, then stay the same
-              } else if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
-                year = today.getFullYear();
-              } else {
-                // the same as the before
-                year = today.getFullYear();
-              } // calculate the day of birth
+    if (today.getMonth() > monthOfBirth) {
+      year = today.getFullYear() + 1; // if it's the same, then stay the same
+    } else if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
+      year = today.getFullYear();
+    } else {
+      // the same as the before
+      year = today.getFullYear();
+    } // calculate the day of birth
 
 
-              var dayOfBirth = new Date(year, monthOfBirth, dateOfBirth);
+    let dayOfBirth = new Date(year, monthOfBirth, dateOfBirth);
 
-              if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
-                dayOfBirth.setFullYear(dayOfBirth.getFullYear() + 1);
-                age = new Date().getFullYear() + 1 - new Date(people.birthday).getFullYear();
-              }
+    if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
+      dayOfBirth.setFullYear(dayOfBirth.getFullYear() + 1);
+      age = new Date().getFullYear() + 1 - new Date(people.birthday).getFullYear();
+    }
 
-              ; // claulcation of the day difference from now(today)
+    ; // claulcation of the day difference from now(today)
 
-              var dayDiffer = Math.round(Math.abs((new Date(dayOfBirth) - new Date(today)) / oneDay));
-              return "\n                <tr data-id=\"".concat(people.id, "\">\n                    <td class=\"image\">\n                        <img src=\"").concat(people.picture, "\" alt=\"photo\">\n                    </td>\n                    <td class=\"name\">\n                        ").concat(people.lastName, " ").concat(people.firstName, "<br>\n                        <span>Turn ").concat(age, " on the ").concat(date, " of ").concat(month, " </span>\n                    </td>\n                    <td class=\"days-left\">").concat(dayDiffer, " days</td>\n                    <td>\n                        <button class=\"edit\" value=\"").concat(people.id, "\">\n                            <svg viewBox=\"0 0 20 20\" fill=\"currentColor\" class=\"pencil w-6 h-6\"><path d=\"M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z\"></path></svg>\n                        </button>\n                        <button class=\"delete\" value=\"").concat(people.id, "\">\n                            <svg viewBox=\"0 0 20 20\" fill=\"currentColor\" class=\"trash w-6 h-6\"><path fill-rule=\"evenodd\" d=\"M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z\" clip-rule=\"evenodd\"></path></svg>\n                        </button>\n                    </td>\n                </tr>\n            ");
-            }).join(' ');
-            container.innerHTML = html;
-            container.dispatchEvent(new CustomEvent('itemsUpdated'));
-
-          case 5:
-          case "end":
-            return _context5.stop();
-        }
-      }
-    }, _callee5);
-  }));
-  return _displayPeople.apply(this, arguments);
+    let dayDiffer = Math.round(Math.abs((new Date(dayOfBirth) - new Date(today)) / oneDay));
+    return `
+                <tr data-id="${people.id}">
+                    <td class="image">
+                        <img src="${people.picture}" alt="photo">
+                    </td>
+                    <td class="name">
+                        ${people.lastName} ${people.firstName}<br>
+                        <span>Turn ${age} on the ${date} of ${month} </span>
+                    </td>
+                    <td class="days-left">${dayDiffer} days</td>
+                    <td>
+                        <button class="edit" value="${people.id}">
+                            <svg viewBox="0 0 20 20" fill="currentColor" class="pencil w-6 h-6"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
+                        </button>
+                        <button class="delete" value="${people.id}">
+                            <svg viewBox="0 0 20 20" fill="currentColor" class="trash w-6 h-6"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </td>
+                </tr>
+            `;
+  }).join(' ');
+  container.innerHTML = html; // container.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
 displayPeople(); // destroy popup
 
-function destroyPopup(_x3) {
-  return _destroyPopup.apply(this, arguments);
+async function destroyPopup(popup) {
+  popup.classList.remove('open');
+  popup.remove();
+  popup = null;
 } ///////////////////// EDIT PERSON DATA /////////////////////////////
 // edit person data
 
 
-function _destroyPopup() {
-  _destroyPopup = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(popup) {
-    return regeneratorRuntime.wrap(function _callee6$(_context6) {
-      while (1) {
-        switch (_context6.prev = _context6.next) {
-          case 0:
-            popup.classList.remove('open');
-            popup.remove();
-            popup = null;
+async function editPeople(e) {
+  const iconEdit = e.target.closest('button.edit');
 
-          case 3:
-          case "end":
-            return _context6.stop();
-        }
-      }
-    }, _callee6);
-  }));
-  return _destroyPopup.apply(this, arguments);
-}
-
-function editPeople(_x4) {
-  return _editPeople.apply(this, arguments);
+  if (iconEdit) {
+    const tableRow = e.target.closest('tr');
+    const idToEdit = tableRow.dataset.id;
+    editPeoplePopup(idToEdit);
+  }
 } // ****** FILER BY MONTH **********
-// const filterByMonth = persons => {
-//     if (filterMonthFilter.value !== '') {
-//         persons = persons.filter(person => {
-//             let birthday = new Date(person.birthday);
-//             return birthday.getMonth() === Number(filterMonthFilter.value);
-//         });
-//     }
-//     return persons;
-// };
-// show popup and edit data
 
 
-function _editPeople() {
-  _editPeople = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(e) {
-    var iconEdit, tableRow, idToEdit;
-    return regeneratorRuntime.wrap(function _callee7$(_context7) {
-      while (1) {
-        switch (_context7.prev = _context7.next) {
-          case 0:
-            iconEdit = e.target.closest('button.edit');
-
-            if (iconEdit) {
-              tableRow = e.target.closest('tr');
-              idToEdit = tableRow.dataset.id;
-              editPeoplePopup(idToEdit);
-            }
-
-          case 2:
-          case "end":
-            return _context7.stop();
-        }
-      }
-    }, _callee7);
-  }));
-  return _editPeople.apply(this, arguments);
-}
-
-function editPeoplePopup(_x5) {
-  return _editPeoplePopup.apply(this, arguments);
-} // listen for a click on the edit button
+const filterByMonth = () => {
+  let selectedValue = filterByMonthSelect.value;
+  console.log(selectedValue);
+  const filteredByMonth = myPeople.filter(person => {
+    let birthday = new Date(person.birthday);
+    return birthday.getMonth() === Number(selectedValue);
+  });
+  console.log(filteredByMonth);
+  myPeople = filteredByMonth;
+  return displayPeople(myPeople);
+}; // show popup and edit data
 
 
-function _editPeoplePopup() {
-  _editPeoplePopup = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(idToEdit) {
-    return regeneratorRuntime.wrap(function _callee9$(_context9) {
-      while (1) {
-        switch (_context9.prev = _context9.next) {
-          case 0:
-            return _context9.abrupt("return", new Promise( /*#__PURE__*/function () {
-              var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(resolve) {
-                var popup, personToEdit, html;
-                return regeneratorRuntime.wrap(function _callee8$(_context8) {
-                  while (1) {
-                    switch (_context8.prev = _context8.next) {
-                      case 0:
-                        popup = document.createElement('form');
-                        personToEdit = myPeople.find(function (peop) {
-                          return peop.id == idToEdit;
-                        }); // popup edit= form
+async function editPeoplePopup(idToEdit) {
+  return new Promise(async function (resolve) {
+    const popup = document.createElement('form');
+    let personToEdit = myPeople.find(peop => peop.id == idToEdit); // popup edit= form
 
-                        html = "\n        <ul class=\"form\">\n            <li>\n\t\t\t    <label for=\"lastName\">Last Name:</label>\n                <input type=\"text\" name=\"lastName\" id=\"lastname\" value=\"".concat(personToEdit.lastName, "\">\n            </li>\n            <li>\n\t\t\t    <label for=\"firstName\">First Name:</label>\n                <input type=\"text\" name=\"firstName\" id=\"firstname\" value=\"").concat(personToEdit.firstName, "\">\n            </li>\n            <li>\n\t\t\t    <label for=\"birthday\">Birthday:</label>\n                <input type=\"date\" name=\"birthday\" id=\"birthday\" value=\"").concat(personToEdit.birthday ? new Date(personToEdit.birthday).toISOString().substring(0, 10) : '', "\">\n            </li>\n            <li>\n\t\t\t    <label for=\"image\">Image:</label>\n                <input type=\"url\" name=\"image\" id=\"img\" value=\"").concat(personToEdit.picture, "\" alt=\"photo\">\n            </li>\n\t\t</ul>\n        <div>\n            <button type=\"submit\">Submit</button>\n            <button class=\"cancel\">Cancel</button>\n        </div>\n        ");
-                        popup.innerHTML = html;
-                        parent.appendChild(popup);
-                        popup.classList.add('popup');
-                        popup.classList.add('open');
-                        popup.addEventListener('submit', function (e) {
-                          resolve();
-                          e.preventDefault();
-                          personToEdit.lastName = popup.lastName.value;
-                          personToEdit.firstName = popup.firstName.value;
-                          personToEdit.picture = popup.image.value;
-                          personToEdit.birthday = popup.birthday.value, displayPeople(myPeople);
-                          resolve(e.target.remove(myPeople));
-                          destroyPopup(popup);
-                          container.dispatchEvent(new CustomEvent('itemsUpdated'));
-                        }, {
-                          once: true
-                        });
+    const html = `
+        <ul class="form">
+            <li>
+			    <label for="lastName">Last Name:</label>
+                <input type="text" name="lastName" id="lastname" value="${personToEdit.lastName}">
+            </li>
+            <li>
+			    <label for="firstName">First Name:</label>
+                <input type="text" name="firstName" id="firstname" value="${personToEdit.firstName}">
+            </li>
+            <li>
+			    <label for="birthday">Birthday:</label>
+                <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday ? new Date(personToEdit.birthday).toISOString().substring(0, 10) : ''}">
+            </li>
+            <li>
+			    <label for="image">Image:</label>
+                <input type="url" name="image" id="img" value="${personToEdit.picture}" alt="photo">
+            </li>
+		</ul>
+        <div>
+            <button type="submit">Submit</button>
+            <button class="cancel">Cancel</button>
+        </div>
+        `;
+    popup.innerHTML = html;
+    parent.appendChild(popup);
+    popup.classList.add('popup');
+    popup.classList.add('open');
+    popup.addEventListener('submit', e => {
+      resolve();
+      e.preventDefault();
+      personToEdit.lastName = popup.lastName.value;
+      personToEdit.firstName = popup.firstName.value;
+      personToEdit.picture = popup.image.value;
+      personToEdit.birthday = popup.birthday.value, displayPeople(myPeople);
+      resolve(e.target.remove(myPeople));
+      destroyPopup(popup);
+      container.dispatchEvent(new CustomEvent('itemsUpdated'));
+    }, {
+      once: true
+    });
 
-                        if (popup.cancel) {
-                          popup.cancel.addEventListener('click', function () {
-                            resolve(null);
-                            destroyPopup(popup);
-                          }, {
-                            once: true
-                          });
-                        }
-
-                      case 9:
-                      case "end":
-                        return _context8.stop();
-                    }
-                  }
-                }, _callee8);
-              }));
-
-              return function (_x8) {
-                return _ref3.apply(this, arguments);
-              };
-            }()));
-
-          case 1:
-          case "end":
-            return _context9.stop();
-        }
-      }
-    }, _callee9);
-  }));
-  return _editPeoplePopup.apply(this, arguments);
-}
-
-window.addEventListener('click', editPeople); //////////////////// DELETE PERSONS ////////////////////////
+    if (popup.cancel) {
+      popup.cancel.addEventListener('click', function () {
+        resolve(null);
+        destroyPopup(popup);
+      }, {
+        once: true
+      });
+    }
+  });
+} //////////////////// DELETE PERSONS ////////////////////////
 // delete a person
 
-var deletePerson = function deletePerson(e) {
-  var iconDelete = e.target.closest('button.delete');
+
+const deletePerson = e => {
+  const iconDelete = e.target.closest('button.delete');
 
   if (iconDelete) {
-    var tableRow = e.target.closest('tr');
-    var idToDelete = tableRow.dataset.id;
+    const tableRow = e.target.closest('tr');
+    const idToDelete = tableRow.dataset.id;
     deletePersonPopup(idToDelete);
   }
 
@@ -563,119 +436,115 @@ var deletePerson = function deletePerson(e) {
 }; // show delete popup and delete a specific person
 
 
-var deletePersonPopup = function deletePersonPopup(idToDelete) {
-  return new Promise( /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resolve) {
-      var popup, personToDelte, html;
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              popup = document.createElement('div');
-              personToDelte = myPeople.find(function (person) {
-                return person.id == idToDelete;
-              });
-              popup.classList.add('popup'); // popup delete
+const deletePersonPopup = idToDelete => {
+  return new Promise(async function (resolve) {
+    const popup = document.createElement('div');
+    let personToDelte = myPeople.find(person => person.id == idToDelete);
+    popup.classList.add('popup'); // popup delete
 
-              html = "\n                    <div>\n                        <p>Do you really want to delete ".concat(personToDelte.lastName, " ").concat(personToDelte.firstName, "?</p>\n                        <ul class=\"buttonDelt\">\n                            <li>\n                                <button class=\"yes\">Yes</button>\n                            </li>\n                            <li>\n                                <button class=\"cancel\">Cancel</button>\n                            </li>\n                    </div>\n        ");
-              popup.insertAdjacentHTML('afterbegin', html);
-              popup.addEventListener('click', function (e) {
-                if (e.target.matches('.yes')) {
-                  var _people = myPeople.filter(function (person) {
-                    return person.id != idToDelete;
-                  });
+    const html = `
+                    <div>
+                        <p>Do you really want to delete ${personToDelte.lastName} ${personToDelte.firstName}?</p>
+                        <ul class="buttonDelt">
+                            <li>
+                                <button class="yes">Yes</button>
+                            </li>
+                            <li>
+                                <button class="cancel">Cancel</button>
+                            </li>
+                    </div>
+        `;
+    popup.insertAdjacentHTML('afterbegin', html);
+    popup.addEventListener('click', e => {
+      if (e.target.matches('.yes')) {
+        const people = myPeople.filter(person => person.id != idToDelete);
+        myPeople = people;
+        displayPeople(myPeople);
+        destroyPopup(popup);
+      }
 
-                  myPeople = _people;
-                  displayPeople(myPeople);
-                  destroyPopup(popup);
-                }
+      if (e.target.matches('.cancel')) {
+        destroyPopup(popup);
+      }
 
-                if (e.target.matches('.cancel')) {
-                  destroyPopup(popup);
-                }
+      container.dispatchEvent(new CustomEvent('itemsUpdated'));
+    }); // resolve promise
 
-                container.dispatchEvent(new CustomEvent('itemsUpdated'));
-              }); // resolve promise
-
-              resolve();
-              parent.appendChild(popup);
-              popup.classList.add('open');
-              container.dispatchEvent(new CustomEvent('itemsUpdated'));
-
-            case 10:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function (_x6) {
-      return _ref.apply(this, arguments);
-    };
-  }());
+    resolve();
+    parent.appendChild(popup);
+    popup.classList.add('open');
+    container.dispatchEvent(new CustomEvent('itemsUpdated'));
+  });
 }; ///////////////////////// ADD A NEW PERSON /////////////////////////
 
 
 function addingPeople() {
-  return new Promise( /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(resolve) {
-      var myForm, html;
-      return regeneratorRuntime.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              myForm = document.createElement('form');
-              myForm.classList.add('adding');
-              html = "\n                <div>\n                    <ul class=\"form\">\n                        <li>\n                            <label>Last name</label>\n                            <input type=\"text\" name=\"lastName\" required>\n                        </li>\n                        <li>\n                            <label>First name</label>\n                            <input type=\"text\" name=\"firstname\" required>\n                        </li>\n                        <li>\n                            <label>Birthday</label>\n                            <input type=\"date\" name=\"birthday\" required>\n                        </li>\n                        <li>\n                            <label>Picture</label>\n                            <input type=\"url\" name=\"image\" required>\n                        </li>\n                    </ul>\n                    <button type=\"submit\">Save</button>\n                    <button type=\"button\" name=\"cancel\" class=\"cancel\">Cancel</button>\n                </div>\n        ";
-              myForm.innerHTML = html;
-              myForm.classList.add('popup'); // grab inputs when submit
+  return new Promise(async function (resolve) {
+    const myForm = document.createElement('form');
+    myForm.classList.add('adding');
+    const html = `
+                <div>
+                    <ul class="form">
+                        <li>
+                            <label>Last name</label>
+                            <input type="text" name="lastName" required>
+                        </li>
+                        <li>
+                            <label>First name</label>
+                            <input type="text" name="firstname" required>
+                        </li>
+                        <li>
+                            <label>Birthday</label>
+                            <input type="date" name="birthday" required>
+                        </li>
+                        <li>
+                            <label>Picture</label>
+                            <input type="url" name="image" required>
+                        </li>
+                    </ul>
+                    <button type="submit">Save</button>
+                    <button type="button" name="cancel" class="cancel">Cancel</button>
+                </div>
+        `;
+    myForm.innerHTML = html;
+    myForm.classList.add('popup'); // grab inputs when submit
 
-              myForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-                var el = e.currentTarget.closest('form.adding');
-                var newPerson = {
-                  id: Date.now(),
-                  lastName: el.lastName.value,
-                  firstName: el.firstname.value,
-                  birthday: el.birthday.value,
-                  picture: el.image.value
-                };
-                resolve();
-                myPeople.push(newPerson);
-                displayPeople(myPeople);
-                destroyPopup(myForm);
-                container.dispatchEvent(new CustomEvent('itemsUpdated'));
-              }); // cancel
+    myForm.addEventListener('submit', e => {
+      e.preventDefault();
+      let el = e.currentTarget.closest('form.adding');
+      const newPerson = {
+        id: Date.now(),
+        lastName: el.lastName.value,
+        firstName: el.firstname.value,
+        birthday: el.birthday.value,
+        picture: el.image.value
+      };
+      resolve();
+      myPeople.push(newPerson);
+      displayPeople(myPeople);
+      destroyPopup(myForm);
+      container.dispatchEvent(new CustomEvent('itemsUpdated'));
+    }); // cancel
 
-              if (myForm.cancel) {
-                myForm.cancel.addEventListener('click', function () {
-                  destroyPopup(myForm);
-                }, {
-                  once: true
-                });
-              }
+    if (myForm.cancel) {
+      myForm.cancel.addEventListener('click', function () {
+        destroyPopup(myForm);
+      }, {
+        once: true
+      });
+    }
 
-              resolve();
-              parent.appendChild(myForm);
-              myForm.classList.add('open');
-
-            case 10:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-
-    return function (_x7) {
-      return _ref2.apply(this, arguments);
-    };
-  }());
+    resolve();
+    parent.appendChild(myForm);
+    myForm.classList.add('open');
+  });
 }
 
 ; // buttonFilter.addEventListener('click', resetFilter);
+// listen for a click on the edit button
 
+window.addEventListener('click', editPeople);
+filterByMonthSelect.addEventListener("input", filterByMonth);
 filterInputName.addEventListener('keyup', filterPeople);
 addBtn.addEventListener('click', addingPeople);
 window.addEventListener('click', deletePerson);
@@ -711,7 +580,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60329" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61808" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
