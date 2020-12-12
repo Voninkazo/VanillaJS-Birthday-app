@@ -51,7 +51,6 @@ const deletePersonPopup = idToDelete => {
         // resolve promise
         resolve();
         parent.appendChild(popup);
-        popup.classList.add('open');
         container.dispatchEvent(new CustomEvent('itemsUpdated'));
     });
 }

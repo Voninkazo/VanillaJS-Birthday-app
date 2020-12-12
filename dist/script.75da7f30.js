@@ -333,11 +333,10 @@ var _variables = require("./variables.js");
 ///////////////////////// ADD A NEW PERSON /////////////////////////
 function addingPeople() {
   return new Promise(async function (resolve) {
-    const myForm = document.createElement('form');
-    myForm.classList.add('adding');
+    const popup = document.createElement("div");
     const html = `
-                <div>
-                    <ul class="form">
+                <form class="form">
+                    <ul>
                         <li>
                             <label>Last name</label>
                             <input type="text" name="lastName" required>
@@ -355,16 +354,23 @@ function addingPeople() {
                             <input type="url" name="image" required>
                         </li>
                     </ul>
-                    <button type="submit">Save</button>
-                    <button type="button" name="cancel" class="cancel">Cancel</button>
-                </div>
+                    <div class="popup-btn-container">
+                        <button type="submit" class="submit">Save</button>
+                        <button type="button" name="cancel" class="cancel">Cancel</button>
+                    </div>
+                </form>
         `;
-    myForm.innerHTML = html;
-    myForm.classList.add('popup'); // grab inputs when submit
+    popup.innerHTML = html;
+    popup.classList.add('popup');
 
+    _variables.parent.appendChild(popup); // grab inputs when submit
+
+
+    const myForm = popup.querySelector('form');
+    popup.appendChild(myForm);
     myForm.addEventListener('submit', e => {
       e.preventDefault();
-      let el = e.currentTarget.closest('form.adding');
+      let el = e.currentTarget.closest('.form');
       const newPerson = {
         id: Date.now(),
         lastName: el.lastName.value,
@@ -377,24 +383,20 @@ function addingPeople() {
       _script.myPeople.push(newPerson);
 
       (0, _displayList.displayPeople)(_script.myPeople);
-      (0, _utils.destroyPopup)(myForm);
+      (0, _utils.destroyPopup)(popup);
 
       _variables.container.dispatchEvent(new CustomEvent('itemsUpdated'));
     }); // cancel
 
     if (myForm.cancel) {
       myForm.cancel.addEventListener('click', function () {
-        (0, _utils.destroyPopup)(myForm);
+        (0, _utils.destroyPopup)(popup);
       }, {
         once: true
       });
     }
 
     resolve();
-
-    _variables.parent.appendChild(myForm);
-
-    myForm.classList.add('open');
   });
 }
 
@@ -468,7 +470,6 @@ async function editPeoplePopup(idToEdit) {
     _variables.parent.appendChild(popup);
 
     popup.classList.add('popup');
-    popup.classList.add('open');
     const popupForm = popup.querySelector("form");
     popupForm.addEventListener('submit', e => {
       resolve();
@@ -570,8 +571,6 @@ const deletePersonPopup = idToDelete => {
     resolve();
 
     _variables.parent.appendChild(popup);
-
-    popup.classList.add('open');
 
     _variables.container.dispatchEvent(new CustomEvent('itemsUpdated'));
   });

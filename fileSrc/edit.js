@@ -54,8 +54,9 @@ async function editPeoplePopup(idToEdit) {
         popup.innerHTML = html;
         parent.appendChild(popup);
         popup.classList.add('popup');
-        popup.classList.add('open');
-        const popupForm = popup.querySelector("form")
+
+        const popupForm = popup.querySelector("form");
+
         popupForm.addEventListener('submit', e => {
             resolve();
             e.preventDefault();
