@@ -14,6 +14,18 @@ h1 {
     color: #094067;
 }
 
+ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
 .section_filtering {
     display: flex;
     flex-direction: column;
@@ -52,16 +64,17 @@ h1 {
     width: 100%;
 }
 
-button.add {
+.section_filtering button {
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
     color: #FFFFFE;
     padding: 15px 18px;
     background: #EF4565;
-    border-radius: 5px;
+    cursor: pointer;
     outline: none;
     border: none;
+    border-radius: 5px;
     margin-top: 12px;
 }
 
@@ -103,40 +116,58 @@ svg:hover {
     color: #d9376e;
 }
 
-.popup,
-div.popup {
-    background: gray;
-    width: auto;
-    height: auto;
-    box-shadow: 2px 5px 5px gray;
+.popup {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.form,
+.delete-popup-content {
     position: absolute;
-    transition: all 0.25s;
-    top: 50%;
-    left: 30%;
-    --opacity: 0;
-    opacity: var(--opacity);
-    padding: 3rem;
+    background-color: #FFFFFE;
+    padding: 20px;
+    width: 350px;
+    left: 50%;
+    top: 2%;
+    margin-left: -150px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
-.popup.open,
-.deletepopup.open {
-    --opacity: 1;
-    pointer-events: all;
+.reminder-par {
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 47px;
+    color: #094067;
+    padding: 0;
+    padding-bottom: 26px;
+    margin: 0;
 }
 
-p {
-    color: #000000;
+.form input,
+.form label {
+    font-weight: 500;
     font-size: 18px;
-    padding-inline-start: 2rem;
+    line-height: 21px;
+    color: #094067;
 }
 
-ul.buttonDelt {
-    display: flex;
-    flex-direction: row;
+.form input {
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 14px;
+    background: #D8EEFE;
+    border-radius: 5px;
+    border: none;
+    outline: none;
 }
 
-ul.buttonDelt li {
-    margin-inline-start: 1rem;
+.form label {
+    padding-bottom: 8px;
+    padding-top: 11px;
 }
 
 .form li {
@@ -144,8 +175,64 @@ ul.buttonDelt li {
     flex-direction: column;
 }
 
-.form li:not(:nth-child(1)) {
-    margin-block-start: 1rem;
+.popup-btn-container {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.popup-btn-container button {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    border-radius: 5px;
+    padding-top: 12px;
+    padding-bottom: 11px;
+    padding-left: 20px;
+    padding-right: 16px;
+}
+
+.delete-popup-content {
+    top: 20%;
+}
+
+.delete-popup-content .reminder-par {
+    font-size: 20px;
+    line-height: 25px;
+}
+
+.delete-popup-content ul {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+button.submit {
+    background: #EF4565;
+    color: #FFFFFE;
+}
+
+button.cancel {
+    color: #5F6C7B;
+    background: #FFFFFF;
+    border: 2px solid #5F6C7B;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-left: 30px;
+}
+
+button.cancel:hover {
+    background: #EF4565;
+    color: #FFFFFE;
+}
+
+.delete-popup-content .yes {
+    background-color: blue;
+    color: #FFFFFF;
+}
+
+.delete-popup-content button {
+    padding: 12px 18px;
 }
 
 @media(min-width:768px) {

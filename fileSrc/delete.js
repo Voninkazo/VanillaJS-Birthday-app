@@ -23,15 +23,16 @@ const deletePersonPopup = idToDelete => {
         popup.classList.add('popup');
         // popup delete
         const html = `
-                    <div>
-                        <p>Do you really want to delete ${personToDelete.lastName} ${personToDelete.firstName}?</p>
-                        <ul class="buttonDelt">
+                    <div class="delete-popup-content">
+                        <p class="reminder-par">Do you really want to delete ${personToDelete.lastName} ${personToDelete.firstName}?</p>
+                        <ul>
                             <li>
                                 <button class="yes">Yes</button>
                             </li>
                             <li>
                                 <button class="cancel">Cancel</button>
                             </li>
+                        </ul>
                     </div>
         `;
         popup.insertAdjacentHTML('afterbegin', html);

@@ -24,7 +24,7 @@ async function editPeoplePopup(idToEdit) {
         const html = `
         <div class="popup2">
             <form class="form">
-                <p>Editing ${personToEdit.lastName} ${personToEdit.firstName}</p>
+                <p class="reminder-par">Editing ${personToEdit.lastName} ${personToEdit.firstName}</p>
                 <ul>
                     <li>
                         <label for="lastName">Last Name:</label>
@@ -44,8 +44,8 @@ async function editPeoplePopup(idToEdit) {
                         <input type="url" name="image" id="img" value="${personToEdit.picture}" alt="photo">
                     </li>
                 </ul>
-                <div>
-                    <button type="submit">Submit</button>
+                <div class="popup-btn-container">
+                    <button type="submit" class="submit">Submit</button>
                     <button class="cancel">Cancel</button>
                 </div>
             </form>

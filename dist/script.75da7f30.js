@@ -437,7 +437,7 @@ async function editPeoplePopup(idToEdit) {
     const html = `
         <div class="popup2">
             <form class="form">
-                <p>Editing ${personToEdit.lastName} ${personToEdit.firstName}</p>
+                <p class="reminder-par">Editing ${personToEdit.lastName} ${personToEdit.firstName}</p>
                 <ul>
                     <li>
                         <label for="lastName">Last Name:</label>
@@ -456,8 +456,8 @@ async function editPeoplePopup(idToEdit) {
                         <input type="url" name="image" id="img" value="${personToEdit.picture}" alt="photo">
                     </li>
                 </ul>
-                <div>
-                    <button type="submit">Submit</button>
+                <div class="popup-btn-container">
+                    <button type="submit" class="submit">Submit</button>
                     <button class="cancel">Cancel</button>
                 </div>
             </form>
@@ -536,15 +536,16 @@ const deletePersonPopup = idToDelete => {
     popup.classList.add('popup'); // popup delete
 
     const html = `
-                    <div>
-                        <p>Do you really want to delete ${personToDelete.lastName} ${personToDelete.firstName}?</p>
-                        <ul class="buttonDelt">
+                    <div class="delete-popup-content">
+                        <p class="reminder-par">Do you really want to delete ${personToDelete.lastName} ${personToDelete.firstName}?</p>
+                        <ul>
                             <li>
                                 <button class="yes">Yes</button>
                             </li>
                             <li>
                                 <button class="cancel">Cancel</button>
                             </li>
+                        </ul>
                     </div>
         `;
     popup.insertAdjacentHTML('afterbegin', html);
@@ -733,7 +734,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64581" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52466" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
