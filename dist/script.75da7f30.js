@@ -117,75 +117,47 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"script.js":[function(require,module,exports) {
+})({"fileSrc/variables.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.filterByMonthSelect = exports.filterForm = exports.buttonFilter = exports.filterInputName = exports.addBtn = exports.form = exports.parent = exports.container = void 0;
 const container = document.querySelector('tbody');
+exports.container = container;
 const parent = document.querySelector('body');
+exports.parent = parent;
 const form = document.querySelector('form');
+exports.form = form;
 const addBtn = document.querySelector('.add');
+exports.addBtn = addBtn;
 const filterInputName = document.querySelector('#filter-name');
+exports.filterInputName = filterInputName;
 const buttonFilter = document.querySelector('#reset'); // btn reset
 
+exports.buttonFilter = buttonFilter;
 const filterForm = document.querySelector('.filter-form');
+exports.filterForm = filterForm;
 const filterByMonthSelect = document.querySelector('#filter-month');
-let myPeople = []; // mama array
+exports.filterByMonthSelect = filterByMonthSelect;
+},{}],"fileSrc/displayList.js":[function(require,module,exports) {
+"use strict";
 
-const filterPeople = e => {
-  displayPeople(e, filterInputName.value);
-};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.displayPeople = displayPeople;
 
-const resetFilter = e => {
-  displayPeople();
-  filterInputName.reset();
-}; ///////////////////// FETCHING FUNCTION ///////////////////////////
-// fetch data
+var _script = require("../script.js");
 
+var _variables = require("./variables.js");
 
-const url = "https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json";
-
-async function fetchPeople() {
-  const response = await fetch(url);
-  const data = await response.json();
-  myPeople = [...data];
-  console.log(myPeople);
-  storeFromLocalStorage(myPeople);
-  displayPeople(myPeople);
-  container.dispatchEvent(new CustomEvent('itemsUpdated'));
-  return data;
-} //////////////////////  LOCAL STORAGE FUNCTIONS /////////////////////////////
-// mirror from LS
-
-
-function mirrorLocalStorage() {
-  console.info('Saving items to LS');
-  localStorage.setItem('myPeople', JSON.stringify(myPeople));
-}
-
-; // store from LS
-
-async function storeFromLocalStorage() {
-  // if there is data in the LS
-  const listItem = JSON.parse(localStorage.getItem('myPeople'));
-
-  if (listItem) {
-    myPeople = listItem;
-  } // if there is no data in the local, then fetch again
-
-
-  if (!listItem) {
-    const response = await fetch(url);
-    const data = await response.json();
-    myPeople = [...data];
-    displayPeople(myPeople);
-  }
-
-  container.dispatchEvent(new CustomEvent('itemsUpdated'));
-} /////////////////////// DISPLAY PEOPLE LIST//////////////////////////////////
+/////////////////////// DISPLAY PEOPLE LIST//////////////////////////////////
 // display people list
-
-
 async function displayPeople(e, filterByName) {
   // sort by birthday
-  let sortedPeople = myPeople.sort((a, b) => a.birthday - b.birthday);
+  let sortedPeople = _script.myPeople.sort((a, b) => a.birthday - b.birthday);
 
   if (filterByName) {
     sortedPeople = sortedPeople.filter(person => {
@@ -326,158 +298,39 @@ async function displayPeople(e, filterByName) {
                 </tr>
             `;
   }).join(' ');
-  container.innerHTML = html; // container.dispatchEvent(new CustomEvent('itemsUpdated'));
+  _variables.container.innerHTML = html; // container.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
+},{"../script.js":"script.js","./variables.js":"fileSrc/variables.js"}],"fileSrc/utils.js":[function(require,module,exports) {
+"use strict";
 
-displayPeople(); // destroy popup
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.destroyPopup = destroyPopup;
 
+// destroy popup
 async function destroyPopup(popup) {
   popup.classList.remove('open');
   popup.remove();
   popup = null;
-} ///////////////////// EDIT PERSON DATA /////////////////////////////
-// edit person data
+}
+},{}],"fileSrc/add.js":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addingPeople = addingPeople;
 
-async function editPeople(e) {
-  const iconEdit = e.target.closest('button.edit');
+var _script = require("../script.js");
 
-  if (iconEdit) {
-    const tableRow = e.target.closest('tr');
-    const idToEdit = tableRow.dataset.id;
-    editPeoplePopup(idToEdit);
-  }
-} // ****** FILER BY MONTH **********
+var _displayList = require("./displayList.js");
 
+var _utils = require("./utils.js");
 
-const filterByMonth = () => {
-  let selectedValue = filterByMonthSelect.value;
-  console.log(selectedValue);
-  const filteredByMonth = myPeople.filter(person => {
-    let birthday = new Date(person.birthday);
-    return birthday.getMonth() === Number(selectedValue);
-  });
-  console.log(filteredByMonth);
-  myPeople = filteredByMonth;
-  return displayPeople(myPeople);
-}; // show popup and edit data
+var _variables = require("./variables.js");
 
-
-async function editPeoplePopup(idToEdit) {
-  return new Promise(async function (resolve) {
-    const popup = document.createElement('form');
-    let personToEdit = myPeople.find(peop => peop.id == idToEdit); // popup edit= form
-
-    const html = `
-        <ul class="form">
-            <li>
-			    <label for="lastName">Last Name:</label>
-                <input type="text" name="lastName" id="lastname" value="${personToEdit.lastName}">
-            </li>
-            <li>
-			    <label for="firstName">First Name:</label>
-                <input type="text" name="firstName" id="firstname" value="${personToEdit.firstName}">
-            </li>
-            <li>
-			    <label for="birthday">Birthday:</label>
-                <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday ? new Date(personToEdit.birthday).toISOString().substring(0, 10) : ''}">
-            </li>
-            <li>
-			    <label for="image">Image:</label>
-                <input type="url" name="image" id="img" value="${personToEdit.picture}" alt="photo">
-            </li>
-		</ul>
-        <div>
-            <button type="submit">Submit</button>
-            <button class="cancel">Cancel</button>
-        </div>
-        `;
-    popup.innerHTML = html;
-    parent.appendChild(popup);
-    popup.classList.add('popup');
-    popup.classList.add('open');
-    popup.addEventListener('submit', e => {
-      resolve();
-      e.preventDefault();
-      personToEdit.lastName = popup.lastName.value;
-      personToEdit.firstName = popup.firstName.value;
-      personToEdit.picture = popup.image.value;
-      personToEdit.birthday = popup.birthday.value, displayPeople(myPeople);
-      resolve(e.target.remove(myPeople));
-      destroyPopup(popup);
-      container.dispatchEvent(new CustomEvent('itemsUpdated'));
-    }, {
-      once: true
-    });
-
-    if (popup.cancel) {
-      popup.cancel.addEventListener('click', function () {
-        resolve(null);
-        destroyPopup(popup);
-      }, {
-        once: true
-      });
-    }
-  });
-} //////////////////// DELETE PERSONS ////////////////////////
-// delete a person
-
-
-const deletePerson = e => {
-  const iconDelete = e.target.closest('button.delete');
-
-  if (iconDelete) {
-    const tableRow = e.target.closest('tr');
-    const idToDelete = tableRow.dataset.id;
-    deletePersonPopup(idToDelete);
-  }
-
-  parent.dispatchEvent(new CustomEvent('itemsUpdated'));
-}; // show delete popup and delete a specific person
-
-
-const deletePersonPopup = idToDelete => {
-  return new Promise(async function (resolve) {
-    const popup = document.createElement('div');
-    let personToDelte = myPeople.find(person => person.id == idToDelete);
-    popup.classList.add('popup'); // popup delete
-
-    const html = `
-                    <div>
-                        <p>Do you really want to delete ${personToDelte.lastName} ${personToDelte.firstName}?</p>
-                        <ul class="buttonDelt">
-                            <li>
-                                <button class="yes">Yes</button>
-                            </li>
-                            <li>
-                                <button class="cancel">Cancel</button>
-                            </li>
-                    </div>
-        `;
-    popup.insertAdjacentHTML('afterbegin', html);
-    popup.addEventListener('click', e => {
-      if (e.target.matches('.yes')) {
-        const people = myPeople.filter(person => person.id != idToDelete);
-        myPeople = people;
-        displayPeople(myPeople);
-        destroyPopup(popup);
-      }
-
-      if (e.target.matches('.cancel')) {
-        destroyPopup(popup);
-      }
-
-      container.dispatchEvent(new CustomEvent('itemsUpdated'));
-    }); // resolve promise
-
-    resolve();
-    parent.appendChild(popup);
-    popup.classList.add('open');
-    container.dispatchEvent(new CustomEvent('itemsUpdated'));
-  });
-}; ///////////////////////// ADD A NEW PERSON /////////////////////////
-
-
+///////////////////////// ADD A NEW PERSON /////////////////////////
 function addingPeople() {
   return new Promise(async function (resolve) {
     const myForm = document.createElement('form');
@@ -520,39 +373,339 @@ function addingPeople() {
         picture: el.image.value
       };
       resolve();
-      myPeople.push(newPerson);
-      displayPeople(myPeople);
-      destroyPopup(myForm);
-      container.dispatchEvent(new CustomEvent('itemsUpdated'));
+
+      _script.myPeople.push(newPerson);
+
+      (0, _displayList.displayPeople)(_script.myPeople);
+      (0, _utils.destroyPopup)(myForm);
+
+      _variables.container.dispatchEvent(new CustomEvent('itemsUpdated'));
     }); // cancel
 
     if (myForm.cancel) {
       myForm.cancel.addEventListener('click', function () {
-        destroyPopup(myForm);
+        (0, _utils.destroyPopup)(myForm);
       }, {
         once: true
       });
     }
 
     resolve();
-    parent.appendChild(myForm);
+
+    _variables.parent.appendChild(myForm);
+
     myForm.classList.add('open');
   });
 }
 
-; // buttonFilter.addEventListener('click', resetFilter);
-// listen for a click on the edit button
+;
+},{"../script.js":"script.js","./displayList.js":"fileSrc/displayList.js","./utils.js":"fileSrc/utils.js","./variables.js":"fileSrc/variables.js"}],"fileSrc/edit.js":[function(require,module,exports) {
+"use strict";
 
-window.addEventListener('click', editPeople);
-filterByMonthSelect.addEventListener("input", filterByMonth);
-filterInputName.addEventListener('keyup', filterPeople);
-addBtn.addEventListener('click', addingPeople);
-window.addEventListener('click', deletePerson);
-displayPeople(myPeople);
-container.addEventListener('itemsUpdated', mirrorLocalStorage);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.editPeople = editPeople;
+
+var _displayList = require("./displayList.js");
+
+var _script = require("../script.js");
+
+var _utils = require("./utils.js");
+
+var _variables = require("./variables.js");
+
+// edit person data
+async function editPeople(e) {
+  const iconEdit = e.target.closest('button.edit');
+
+  if (iconEdit) {
+    const tableRow = e.target.closest('tr');
+    const idToEdit = tableRow.dataset.id;
+    editPeoplePopup(idToEdit);
+  }
+} // show popup and edit data
+
+
+async function editPeoplePopup(idToEdit) {
+  return new Promise(async function (resolve) {
+    const popup = document.createElement('div');
+
+    let personToEdit = _script.myPeople.find(peop => peop.id == idToEdit); // popup edit= form
+
+
+    const html = `
+        <div class="popup2">
+            <form class="form">
+                <p>Editing ${personToEdit.lastName} ${personToEdit.firstName}</p>
+                <ul>
+                    <li>
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" name="lastName" id="lastname" value="${personToEdit.lastName}">
+                    </li>
+                    <li>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" name="firstName" id="firstname" value="${personToEdit.firstName}">
+                    </li>
+                    <li>
+                        <label for="birthday">Birthday:</label>
+                        <input type="date" name="birthday" id="birthday" value="${personToEdit.birthday ? new Date(personToEdit.birthday).toISOString().substring(0, 10) : ''}">
+                    </li>
+                    <li>
+                        <label for="image">Image:</label>
+                        <input type="url" name="image" id="img" value="${personToEdit.picture}" alt="photo">
+                    </li>
+                </ul>
+                <div>
+                    <button type="submit">Submit</button>
+                    <button class="cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+        `;
+    popup.innerHTML = html;
+
+    _variables.parent.appendChild(popup);
+
+    popup.classList.add('popup');
+    popup.classList.add('open');
+    const popupForm = popup.querySelector("form");
+    popupForm.addEventListener('submit', e => {
+      resolve();
+      e.preventDefault();
+      personToEdit.lastName = popupForm.lastName.value;
+      personToEdit.firstName = popupForm.firstName.value;
+      personToEdit.picture = popupForm.image.value;
+      personToEdit.birthday = popupForm.birthday.value, (0, _displayList.displayPeople)(_script.myPeople);
+      resolve(e.target.remove(_script.myPeople));
+      (0, _utils.destroyPopup)(popup);
+
+      _variables.container.dispatchEvent(new CustomEvent('itemsUpdated'));
+    }, {
+      once: true
+    });
+
+    if (popup.cancel) {
+      popup.cancel.addEventListener('click', function () {
+        resolve(null);
+        (0, _utils.destroyPopup)(popup);
+      }, {
+        once: true
+      });
+    }
+  });
+}
+},{"./displayList.js":"fileSrc/displayList.js","../script.js":"script.js","./utils.js":"fileSrc/utils.js","./variables.js":"fileSrc/variables.js"}],"fileSrc/delete.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.deletePerson = void 0;
+
+var _script = require("../script.js");
+
+var _variables = require("./variables.js");
+
+var _displayList = require("./displayList.js");
+
+var _utils = require("./utils.js");
+
+// delete a person
+const deletePerson = e => {
+  const iconDelete = e.target.closest('button.delete');
+
+  if (iconDelete) {
+    const tableRow = e.target.closest('tr');
+    const idToDelete = tableRow.dataset.id;
+    deletePersonPopup(idToDelete);
+  }
+
+  _variables.parent.dispatchEvent(new CustomEvent('itemsUpdated'));
+}; // show delete popup and delete a specific person
+
+
+exports.deletePerson = deletePerson;
+
+const deletePersonPopup = idToDelete => {
+  return new Promise(async function (resolve) {
+    const popup = document.createElement('div');
+
+    let personToDelete = _script.myPeople.find(person => person.id == idToDelete);
+
+    popup.classList.add('popup'); // popup delete
+
+    const html = `
+                    <div>
+                        <p>Do you really want to delete ${personToDelete.lastName} ${personToDelete.firstName}?</p>
+                        <ul class="buttonDelt">
+                            <li>
+                                <button class="yes">Yes</button>
+                            </li>
+                            <li>
+                                <button class="cancel">Cancel</button>
+                            </li>
+                    </div>
+        `;
+    popup.insertAdjacentHTML('afterbegin', html);
+    popup.addEventListener('click', e => {
+      if (e.target.matches('.yes')) {
+        const people = _script.myPeople.filter(person => person.id != idToDelete);
+
+        _script.myPeople = (people, function () {
+          throw new Error('"' + "myPeople" + '" is read-only.');
+        }());
+        (0, _displayList.displayPeople)(_script.myPeople);
+        (0, _utils.destroyPopup)(popup);
+      }
+
+      if (e.target.matches('.cancel')) {
+        (0, _utils.destroyPopup)(popup);
+      }
+
+      _variables.container.dispatchEvent(new CustomEvent('itemsUpdated'));
+    }); // resolve promise
+
+    resolve();
+
+    _variables.parent.appendChild(popup);
+
+    popup.classList.add('open');
+
+    _variables.container.dispatchEvent(new CustomEvent('itemsUpdated'));
+  });
+};
+},{"../script.js":"script.js","./variables.js":"fileSrc/variables.js","./displayList.js":"fileSrc/displayList.js","./utils.js":"fileSrc/utils.js"}],"fileSrc/filters.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.filterByMonth = exports.resetFilter = exports.filterPeople = void 0;
+
+var _script = require("../script.js");
+
+var _displayList = require("./displayList.js");
+
+var _variables = require("./variables.js");
+
+const filterPeople = e => {
+  (0, _displayList.displayPeople)(e, _variables.filterInputName.value);
+};
+
+exports.filterPeople = filterPeople;
+
+const resetFilter = e => {
+  (0, _displayList.displayPeople)();
+
+  _variables.filterInputName.reset();
+}; // ****** FILER BY MONTH **********
+
+
+exports.resetFilter = resetFilter;
+
+const filterByMonth = () => {
+  let selectedValue = _variables.filterByMonthSelect.value;
+  console.log(selectedValue);
+
+  const filteredByMonth = _script.myPeople.filter(person => {
+    let birthday = new Date(person.birthday);
+    return birthday.getMonth() === Number(selectedValue);
+  });
+
+  console.log(filteredByMonth);
+  _script.myPeople = (filteredByMonth, function () {
+    throw new Error('"' + "myPeople" + '" is read-only.');
+  }());
+  return (0, _displayList.displayPeople)(_script.myPeople);
+};
+
+exports.filterByMonth = filterByMonth;
+},{"../script.js":"script.js","./displayList.js":"fileSrc/displayList.js","./variables.js":"fileSrc/variables.js"}],"script.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.myPeople = void 0;
+
+var _add = require("./fileSrc/add.js");
+
+var _edit = require("./fileSrc/edit.js");
+
+var _delete = require("./fileSrc/delete.js");
+
+var _displayList = require("./fileSrc/displayList.js");
+
+var _filters = require("./fileSrc/filters.js");
+
+var _variables = require("./fileSrc/variables.js");
+
+// import { storeFromLocalStorage, mirrorLocalStorage } from './fileSrc/localStorage.js';
+let myPeople = []; // mama array
+
+exports.myPeople = myPeople;
+///////////////////// FETCHING FUNCTION ///////////////////////////
+// fetch data
+const url = "https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json";
+
+async function fetchPeople() {
+  const response = await fetch(url);
+  const data = await response.json();
+  exports.myPeople = myPeople = [...data];
+  console.log(myPeople);
+  storeFromLocalStorage(myPeople);
+  (0, _displayList.displayPeople)(myPeople);
+
+  _variables.container.dispatchEvent(new CustomEvent('itemsUpdated'));
+
+  return data;
+}
+
+function mirrorLocalStorage() {
+  console.info('Saving items to LS');
+  localStorage.setItem('myPeople', JSON.stringify(myPeople));
+}
+
+; // store from LS
+
+async function storeFromLocalStorage() {
+  // if there is data in the LS
+  const listItem = JSON.parse(localStorage.getItem('myPeople'));
+
+  if (listItem) {
+    exports.myPeople = myPeople = listItem;
+  } // if there is no data in the local, then fetch again
+
+
+  if (!listItem) {
+    const response = await fetch(url);
+    const data = await response.json();
+    exports.myPeople = myPeople = [...data];
+    (0, _displayList.displayPeople)(myPeople);
+  }
+
+  _variables.container.dispatchEvent(new CustomEvent('itemsUpdated'));
+}
+
+_variables.buttonFilter.addEventListener('click', _filters.resetFilter);
+
+window.addEventListener('click', _edit.editPeople);
+
+_variables.filterByMonthSelect.addEventListener("input", _filters.filterByMonth);
+
+_variables.filterInputName.addEventListener('keyup', _filters.filterPeople);
+
+_variables.addBtn.addEventListener('click', _add.addingPeople);
+
+window.addEventListener('click', _delete.deletePerson);
+(0, _displayList.displayPeople)(myPeople);
+
+_variables.container.addEventListener('itemsUpdated', mirrorLocalStorage);
+
 storeFromLocalStorage();
 fetchPeople();
-},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./fileSrc/add.js":"fileSrc/add.js","./fileSrc/edit.js":"fileSrc/edit.js","./fileSrc/delete.js":"fileSrc/delete.js","./fileSrc/displayList.js":"fileSrc/displayList.js","./fileSrc/filters.js":"fileSrc/filters.js","./fileSrc/variables.js":"fileSrc/variables.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -580,7 +733,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61808" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64581" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

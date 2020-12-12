@@ -1,22 +1,28 @@
 {
-  "name": "birthday-app",
-  "version": "1.0.0",
-  "description": "Hey team! So the final project here will be a birthday list.",
-  "main": "correction.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Voninkazo/birthday-app.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Voninkazo/birthday-app/issues"
-  },
-  "homepage": "https://github.com/Voninkazo/birthday-app#readme",
-  "devDependencies": {
-    "sass": "^1.30.0"
-  }
+    "name": "birthday-app",
+    "version": "1.0.0",
+    "description": "Hey team! So the final project here will be a birthday list.",
+    "main": "correction.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Voninkazo/birthday-app.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Voninkazo/birthday-app/issues"
+    },
+    "homepage": "https://github.com/Voninkazo/birthday-app#readme",
+    "devDependencies": {
+        "sass": "^1.30.0"
+    },
+    "browserslist": [
+        "last 1 chrome version"
+    ],
+    "dependencies": {
+        "waait": "^1.0.5"
+    }
 }
