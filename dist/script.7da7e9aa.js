@@ -19102,338 +19102,7 @@ Object.keys(_index199).forEach(function (key) {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./add/index.js":"node_modules/date-fns/esm/add/index.js","./addBusinessDays/index.js":"node_modules/date-fns/esm/addBusinessDays/index.js","./addDays/index.js":"node_modules/date-fns/esm/addDays/index.js","./addHours/index.js":"node_modules/date-fns/esm/addHours/index.js","./addISOWeekYears/index.js":"node_modules/date-fns/esm/addISOWeekYears/index.js","./addMilliseconds/index.js":"node_modules/date-fns/esm/addMilliseconds/index.js","./addMinutes/index.js":"node_modules/date-fns/esm/addMinutes/index.js","./addMonths/index.js":"node_modules/date-fns/esm/addMonths/index.js","./addQuarters/index.js":"node_modules/date-fns/esm/addQuarters/index.js","./addSeconds/index.js":"node_modules/date-fns/esm/addSeconds/index.js","./addWeeks/index.js":"node_modules/date-fns/esm/addWeeks/index.js","./addYears/index.js":"node_modules/date-fns/esm/addYears/index.js","./areIntervalsOverlapping/index.js":"node_modules/date-fns/esm/areIntervalsOverlapping/index.js","./closestIndexTo/index.js":"node_modules/date-fns/esm/closestIndexTo/index.js","./closestTo/index.js":"node_modules/date-fns/esm/closestTo/index.js","./compareAsc/index.js":"node_modules/date-fns/esm/compareAsc/index.js","./compareDesc/index.js":"node_modules/date-fns/esm/compareDesc/index.js","./differenceInBusinessDays/index.js":"node_modules/date-fns/esm/differenceInBusinessDays/index.js","./differenceInCalendarDays/index.js":"node_modules/date-fns/esm/differenceInCalendarDays/index.js","./differenceInCalendarISOWeekYears/index.js":"node_modules/date-fns/esm/differenceInCalendarISOWeekYears/index.js","./differenceInCalendarISOWeeks/index.js":"node_modules/date-fns/esm/differenceInCalendarISOWeeks/index.js","./differenceInCalendarMonths/index.js":"node_modules/date-fns/esm/differenceInCalendarMonths/index.js","./differenceInCalendarQuarters/index.js":"node_modules/date-fns/esm/differenceInCalendarQuarters/index.js","./differenceInCalendarWeeks/index.js":"node_modules/date-fns/esm/differenceInCalendarWeeks/index.js","./differenceInCalendarYears/index.js":"node_modules/date-fns/esm/differenceInCalendarYears/index.js","./differenceInDays/index.js":"node_modules/date-fns/esm/differenceInDays/index.js","./differenceInHours/index.js":"node_modules/date-fns/esm/differenceInHours/index.js","./differenceInISOWeekYears/index.js":"node_modules/date-fns/esm/differenceInISOWeekYears/index.js","./differenceInMilliseconds/index.js":"node_modules/date-fns/esm/differenceInMilliseconds/index.js","./differenceInMinutes/index.js":"node_modules/date-fns/esm/differenceInMinutes/index.js","./differenceInMonths/index.js":"node_modules/date-fns/esm/differenceInMonths/index.js","./differenceInQuarters/index.js":"node_modules/date-fns/esm/differenceInQuarters/index.js","./differenceInSeconds/index.js":"node_modules/date-fns/esm/differenceInSeconds/index.js","./differenceInWeeks/index.js":"node_modules/date-fns/esm/differenceInWeeks/index.js","./differenceInYears/index.js":"node_modules/date-fns/esm/differenceInYears/index.js","./eachDayOfInterval/index.js":"node_modules/date-fns/esm/eachDayOfInterval/index.js","./eachHourOfInterval/index.js":"node_modules/date-fns/esm/eachHourOfInterval/index.js","./eachMonthOfInterval/index.js":"node_modules/date-fns/esm/eachMonthOfInterval/index.js","./eachQuarterOfInterval/index.js":"node_modules/date-fns/esm/eachQuarterOfInterval/index.js","./eachWeekOfInterval/index.js":"node_modules/date-fns/esm/eachWeekOfInterval/index.js","./eachWeekendOfInterval/index.js":"node_modules/date-fns/esm/eachWeekendOfInterval/index.js","./eachWeekendOfMonth/index.js":"node_modules/date-fns/esm/eachWeekendOfMonth/index.js","./eachWeekendOfYear/index.js":"node_modules/date-fns/esm/eachWeekendOfYear/index.js","./eachYearOfInterval/index.js":"node_modules/date-fns/esm/eachYearOfInterval/index.js","./endOfDay/index.js":"node_modules/date-fns/esm/endOfDay/index.js","./endOfDecade/index.js":"node_modules/date-fns/esm/endOfDecade/index.js","./endOfHour/index.js":"node_modules/date-fns/esm/endOfHour/index.js","./endOfISOWeek/index.js":"node_modules/date-fns/esm/endOfISOWeek/index.js","./endOfISOWeekYear/index.js":"node_modules/date-fns/esm/endOfISOWeekYear/index.js","./endOfMinute/index.js":"node_modules/date-fns/esm/endOfMinute/index.js","./endOfMonth/index.js":"node_modules/date-fns/esm/endOfMonth/index.js","./endOfQuarter/index.js":"node_modules/date-fns/esm/endOfQuarter/index.js","./endOfSecond/index.js":"node_modules/date-fns/esm/endOfSecond/index.js","./endOfToday/index.js":"node_modules/date-fns/esm/endOfToday/index.js","./endOfTomorrow/index.js":"node_modules/date-fns/esm/endOfTomorrow/index.js","./endOfWeek/index.js":"node_modules/date-fns/esm/endOfWeek/index.js","./endOfYear/index.js":"node_modules/date-fns/esm/endOfYear/index.js","./endOfYesterday/index.js":"node_modules/date-fns/esm/endOfYesterday/index.js","./format/index.js":"node_modules/date-fns/esm/format/index.js","./formatDistance/index.js":"node_modules/date-fns/esm/formatDistance/index.js","./formatDistanceStrict/index.js":"node_modules/date-fns/esm/formatDistanceStrict/index.js","./formatDistanceToNow/index.js":"node_modules/date-fns/esm/formatDistanceToNow/index.js","./formatDistanceToNowStrict/index.js":"node_modules/date-fns/esm/formatDistanceToNowStrict/index.js","./formatDuration/index.js":"node_modules/date-fns/esm/formatDuration/index.js","./formatISO/index.js":"node_modules/date-fns/esm/formatISO/index.js","./formatISO9075/index.js":"node_modules/date-fns/esm/formatISO9075/index.js","./formatISODuration/index.js":"node_modules/date-fns/esm/formatISODuration/index.js","./formatRFC3339/index.js":"node_modules/date-fns/esm/formatRFC3339/index.js","./formatRFC7231/index.js":"node_modules/date-fns/esm/formatRFC7231/index.js","./formatRelative/index.js":"node_modules/date-fns/esm/formatRelative/index.js","./fromUnixTime/index.js":"node_modules/date-fns/esm/fromUnixTime/index.js","./getDate/index.js":"node_modules/date-fns/esm/getDate/index.js","./getDay/index.js":"node_modules/date-fns/esm/getDay/index.js","./getDayOfYear/index.js":"node_modules/date-fns/esm/getDayOfYear/index.js","./getDaysInMonth/index.js":"node_modules/date-fns/esm/getDaysInMonth/index.js","./getDaysInYear/index.js":"node_modules/date-fns/esm/getDaysInYear/index.js","./getDecade/index.js":"node_modules/date-fns/esm/getDecade/index.js","./getHours/index.js":"node_modules/date-fns/esm/getHours/index.js","./getISODay/index.js":"node_modules/date-fns/esm/getISODay/index.js","./getISOWeek/index.js":"node_modules/date-fns/esm/getISOWeek/index.js","./getISOWeekYear/index.js":"node_modules/date-fns/esm/getISOWeekYear/index.js","./getISOWeeksInYear/index.js":"node_modules/date-fns/esm/getISOWeeksInYear/index.js","./getMilliseconds/index.js":"node_modules/date-fns/esm/getMilliseconds/index.js","./getMinutes/index.js":"node_modules/date-fns/esm/getMinutes/index.js","./getMonth/index.js":"node_modules/date-fns/esm/getMonth/index.js","./getOverlappingDaysInIntervals/index.js":"node_modules/date-fns/esm/getOverlappingDaysInIntervals/index.js","./getQuarter/index.js":"node_modules/date-fns/esm/getQuarter/index.js","./getSeconds/index.js":"node_modules/date-fns/esm/getSeconds/index.js","./getTime/index.js":"node_modules/date-fns/esm/getTime/index.js","./getUnixTime/index.js":"node_modules/date-fns/esm/getUnixTime/index.js","./getWeek/index.js":"node_modules/date-fns/esm/getWeek/index.js","./getWeekOfMonth/index.js":"node_modules/date-fns/esm/getWeekOfMonth/index.js","./getWeekYear/index.js":"node_modules/date-fns/esm/getWeekYear/index.js","./getWeeksInMonth/index.js":"node_modules/date-fns/esm/getWeeksInMonth/index.js","./getYear/index.js":"node_modules/date-fns/esm/getYear/index.js","./intervalToDuration/index.js":"node_modules/date-fns/esm/intervalToDuration/index.js","./intlFormat/index.js":"node_modules/date-fns/esm/intlFormat/index.js","./isAfter/index.js":"node_modules/date-fns/esm/isAfter/index.js","./isBefore/index.js":"node_modules/date-fns/esm/isBefore/index.js","./isDate/index.js":"node_modules/date-fns/esm/isDate/index.js","./isEqual/index.js":"node_modules/date-fns/esm/isEqual/index.js","./isExists/index.js":"node_modules/date-fns/esm/isExists/index.js","./isFirstDayOfMonth/index.js":"node_modules/date-fns/esm/isFirstDayOfMonth/index.js","./isFriday/index.js":"node_modules/date-fns/esm/isFriday/index.js","./isFuture/index.js":"node_modules/date-fns/esm/isFuture/index.js","./isLastDayOfMonth/index.js":"node_modules/date-fns/esm/isLastDayOfMonth/index.js","./isLeapYear/index.js":"node_modules/date-fns/esm/isLeapYear/index.js","./isMatch/index.js":"node_modules/date-fns/esm/isMatch/index.js","./isMonday/index.js":"node_modules/date-fns/esm/isMonday/index.js","./isPast/index.js":"node_modules/date-fns/esm/isPast/index.js","./isSameDay/index.js":"node_modules/date-fns/esm/isSameDay/index.js","./isSameHour/index.js":"node_modules/date-fns/esm/isSameHour/index.js","./isSameISOWeek/index.js":"node_modules/date-fns/esm/isSameISOWeek/index.js","./isSameISOWeekYear/index.js":"node_modules/date-fns/esm/isSameISOWeekYear/index.js","./isSameMinute/index.js":"node_modules/date-fns/esm/isSameMinute/index.js","./isSameMonth/index.js":"node_modules/date-fns/esm/isSameMonth/index.js","./isSameQuarter/index.js":"node_modules/date-fns/esm/isSameQuarter/index.js","./isSameSecond/index.js":"node_modules/date-fns/esm/isSameSecond/index.js","./isSameWeek/index.js":"node_modules/date-fns/esm/isSameWeek/index.js","./isSameYear/index.js":"node_modules/date-fns/esm/isSameYear/index.js","./isSaturday/index.js":"node_modules/date-fns/esm/isSaturday/index.js","./isSunday/index.js":"node_modules/date-fns/esm/isSunday/index.js","./isThisHour/index.js":"node_modules/date-fns/esm/isThisHour/index.js","./isThisISOWeek/index.js":"node_modules/date-fns/esm/isThisISOWeek/index.js","./isThisMinute/index.js":"node_modules/date-fns/esm/isThisMinute/index.js","./isThisMonth/index.js":"node_modules/date-fns/esm/isThisMonth/index.js","./isThisQuarter/index.js":"node_modules/date-fns/esm/isThisQuarter/index.js","./isThisSecond/index.js":"node_modules/date-fns/esm/isThisSecond/index.js","./isThisWeek/index.js":"node_modules/date-fns/esm/isThisWeek/index.js","./isThisYear/index.js":"node_modules/date-fns/esm/isThisYear/index.js","./isThursday/index.js":"node_modules/date-fns/esm/isThursday/index.js","./isToday/index.js":"node_modules/date-fns/esm/isToday/index.js","./isTomorrow/index.js":"node_modules/date-fns/esm/isTomorrow/index.js","./isTuesday/index.js":"node_modules/date-fns/esm/isTuesday/index.js","./isValid/index.js":"node_modules/date-fns/esm/isValid/index.js","./isWednesday/index.js":"node_modules/date-fns/esm/isWednesday/index.js","./isWeekend/index.js":"node_modules/date-fns/esm/isWeekend/index.js","./isWithinInterval/index.js":"node_modules/date-fns/esm/isWithinInterval/index.js","./isYesterday/index.js":"node_modules/date-fns/esm/isYesterday/index.js","./lastDayOfDecade/index.js":"node_modules/date-fns/esm/lastDayOfDecade/index.js","./lastDayOfISOWeek/index.js":"node_modules/date-fns/esm/lastDayOfISOWeek/index.js","./lastDayOfISOWeekYear/index.js":"node_modules/date-fns/esm/lastDayOfISOWeekYear/index.js","./lastDayOfMonth/index.js":"node_modules/date-fns/esm/lastDayOfMonth/index.js","./lastDayOfQuarter/index.js":"node_modules/date-fns/esm/lastDayOfQuarter/index.js","./lastDayOfWeek/index.js":"node_modules/date-fns/esm/lastDayOfWeek/index.js","./lastDayOfYear/index.js":"node_modules/date-fns/esm/lastDayOfYear/index.js","./lightFormat/index.js":"node_modules/date-fns/esm/lightFormat/index.js","./max/index.js":"node_modules/date-fns/esm/max/index.js","./milliseconds/index.js":"node_modules/date-fns/esm/milliseconds/index.js","./min/index.js":"node_modules/date-fns/esm/min/index.js","./parse/index.js":"node_modules/date-fns/esm/parse/index.js","./parseISO/index.js":"node_modules/date-fns/esm/parseISO/index.js","./parseJSON/index.js":"node_modules/date-fns/esm/parseJSON/index.js","./roundToNearestMinutes/index.js":"node_modules/date-fns/esm/roundToNearestMinutes/index.js","./set/index.js":"node_modules/date-fns/esm/set/index.js","./setDate/index.js":"node_modules/date-fns/esm/setDate/index.js","./setDay/index.js":"node_modules/date-fns/esm/setDay/index.js","./setDayOfYear/index.js":"node_modules/date-fns/esm/setDayOfYear/index.js","./setHours/index.js":"node_modules/date-fns/esm/setHours/index.js","./setISODay/index.js":"node_modules/date-fns/esm/setISODay/index.js","./setISOWeek/index.js":"node_modules/date-fns/esm/setISOWeek/index.js","./setISOWeekYear/index.js":"node_modules/date-fns/esm/setISOWeekYear/index.js","./setMilliseconds/index.js":"node_modules/date-fns/esm/setMilliseconds/index.js","./setMinutes/index.js":"node_modules/date-fns/esm/setMinutes/index.js","./setMonth/index.js":"node_modules/date-fns/esm/setMonth/index.js","./setQuarter/index.js":"node_modules/date-fns/esm/setQuarter/index.js","./setSeconds/index.js":"node_modules/date-fns/esm/setSeconds/index.js","./setWeek/index.js":"node_modules/date-fns/esm/setWeek/index.js","./setWeekYear/index.js":"node_modules/date-fns/esm/setWeekYear/index.js","./setYear/index.js":"node_modules/date-fns/esm/setYear/index.js","./startOfDay/index.js":"node_modules/date-fns/esm/startOfDay/index.js","./startOfDecade/index.js":"node_modules/date-fns/esm/startOfDecade/index.js","./startOfHour/index.js":"node_modules/date-fns/esm/startOfHour/index.js","./startOfISOWeek/index.js":"node_modules/date-fns/esm/startOfISOWeek/index.js","./startOfISOWeekYear/index.js":"node_modules/date-fns/esm/startOfISOWeekYear/index.js","./startOfMinute/index.js":"node_modules/date-fns/esm/startOfMinute/index.js","./startOfMonth/index.js":"node_modules/date-fns/esm/startOfMonth/index.js","./startOfQuarter/index.js":"node_modules/date-fns/esm/startOfQuarter/index.js","./startOfSecond/index.js":"node_modules/date-fns/esm/startOfSecond/index.js","./startOfToday/index.js":"node_modules/date-fns/esm/startOfToday/index.js","./startOfTomorrow/index.js":"node_modules/date-fns/esm/startOfTomorrow/index.js","./startOfWeek/index.js":"node_modules/date-fns/esm/startOfWeek/index.js","./startOfWeekYear/index.js":"node_modules/date-fns/esm/startOfWeekYear/index.js","./startOfYear/index.js":"node_modules/date-fns/esm/startOfYear/index.js","./startOfYesterday/index.js":"node_modules/date-fns/esm/startOfYesterday/index.js","./sub/index.js":"node_modules/date-fns/esm/sub/index.js","./subBusinessDays/index.js":"node_modules/date-fns/esm/subBusinessDays/index.js","./subDays/index.js":"node_modules/date-fns/esm/subDays/index.js","./subHours/index.js":"node_modules/date-fns/esm/subHours/index.js","./subISOWeekYears/index.js":"node_modules/date-fns/esm/subISOWeekYears/index.js","./subMilliseconds/index.js":"node_modules/date-fns/esm/subMilliseconds/index.js","./subMinutes/index.js":"node_modules/date-fns/esm/subMinutes/index.js","./subMonths/index.js":"node_modules/date-fns/esm/subMonths/index.js","./subQuarters/index.js":"node_modules/date-fns/esm/subQuarters/index.js","./subSeconds/index.js":"node_modules/date-fns/esm/subSeconds/index.js","./subWeeks/index.js":"node_modules/date-fns/esm/subWeeks/index.js","./subYears/index.js":"node_modules/date-fns/esm/subYears/index.js","./toDate/index.js":"node_modules/date-fns/esm/toDate/index.js","./constants/index.js":"node_modules/date-fns/esm/constants/index.js"}],"fileSrc/svgs.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.editIcon = exports.deleteIcon = void 0;
-const deleteIcon = `<svg class="w-6 h-6" fill="none" stroke="#EF4565" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"></path></svg>
-`;
-exports.deleteIcon = deleteIcon;
-const editIcon = `<svg class="w-6 h-6" fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>`;
-exports.editIcon = editIcon;
-},{}],"fileSrc/filters.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.filterByMonth = exports.filterByName = exports.filterByMonthSelect = exports.filterInputName = void 0;
-const filterInputName = document.querySelector('#filter-name');
-exports.filterInputName = filterInputName;
-const filterByMonthSelect = document.querySelector('#filter-month');
-exports.filterByMonthSelect = filterByMonthSelect;
-
-const filterByName = myPeople => {
-  if (filterInputName.value !== "") {
-    myPeople = myPeople.filter(person => {
-      const fullNameLowercase = person.firstName.toLowerCase() + ' ' + person.lastName.toLowerCase();
-      return fullNameLowercase.includes(filterInputName.value.toLowerCase());
-    });
-  }
-
-  return myPeople;
-};
-
-exports.filterByName = filterByName;
-
-const filterByMonth = myPeople => {
-  if (filterByMonthSelect.value !== "") {
-    myPeople = myPeople.filter(person => {
-      let birthday = new Date(person.birthday);
-      return birthday.getMonth() === Number(filterByMonthSelect.value);
-    });
-  }
-
-  return myPeople;
-}; // import { myPeople } from '../script.js';
-// import { displayPeople } from './displayList.js';
-// import { filterByMonthSelect, filterInputName } from './variables.js';
-// export const filterPeople = (e) => {
-//     displayPeople(e, filterInputName.value);
-// }
-// export const resetFilter = e => {
-//     displayPeople();
-//     filterInputName.reset();
-// }
-// // ****** FILER BY MONTH **********
-// export const filterByMonth = () => {
-//     let selectedValue = filterByMonthSelect.value;
-//     console.log(selectedValue)
-//     const filteredByMonth = myPeople.filter(person => {
-//         let birthday = new Date(person.birthday);
-//         return birthday.getMonth() === Number(selectedValue);
-//     });
-//     console.log(filteredByMonth)
-//     myPeople = filteredByMonth
-//     return displayPeople(myPeople)
-// }
-
-
-exports.filterByMonth = filterByMonth;
-},{}],"fileSrc/variables.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.filterByMonthSelect = exports.filterForm = exports.buttonFilter = exports.filterInputName = exports.addBtn = exports.form = exports.parent = exports.container = void 0;
-const container = document.querySelector('tbody');
-exports.container = container;
-const parent = document.querySelector('body');
-exports.parent = parent;
-const form = document.querySelector('form');
-exports.form = form;
-const addBtn = document.querySelector('.add');
-exports.addBtn = addBtn;
-const filterInputName = document.querySelector('#filter-name');
-exports.filterInputName = filterInputName;
-const buttonFilter = document.querySelector('#reset'); // btn reset
-
-exports.buttonFilter = buttonFilter;
-const filterForm = document.querySelector('.filter-form');
-exports.filterForm = filterForm;
-const filterByMonthSelect = document.querySelector('#filter-month');
-exports.filterByMonthSelect = filterByMonthSelect;
-},{}],"fileSrc/displayList.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.displayPeople = displayPeople;
-
-var _dateFns = require("date-fns");
-
-var _svgs = require("./svgs");
-
-var _filters = require("./filters");
-
-var _variables = require("./variables");
-
-// DISPLAY PEOPLE FUNCTION
-function displayPeople(myPeople) {
-  let sortedPeople = myPeople;
-  sortedPeople = (0, _filters.filterByName)(sortedPeople);
-  sortedPeople = (0, _filters.filterByMonth)(sortedPeople); // sort from soon birthday 
-
-  sortedPeople.sort((a, b) => {
-    let dayToBirthdayA = (0, _dateFns.differenceInCalendarDays)(getNextBirthday(a.birthday), new Date());
-    let dayToBirthdayB = (0, _dateFns.differenceInCalendarDays)(getNextBirthday(b.birthday), new Date());
-    return (0, _dateFns.compareAsc)(dayToBirthdayA, dayToBirthdayB);
-  });
-  let html = sortedPeople.map(person => {
-    const birthdayDate = new Date(person.birthday);
-    const today = new Date();
-    const nextBirthday = getNextBirthday(birthdayDate);
-    let daysToBirthday = (0, _dateFns.differenceInCalendarDays)(nextBirthday, today);
-    return `
-                        <tr data-id="${person.id}">
-                            <td class="image">
-                                <img src="${person.picture}" alt="photo">
-                            </td>
-                            <td class="name">
-                                ${person.lastName} ${person.firstName}<br>
-                                <span>Turn ${age} on the ${date} of ${month} </span>
-                            </td>
-                            <td class="days-left">
-                            ${daysToBirthday == 0 ? `She/He is ${(0, _dateFns.differenceInCalendarYears)(new Date(), birthdayDate) + 1}
-                            </b> today` : `Turns <b>${(0, _dateFns.differenceInCalendarDays)(new Date(), birthdayDate) + 1}
-                                </b> on the ${(0, _dateFns.lightFormat)(nextBirthday, 'dd/MM')}`} day</td>
-                            <td>
-                                <button class="edit" value="${person.id}">
-                                    ${_svgs.editIcon}                    
-                                </button>
-                                <button class="delete" value="${person.id}">
-                                    ${_svgs.deleteIcon}                    
-                                </button>
-                            </td>
-                        </tr>
-                    `;
-  }).join(' ');
-  _variables.container.innerHTML = html;
-} // import { myPeople } from '../script.js';
-// import { container, filterByMonthSelect, filterInputName } from './variables.js';
-// import { deleteIcon, editIcon } from './svgs.js';
-// /////////////////////// DISPLAY PEOPLE LIST//////////////////////////////////
-// // display people list
-// export async function displayPeople(myPeople) {
-//     // sort by birthday
-//     // let sortedPeople = myPeople.sort((a, b) => a.birthday - b.birthday);
-//     // if (filterByName) {
-//     //     sortedPeople = sortedPeople.filter(person => {
-//     //         let lowerCaseTitle = person.lastName.toLowerCase();
-//     //         // jerusalem
-//     //         let lowerCaseFilter = filterByName.toLowerCase();
-//     //         // jeru
-//     //         if (lowerCaseTitle.includes(lowerCaseFilter)) {
-//     //             return true;
-//     //         } else {
-//     //             return false;
-//     //         }
-//     //     });
-//     // }
-//     let sortedPeople = myPeople;
-//     if (filterInputName.value !== "") {
-//         sortedPeople = sortedPeople.filter(person => {
-//             const fullNameLowercase =
-//                 person.firstName.toLowerCase() + ' ' + person.lastName.toLowerCase();
-//             return fullNameLowercase.includes(searchNameFilter.value.toLowerCase());
-//         });
-//     }
-//     if (filterByMonthSelect.value !== "") {
-//         sortedPeople = sortedPeople.filter(person => {
-//             let birthday = new Date(person.birthday);
-//             return birthday.getMonth() === Number(filterMonthFilter.value);
-//         });
-//     }
-//     const html = sortedPeople
-//         .map(people => {
-//             ///////////////DATE FUNCTION/////////////////////
-//             let age = new Date().getFullYear() - new Date(people.birthday).getFullYear();
-//             // dayOfbirth
-//             let dateOfBirth = new Date(people.birthday).getDate();
-//             let date;
-//             let month;
-//             // set the condition to set the right date symbols
-//             if (dateOfBirth > 3) {
-//                 date = `${dateOfBirth}th`;
-//             }
-//             switch (dateOfBirth % 10) {
-//                 case 1:
-//                     date = `${dateOfBirth}st`;
-//                     break;
-//                 case 2:
-//                     date = `${dateOfBirth}nd`;
-//                     break;
-//                 case 3:
-//                     date = `${dateOfBirth}rd`;
-//             };
-//             // find the current month of birth
-//             const monthOfBirth = new Date(people.birthday).getMonth();
-//             switch (monthOfBirth) {
-//                 case 0:
-//                     month = "January";
-//                     break;
-//                 case 1:
-//                     month = "February";
-//                     break;
-//                 case 2:
-//                     month = "March";
-//                     break;
-//                 case 3:
-//                     month = "April";
-//                     break;
-//                 case 4:
-//                     month = "May";
-//                     break;
-//                 case 5:
-//                     month = "June";
-//                     break;
-//                 case 6:
-//                     month = "July";
-//                 case 7:
-//                     month = "August";
-//                     break;
-//                 case 8:
-//                     month = "September";
-//                     break;
-//                 case 9:
-//                     month = "October";
-//                     break;
-//                 case 10:
-//                     month = "November";
-//                     break;
-//                 case 11:
-//                     month = "December";
-//             };
-//             // calculate one day
-//             const oneDay = 24 * 60 * 60 * 1000;
-//             // today = date now
-//             let today = new Date();
-//             let year;
-//             // if the current month is bigger than the month of birth, then add one more month
-//             if (today.getMonth() > monthOfBirth) {
-//                 year = today.getFullYear() + 1;
-//                 // if it's the same, then stay the same
-//             } else if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
-//                 year = today.getFullYear();
-//             } else {
-//                 // the same as the before
-//                 year = today.getFullYear();
-//             }
-//             // calculate the day of birth
-//             let dayOfBirth = new Date(year, monthOfBirth, dateOfBirth);
-//             if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
-//                 dayOfBirth.setFullYear(dayOfBirth.getFullYear() + 1);
-//                 age = (new Date().getFullYear() + 1) - new Date(people.birthday).getFullYear();
-//             };
-//             // claulcation of the day difference from now(today)
-//             let dayDiffer = Math.round(Math.abs((new Date(dayOfBirth) - new Date(today)) / oneDay));
-//             return `
-//                 <tr data-id="${people.id}">
-//                     <td class="image">
-//                         <img src="${people.picture}" alt="photo">
-//                     </td>
-//                     <td class="name">
-//                         ${people.lastName} ${people.firstName}<br>
-//                         <span>Turn ${age} on the ${date} of ${month} </span>
-//                     </td>
-//                     <td class="days-left">${dayDiffer} days</td>
-//                     <td>
-//                         <button class="edit" value="${people.id}">
-//                             ${editIcon}                    
-//                         </button>
-//                         <button class="delete" value="${people.id}">
-//                             ${deleteIcon}                    
-//                         </button>
-//                     </td>
-//                 </tr>
-//             `
-//         }).join(' ');
-//     container.innerHTML = html;
-//     // container.dispatchEvent(new CustomEvent('itemsUpdated'));
-// }
-},{"date-fns":"node_modules/date-fns/esm/index.js","./svgs":"fileSrc/svgs.js","./filters":"fileSrc/filters.js","./variables":"fileSrc/variables.js"}],"fileSrc/localStorage.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.init = void 0;
-
-var _people = _interopRequireDefault(require("../people.json"));
-
-var _displayList = require("./displayList");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//////////////////////  LOCAL STORAGE FUNCTIONS /////////////////////////////
-// mirror from LS
-const init = () => {
-  let myPeople = [];
-  const stringFromLS = localStorage.getItem('myPeople');
-  const lsItems = JSON.pasrse(stringFromLS);
-
-  if (lsItems) {
-    myPeople = lsItems;
-  } else {
-    myPeople = _people.default;
-  }
-
-  (0, _displayList.displayPeople)(myPeople);
-  updateLocalStorage(myPeople);
-  return myPeople;
-};
-
-exports.init = init;
-
-const updateLocalStorage = myPeople => {
-  localStorage.setItem('myPeople', JSON.stringify(myPeople));
-};
-},{"../people.json":"people.json","./displayList":"fileSrc/displayList.js"}],"node_modules/waait/index.js":[function(require,module,exports) {
+},{"./add/index.js":"node_modules/date-fns/esm/add/index.js","./addBusinessDays/index.js":"node_modules/date-fns/esm/addBusinessDays/index.js","./addDays/index.js":"node_modules/date-fns/esm/addDays/index.js","./addHours/index.js":"node_modules/date-fns/esm/addHours/index.js","./addISOWeekYears/index.js":"node_modules/date-fns/esm/addISOWeekYears/index.js","./addMilliseconds/index.js":"node_modules/date-fns/esm/addMilliseconds/index.js","./addMinutes/index.js":"node_modules/date-fns/esm/addMinutes/index.js","./addMonths/index.js":"node_modules/date-fns/esm/addMonths/index.js","./addQuarters/index.js":"node_modules/date-fns/esm/addQuarters/index.js","./addSeconds/index.js":"node_modules/date-fns/esm/addSeconds/index.js","./addWeeks/index.js":"node_modules/date-fns/esm/addWeeks/index.js","./addYears/index.js":"node_modules/date-fns/esm/addYears/index.js","./areIntervalsOverlapping/index.js":"node_modules/date-fns/esm/areIntervalsOverlapping/index.js","./closestIndexTo/index.js":"node_modules/date-fns/esm/closestIndexTo/index.js","./closestTo/index.js":"node_modules/date-fns/esm/closestTo/index.js","./compareAsc/index.js":"node_modules/date-fns/esm/compareAsc/index.js","./compareDesc/index.js":"node_modules/date-fns/esm/compareDesc/index.js","./differenceInBusinessDays/index.js":"node_modules/date-fns/esm/differenceInBusinessDays/index.js","./differenceInCalendarDays/index.js":"node_modules/date-fns/esm/differenceInCalendarDays/index.js","./differenceInCalendarISOWeekYears/index.js":"node_modules/date-fns/esm/differenceInCalendarISOWeekYears/index.js","./differenceInCalendarISOWeeks/index.js":"node_modules/date-fns/esm/differenceInCalendarISOWeeks/index.js","./differenceInCalendarMonths/index.js":"node_modules/date-fns/esm/differenceInCalendarMonths/index.js","./differenceInCalendarQuarters/index.js":"node_modules/date-fns/esm/differenceInCalendarQuarters/index.js","./differenceInCalendarWeeks/index.js":"node_modules/date-fns/esm/differenceInCalendarWeeks/index.js","./differenceInCalendarYears/index.js":"node_modules/date-fns/esm/differenceInCalendarYears/index.js","./differenceInDays/index.js":"node_modules/date-fns/esm/differenceInDays/index.js","./differenceInHours/index.js":"node_modules/date-fns/esm/differenceInHours/index.js","./differenceInISOWeekYears/index.js":"node_modules/date-fns/esm/differenceInISOWeekYears/index.js","./differenceInMilliseconds/index.js":"node_modules/date-fns/esm/differenceInMilliseconds/index.js","./differenceInMinutes/index.js":"node_modules/date-fns/esm/differenceInMinutes/index.js","./differenceInMonths/index.js":"node_modules/date-fns/esm/differenceInMonths/index.js","./differenceInQuarters/index.js":"node_modules/date-fns/esm/differenceInQuarters/index.js","./differenceInSeconds/index.js":"node_modules/date-fns/esm/differenceInSeconds/index.js","./differenceInWeeks/index.js":"node_modules/date-fns/esm/differenceInWeeks/index.js","./differenceInYears/index.js":"node_modules/date-fns/esm/differenceInYears/index.js","./eachDayOfInterval/index.js":"node_modules/date-fns/esm/eachDayOfInterval/index.js","./eachHourOfInterval/index.js":"node_modules/date-fns/esm/eachHourOfInterval/index.js","./eachMonthOfInterval/index.js":"node_modules/date-fns/esm/eachMonthOfInterval/index.js","./eachQuarterOfInterval/index.js":"node_modules/date-fns/esm/eachQuarterOfInterval/index.js","./eachWeekOfInterval/index.js":"node_modules/date-fns/esm/eachWeekOfInterval/index.js","./eachWeekendOfInterval/index.js":"node_modules/date-fns/esm/eachWeekendOfInterval/index.js","./eachWeekendOfMonth/index.js":"node_modules/date-fns/esm/eachWeekendOfMonth/index.js","./eachWeekendOfYear/index.js":"node_modules/date-fns/esm/eachWeekendOfYear/index.js","./eachYearOfInterval/index.js":"node_modules/date-fns/esm/eachYearOfInterval/index.js","./endOfDay/index.js":"node_modules/date-fns/esm/endOfDay/index.js","./endOfDecade/index.js":"node_modules/date-fns/esm/endOfDecade/index.js","./endOfHour/index.js":"node_modules/date-fns/esm/endOfHour/index.js","./endOfISOWeek/index.js":"node_modules/date-fns/esm/endOfISOWeek/index.js","./endOfISOWeekYear/index.js":"node_modules/date-fns/esm/endOfISOWeekYear/index.js","./endOfMinute/index.js":"node_modules/date-fns/esm/endOfMinute/index.js","./endOfMonth/index.js":"node_modules/date-fns/esm/endOfMonth/index.js","./endOfQuarter/index.js":"node_modules/date-fns/esm/endOfQuarter/index.js","./endOfSecond/index.js":"node_modules/date-fns/esm/endOfSecond/index.js","./endOfToday/index.js":"node_modules/date-fns/esm/endOfToday/index.js","./endOfTomorrow/index.js":"node_modules/date-fns/esm/endOfTomorrow/index.js","./endOfWeek/index.js":"node_modules/date-fns/esm/endOfWeek/index.js","./endOfYear/index.js":"node_modules/date-fns/esm/endOfYear/index.js","./endOfYesterday/index.js":"node_modules/date-fns/esm/endOfYesterday/index.js","./format/index.js":"node_modules/date-fns/esm/format/index.js","./formatDistance/index.js":"node_modules/date-fns/esm/formatDistance/index.js","./formatDistanceStrict/index.js":"node_modules/date-fns/esm/formatDistanceStrict/index.js","./formatDistanceToNow/index.js":"node_modules/date-fns/esm/formatDistanceToNow/index.js","./formatDistanceToNowStrict/index.js":"node_modules/date-fns/esm/formatDistanceToNowStrict/index.js","./formatDuration/index.js":"node_modules/date-fns/esm/formatDuration/index.js","./formatISO/index.js":"node_modules/date-fns/esm/formatISO/index.js","./formatISO9075/index.js":"node_modules/date-fns/esm/formatISO9075/index.js","./formatISODuration/index.js":"node_modules/date-fns/esm/formatISODuration/index.js","./formatRFC3339/index.js":"node_modules/date-fns/esm/formatRFC3339/index.js","./formatRFC7231/index.js":"node_modules/date-fns/esm/formatRFC7231/index.js","./formatRelative/index.js":"node_modules/date-fns/esm/formatRelative/index.js","./fromUnixTime/index.js":"node_modules/date-fns/esm/fromUnixTime/index.js","./getDate/index.js":"node_modules/date-fns/esm/getDate/index.js","./getDay/index.js":"node_modules/date-fns/esm/getDay/index.js","./getDayOfYear/index.js":"node_modules/date-fns/esm/getDayOfYear/index.js","./getDaysInMonth/index.js":"node_modules/date-fns/esm/getDaysInMonth/index.js","./getDaysInYear/index.js":"node_modules/date-fns/esm/getDaysInYear/index.js","./getDecade/index.js":"node_modules/date-fns/esm/getDecade/index.js","./getHours/index.js":"node_modules/date-fns/esm/getHours/index.js","./getISODay/index.js":"node_modules/date-fns/esm/getISODay/index.js","./getISOWeek/index.js":"node_modules/date-fns/esm/getISOWeek/index.js","./getISOWeekYear/index.js":"node_modules/date-fns/esm/getISOWeekYear/index.js","./getISOWeeksInYear/index.js":"node_modules/date-fns/esm/getISOWeeksInYear/index.js","./getMilliseconds/index.js":"node_modules/date-fns/esm/getMilliseconds/index.js","./getMinutes/index.js":"node_modules/date-fns/esm/getMinutes/index.js","./getMonth/index.js":"node_modules/date-fns/esm/getMonth/index.js","./getOverlappingDaysInIntervals/index.js":"node_modules/date-fns/esm/getOverlappingDaysInIntervals/index.js","./getQuarter/index.js":"node_modules/date-fns/esm/getQuarter/index.js","./getSeconds/index.js":"node_modules/date-fns/esm/getSeconds/index.js","./getTime/index.js":"node_modules/date-fns/esm/getTime/index.js","./getUnixTime/index.js":"node_modules/date-fns/esm/getUnixTime/index.js","./getWeek/index.js":"node_modules/date-fns/esm/getWeek/index.js","./getWeekOfMonth/index.js":"node_modules/date-fns/esm/getWeekOfMonth/index.js","./getWeekYear/index.js":"node_modules/date-fns/esm/getWeekYear/index.js","./getWeeksInMonth/index.js":"node_modules/date-fns/esm/getWeeksInMonth/index.js","./getYear/index.js":"node_modules/date-fns/esm/getYear/index.js","./intervalToDuration/index.js":"node_modules/date-fns/esm/intervalToDuration/index.js","./intlFormat/index.js":"node_modules/date-fns/esm/intlFormat/index.js","./isAfter/index.js":"node_modules/date-fns/esm/isAfter/index.js","./isBefore/index.js":"node_modules/date-fns/esm/isBefore/index.js","./isDate/index.js":"node_modules/date-fns/esm/isDate/index.js","./isEqual/index.js":"node_modules/date-fns/esm/isEqual/index.js","./isExists/index.js":"node_modules/date-fns/esm/isExists/index.js","./isFirstDayOfMonth/index.js":"node_modules/date-fns/esm/isFirstDayOfMonth/index.js","./isFriday/index.js":"node_modules/date-fns/esm/isFriday/index.js","./isFuture/index.js":"node_modules/date-fns/esm/isFuture/index.js","./isLastDayOfMonth/index.js":"node_modules/date-fns/esm/isLastDayOfMonth/index.js","./isLeapYear/index.js":"node_modules/date-fns/esm/isLeapYear/index.js","./isMatch/index.js":"node_modules/date-fns/esm/isMatch/index.js","./isMonday/index.js":"node_modules/date-fns/esm/isMonday/index.js","./isPast/index.js":"node_modules/date-fns/esm/isPast/index.js","./isSameDay/index.js":"node_modules/date-fns/esm/isSameDay/index.js","./isSameHour/index.js":"node_modules/date-fns/esm/isSameHour/index.js","./isSameISOWeek/index.js":"node_modules/date-fns/esm/isSameISOWeek/index.js","./isSameISOWeekYear/index.js":"node_modules/date-fns/esm/isSameISOWeekYear/index.js","./isSameMinute/index.js":"node_modules/date-fns/esm/isSameMinute/index.js","./isSameMonth/index.js":"node_modules/date-fns/esm/isSameMonth/index.js","./isSameQuarter/index.js":"node_modules/date-fns/esm/isSameQuarter/index.js","./isSameSecond/index.js":"node_modules/date-fns/esm/isSameSecond/index.js","./isSameWeek/index.js":"node_modules/date-fns/esm/isSameWeek/index.js","./isSameYear/index.js":"node_modules/date-fns/esm/isSameYear/index.js","./isSaturday/index.js":"node_modules/date-fns/esm/isSaturday/index.js","./isSunday/index.js":"node_modules/date-fns/esm/isSunday/index.js","./isThisHour/index.js":"node_modules/date-fns/esm/isThisHour/index.js","./isThisISOWeek/index.js":"node_modules/date-fns/esm/isThisISOWeek/index.js","./isThisMinute/index.js":"node_modules/date-fns/esm/isThisMinute/index.js","./isThisMonth/index.js":"node_modules/date-fns/esm/isThisMonth/index.js","./isThisQuarter/index.js":"node_modules/date-fns/esm/isThisQuarter/index.js","./isThisSecond/index.js":"node_modules/date-fns/esm/isThisSecond/index.js","./isThisWeek/index.js":"node_modules/date-fns/esm/isThisWeek/index.js","./isThisYear/index.js":"node_modules/date-fns/esm/isThisYear/index.js","./isThursday/index.js":"node_modules/date-fns/esm/isThursday/index.js","./isToday/index.js":"node_modules/date-fns/esm/isToday/index.js","./isTomorrow/index.js":"node_modules/date-fns/esm/isTomorrow/index.js","./isTuesday/index.js":"node_modules/date-fns/esm/isTuesday/index.js","./isValid/index.js":"node_modules/date-fns/esm/isValid/index.js","./isWednesday/index.js":"node_modules/date-fns/esm/isWednesday/index.js","./isWeekend/index.js":"node_modules/date-fns/esm/isWeekend/index.js","./isWithinInterval/index.js":"node_modules/date-fns/esm/isWithinInterval/index.js","./isYesterday/index.js":"node_modules/date-fns/esm/isYesterday/index.js","./lastDayOfDecade/index.js":"node_modules/date-fns/esm/lastDayOfDecade/index.js","./lastDayOfISOWeek/index.js":"node_modules/date-fns/esm/lastDayOfISOWeek/index.js","./lastDayOfISOWeekYear/index.js":"node_modules/date-fns/esm/lastDayOfISOWeekYear/index.js","./lastDayOfMonth/index.js":"node_modules/date-fns/esm/lastDayOfMonth/index.js","./lastDayOfQuarter/index.js":"node_modules/date-fns/esm/lastDayOfQuarter/index.js","./lastDayOfWeek/index.js":"node_modules/date-fns/esm/lastDayOfWeek/index.js","./lastDayOfYear/index.js":"node_modules/date-fns/esm/lastDayOfYear/index.js","./lightFormat/index.js":"node_modules/date-fns/esm/lightFormat/index.js","./max/index.js":"node_modules/date-fns/esm/max/index.js","./milliseconds/index.js":"node_modules/date-fns/esm/milliseconds/index.js","./min/index.js":"node_modules/date-fns/esm/min/index.js","./parse/index.js":"node_modules/date-fns/esm/parse/index.js","./parseISO/index.js":"node_modules/date-fns/esm/parseISO/index.js","./parseJSON/index.js":"node_modules/date-fns/esm/parseJSON/index.js","./roundToNearestMinutes/index.js":"node_modules/date-fns/esm/roundToNearestMinutes/index.js","./set/index.js":"node_modules/date-fns/esm/set/index.js","./setDate/index.js":"node_modules/date-fns/esm/setDate/index.js","./setDay/index.js":"node_modules/date-fns/esm/setDay/index.js","./setDayOfYear/index.js":"node_modules/date-fns/esm/setDayOfYear/index.js","./setHours/index.js":"node_modules/date-fns/esm/setHours/index.js","./setISODay/index.js":"node_modules/date-fns/esm/setISODay/index.js","./setISOWeek/index.js":"node_modules/date-fns/esm/setISOWeek/index.js","./setISOWeekYear/index.js":"node_modules/date-fns/esm/setISOWeekYear/index.js","./setMilliseconds/index.js":"node_modules/date-fns/esm/setMilliseconds/index.js","./setMinutes/index.js":"node_modules/date-fns/esm/setMinutes/index.js","./setMonth/index.js":"node_modules/date-fns/esm/setMonth/index.js","./setQuarter/index.js":"node_modules/date-fns/esm/setQuarter/index.js","./setSeconds/index.js":"node_modules/date-fns/esm/setSeconds/index.js","./setWeek/index.js":"node_modules/date-fns/esm/setWeek/index.js","./setWeekYear/index.js":"node_modules/date-fns/esm/setWeekYear/index.js","./setYear/index.js":"node_modules/date-fns/esm/setYear/index.js","./startOfDay/index.js":"node_modules/date-fns/esm/startOfDay/index.js","./startOfDecade/index.js":"node_modules/date-fns/esm/startOfDecade/index.js","./startOfHour/index.js":"node_modules/date-fns/esm/startOfHour/index.js","./startOfISOWeek/index.js":"node_modules/date-fns/esm/startOfISOWeek/index.js","./startOfISOWeekYear/index.js":"node_modules/date-fns/esm/startOfISOWeekYear/index.js","./startOfMinute/index.js":"node_modules/date-fns/esm/startOfMinute/index.js","./startOfMonth/index.js":"node_modules/date-fns/esm/startOfMonth/index.js","./startOfQuarter/index.js":"node_modules/date-fns/esm/startOfQuarter/index.js","./startOfSecond/index.js":"node_modules/date-fns/esm/startOfSecond/index.js","./startOfToday/index.js":"node_modules/date-fns/esm/startOfToday/index.js","./startOfTomorrow/index.js":"node_modules/date-fns/esm/startOfTomorrow/index.js","./startOfWeek/index.js":"node_modules/date-fns/esm/startOfWeek/index.js","./startOfWeekYear/index.js":"node_modules/date-fns/esm/startOfWeekYear/index.js","./startOfYear/index.js":"node_modules/date-fns/esm/startOfYear/index.js","./startOfYesterday/index.js":"node_modules/date-fns/esm/startOfYesterday/index.js","./sub/index.js":"node_modules/date-fns/esm/sub/index.js","./subBusinessDays/index.js":"node_modules/date-fns/esm/subBusinessDays/index.js","./subDays/index.js":"node_modules/date-fns/esm/subDays/index.js","./subHours/index.js":"node_modules/date-fns/esm/subHours/index.js","./subISOWeekYears/index.js":"node_modules/date-fns/esm/subISOWeekYears/index.js","./subMilliseconds/index.js":"node_modules/date-fns/esm/subMilliseconds/index.js","./subMinutes/index.js":"node_modules/date-fns/esm/subMinutes/index.js","./subMonths/index.js":"node_modules/date-fns/esm/subMonths/index.js","./subQuarters/index.js":"node_modules/date-fns/esm/subQuarters/index.js","./subSeconds/index.js":"node_modules/date-fns/esm/subSeconds/index.js","./subWeeks/index.js":"node_modules/date-fns/esm/subWeeks/index.js","./subYears/index.js":"node_modules/date-fns/esm/subYears/index.js","./toDate/index.js":"node_modules/date-fns/esm/toDate/index.js","./constants/index.js":"node_modules/date-fns/esm/constants/index.js"}],"node_modules/waait/index.js":[function(require,module,exports) {
 const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount));
 
 module.exports = wait;
@@ -19475,11 +19144,264 @@ function getNextBirthday(birthday) {
 async function destroyPopup(popup) {
   popup.classList.remove('open'); // wait for 1 second, to let the animation do its work
 
-  await (0, _waait.default)(1000);
+  await (0, _waait.default)(10);
   popup.remove();
   popup = null;
 }
-},{"date-fns":"node_modules/date-fns/esm/index.js","waait":"node_modules/waait/index.js"}],"fileSrc/delete.js":[function(require,module,exports) {
+},{"date-fns":"node_modules/date-fns/esm/index.js","waait":"node_modules/waait/index.js"}],"fileSrc/svgs.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.editIcon = exports.deleteIcon = void 0;
+const deleteIcon = `<svg class="w-6 h-6" fill="none" stroke="#EF4565" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"></path></svg>
+`;
+exports.deleteIcon = deleteIcon;
+const editIcon = `<svg class="w-6 h-6" fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>`;
+exports.editIcon = editIcon;
+},{}],"fileSrc/filters.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.filterByMonth = exports.filterByName = exports.filterByMonthSelect = exports.filterInputName = void 0;
+const filterInputName = document.querySelector('#filter-name');
+exports.filterInputName = filterInputName;
+const filterByMonthSelect = document.querySelector('#filter-month');
+exports.filterByMonthSelect = filterByMonthSelect;
+
+const filterByName = myPeople => {
+  if (filterInputName.value !== "") {
+    myPeople = myPeople.filter(person => {
+      const fullNameLowercase = person.firstName.toLowerCase() + ' ' + person.lastName.toLowerCase();
+      return fullNameLowercase.includes(filterInputName.value.toLowerCase());
+    });
+  }
+
+  return myPeople;
+};
+
+exports.filterByName = filterByName;
+
+const filterByMonth = myPeople => {
+  console.log('value', filterByMonthSelect.value);
+
+  if (filterByMonthSelect.value !== "empty") {
+    console.log(filterByMonthSelect.value, 'triggers filtering');
+    myPeople = myPeople.filter(person => {
+      let birthday = new Date(person.birthday);
+      console.log(person.birthday);
+      return birthday.getMonth() === Number(filterByMonthSelect.value);
+    });
+  }
+
+  return myPeople;
+};
+
+exports.filterByMonth = filterByMonth;
+},{}],"fileSrc/variables.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.filterByMonthSelect = exports.filterForm = exports.buttonFilter = exports.filterInputName = exports.addBtn = exports.form = exports.parent = exports.container = void 0;
+const container = document.querySelector('tbody');
+exports.container = container;
+const parent = document.querySelector('body');
+exports.parent = parent;
+const form = document.querySelector('form');
+exports.form = form;
+const addBtn = document.querySelector('.add');
+exports.addBtn = addBtn;
+const filterInputName = document.querySelector('#filter-name');
+exports.filterInputName = filterInputName;
+const buttonFilter = document.querySelector('#reset'); // btn reset
+
+exports.buttonFilter = buttonFilter;
+const filterForm = document.querySelector('.filter-form');
+exports.filterForm = filterForm;
+const filterByMonthSelect = document.querySelector('#filter-month');
+exports.filterByMonthSelect = filterByMonthSelect;
+},{}],"fileSrc/displayList.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.displayPeople = displayPeople;
+
+var _dateFns = require("date-fns");
+
+var _utils = require("./utils");
+
+var _svgs = require("./svgs");
+
+var _filters = require("./filters");
+
+var _variables = require("./variables");
+
+// DISPLAY PEOPLE FUNCTION
+function displayPeople(myPeople) {
+  let sortedPeople = myPeople;
+  sortedPeople = (0, _filters.filterByName)(sortedPeople);
+  sortedPeople = (0, _filters.filterByMonth)(sortedPeople); // sort from soon birthday 
+
+  sortedPeople.sort((a, b) => {
+    let dayToBirthdayA = (0, _dateFns.differenceInCalendarDays)((0, _utils.getNextBirthday)(a.birthday), new Date());
+    let dayToBirthdayB = (0, _dateFns.differenceInCalendarDays)((0, _utils.getNextBirthday)(b.birthday), new Date());
+    return (0, _dateFns.compareAsc)(dayToBirthdayA, dayToBirthdayB);
+  });
+  let html = sortedPeople.map(person => {
+    const birthdayDate = new Date(person.birthday);
+    const today = new Date();
+    const nextBirthday = (0, _utils.getNextBirthday)(birthdayDate);
+    let daysToBirthday = (0, _dateFns.differenceInCalendarDays)(nextBirthday, today);
+    let age = new Date().getFullYear() - new Date(person.birthday).getFullYear(); // dayOfbirth
+
+    let dateOfBirth = new Date(person.birthday).getDate();
+    let date;
+    let month; // set the condition to set the right date symbols
+
+    if (dateOfBirth > 3) {
+      date = `${dateOfBirth}th`;
+    }
+
+    switch (dateOfBirth % 10) {
+      case 1:
+        date = `${dateOfBirth}st`;
+        break;
+
+      case 2:
+        date = `${dateOfBirth}nd`;
+        break;
+
+      case 3:
+        date = `${dateOfBirth}rd`;
+    }
+
+    ; // find the current month of birth
+
+    const monthOfBirth = new Date(person.birthday).getMonth();
+
+    switch (monthOfBirth) {
+      case 0:
+        month = "January";
+        break;
+
+      case 1:
+        month = "February";
+        break;
+
+      case 2:
+        month = "March";
+        break;
+
+      case 3:
+        month = "April";
+        break;
+
+      case 4:
+        month = "May";
+        break;
+
+      case 5:
+        month = "June";
+        break;
+
+      case 6:
+        month = "July";
+
+      case 7:
+        month = "August";
+        break;
+
+      case 8:
+        month = "September";
+        break;
+
+      case 9:
+        month = "October";
+        break;
+
+      case 10:
+        month = "November";
+        break;
+
+      case 11:
+        month = "December";
+    }
+
+    ;
+    return `
+                        <tr data-id="${person.id}">
+                            <td class="image">
+                                <img src="${person.picture}" alt="photo">
+                            </td>
+                            <td class="name">
+                                ${person.lastName} ${person.firstName}<br>
+                            </td>
+                            <td class="days-left">
+                            ${daysToBirthday == 0 ? `She/He is ${(0, _dateFns.differenceInCalendarYears)(new Date(), birthdayDate) + 1}
+                            </b> today` : `<span>Turn ${age + 1}  on the ${date} of ${month} </span>`} </td>
+                            <td>
+                            ${daysToBirthday === 0 ? `🎂🎂🎂` : `🎂 in ${daysToBirthday} days`}
+                            </td>
+                            <td>
+                                <button class="edit" data-id="${person.id}">
+                                    ${_svgs.editIcon}                    
+                                </button>
+                                <button class="delete" data-id="${person.id}">
+                                    ${_svgs.deleteIcon}                    
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+  }).join(' ');
+  _variables.container.innerHTML = html;
+}
+},{"date-fns":"node_modules/date-fns/esm/index.js","./utils":"fileSrc/utils.js","./svgs":"fileSrc/svgs.js","./filters":"fileSrc/filters.js","./variables":"fileSrc/variables.js"}],"fileSrc/localStorage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.updateLocalStorage = exports.init = void 0;
+
+var _people = _interopRequireDefault(require("../people.json"));
+
+var _displayList = require("./displayList");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//////////////////////  LOCAL STORAGE FUNCTIONS /////////////////////////////
+// mirror from LS
+const init = () => {
+  let myPeople = [];
+  const stringFromLS = localStorage.getItem('myPeople');
+  const lsItems = JSON.parse(stringFromLS);
+
+  if (lsItems) {
+    myPeople = lsItems;
+  } else {
+    myPeople = _people.default;
+  }
+
+  (0, _displayList.displayPeople)(myPeople);
+  updateLocalStorage(myPeople);
+  return myPeople;
+};
+
+exports.init = init;
+
+const updateLocalStorage = myPeople => {
+  localStorage.setItem('myPeople', JSON.stringify(myPeople));
+};
+
+exports.updateLocalStorage = updateLocalStorage;
+},{"../people.json":"people.json","./displayList":"fileSrc/displayList.js"}],"fileSrc/delete.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19497,16 +19419,19 @@ var _waait = _interopRequireDefault(require("waait"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// FUNCTION DELETE PERSON 
 const deletePerson = async (id, myPeople) => {
   const person = myPeople.find(person => person.id === id);
   const result = await deletePersonPopup(person);
+  console.log(result, id);
 
   if (result) {
     myPeople = myPeople.filter(person => person.id !== result.id);
     (0, _displayList.displayPeople)(myPeople);
     (0, _localStorage.updateLocalStorage)(myPeople);
   }
-};
+}; // POPUP DELETE PERSON AN EDIT PERSON
+
 
 exports.deletePerson = deletePerson;
 
@@ -19516,7 +19441,7 @@ const deletePersonPopup = person => {
     popup.classList.add('popup');
     const html = `
                   <div class="delete-popup-content">
-                    <p class="reminder-par">Do you really want to delete ${person.lastName} ${person.firstName}?</p>
+                    <p class="reminder-par">Do you really want to delete ${person?.lastName} ${person?.firstName}?</p>
                     <button class="yes">Yes</button>
                   </div>
       `;
@@ -19541,63 +19466,10 @@ const deletePersonPopup = person => {
       once: true
     });
     document.body.appendChild(popup);
-    await (0, _waait.default)(50);
+    await (0, _waait.default)(10);
     popup.classList.add('open');
   });
-}; // import { myPeople } from '../script.js';
-// import { parent, container } from './variables.js';
-// import { displayPeople } from './displayList.js';
-// import { destroyPopup } from './utils.js';
-// // delete a person
-// export const deletePerson = e => {
-//     const iconDelete = e.target.closest('button.delete');
-//     if (iconDelete) {
-//         const tableRow = e.target.closest('tr');
-//         const idToDelete = tableRow.dataset.id;
-//         deletePersonPopup(idToDelete);
-//     }
-//     parent.dispatchEvent(new CustomEvent('itemsUpdated'));
-// }
-// // show delete popup and delete a specific person
-// const deletePersonPopup = idToDelete => {
-//     return new Promise(async function(resolve) {
-//         const popup = document.createElement('div');
-//         let personToDelete = myPeople.find(person => person.id == idToDelete);
-//         popup.classList.add('popup');
-//         // popup delete
-//         const html = `
-//                     <div class="delete-popup-content">
-//                         <p class="reminder-par">Do you really want to delete ${personToDelete.lastName} ${personToDelete.firstName}?</p>
-//                         <ul>
-//                             <li>
-//                                 <button class="yes">Yes</button>
-//                             </li>
-//                             <li>
-//                                 <button class="cancel">Cancel</button>
-//                             </li>
-//                         </ul>
-//                     </div>
-//         `;
-//         popup.insertAdjacentHTML('afterbegin', html);
-//         popup.addEventListener('click', e => {
-//             if (e.target.matches('.yes')) {
-//                 const people = myPeople.filter(person => person.id != idToDelete);
-//                 myPeople = people
-//                 displayPeople(myPeople);
-//                 destroyPopup(popup);
-//             }
-//             if (e.target.matches('.cancel')) {
-//                 destroyPopup(popup);
-//             }
-//             container.dispatchEvent(new CustomEvent('itemsUpdated'));
-//         });
-//         // resolve promise
-//         resolve();
-//         parent.appendChild(popup);
-//         container.dispatchEvent(new CustomEvent('itemsUpdated'));
-//     });
-// }
-
+};
 
 exports.deletePersonPopup = deletePersonPopup;
 },{"./displayList":"fileSrc/displayList.js","./localStorage":"fileSrc/localStorage.js","./utils":"fileSrc/utils.js","waait":"node_modules/waait/index.js"}],"fileSrc/edit.js":[function(require,module,exports) {
@@ -19607,6 +19479,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.editPeople = editPeople;
+exports.editPeoplePopup = editPeoplePopup;
 
 var _displayList = require("./displayList");
 
@@ -19631,7 +19504,7 @@ async function editPeople(id, myPeople) {
 
 
 async function editPeoplePopup(person) {
-  return new Promise(async function (resolve) {
+  return new Promise(async resolve => {
     const popup = document.createElement('form');
     popup.classList.add('popup'); // let personToEdit = myPeople.find(peop => peop.id == idToEdit);
     // popup edit= form
@@ -19639,15 +19512,15 @@ async function editPeoplePopup(person) {
     const html = `
         <div class="popup2">
             <form class="form">
-                <p class="reminder-par">Editing ${person.lastName} ${person.firstName}</p>
+                <p class="reminder-par">${person.birthday ? `${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</p>
                 <ul>
                     <li>
                         <label for="lastName">Last Name:</label>
-                        <input type="text" name="lastName" id="lastname" value="${person.lastName}">
+                        <input type="text" name="lastName" id="lastname" value="${person.lastName ? `${person.lastName}` : ''}">
                     </li>
                     <li>
                         <label for="firstName">First Name:</label>
-                        <input type="text" name="firstName" id="firstname" value="${person.firstName}">
+                        <input type="text" name="firstName" id="firstname" value="${person.firstName ? person.firstName : ''}">
                     </li>
                     <li>
                         <label for="birthday">Birthday:</label>
@@ -19655,17 +19528,16 @@ async function editPeoplePopup(person) {
                     </li>
                     <li>
                         <label for="image">Image:</label>
-                        <input type="url" name="image" id="img" value="${person.picture}" alt="photo">
+                        <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo">
                     </li>
                 </ul>
                 <div class="popup-btn-container">
                     <button type="submit" class="submit">Submit</button>
-                    <button class="cancel">Cancel</button>
                 </div>
             </form>
         </div>
         `;
-    popup.insertAdjacentElement('afterbegin', html);
+    popup.insertAdjacentHTML('afterbegin', html);
     const cancelButton = document.createElement('button');
     cancelButton.type = 'button'; // so it doesn't submit
 
@@ -19691,7 +19563,7 @@ async function editPeoplePopup(person) {
       once: true
     });
     document.body.appendChild(popup);
-    await (0, _waait.default)(50);
+    await (0, _waait.default)(10);
     popup.classList.add('open');
   });
 }
@@ -19701,7 +19573,7 @@ async function editPeoplePopup(person) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addingPeople = addingPeople;
+exports.addingPeople = void 0;
 
 var _edit = require("./edit");
 
@@ -19710,8 +19582,9 @@ var _displayList = require("./displayList");
 var _localStorage = require("./localStorage");
 
 ///////////////////////// ADD A NEW PERSON /////////////////////////
-async function addingPeople(myPeople) {
+const addingPeople = async myPeople => {
   const newPerson = {};
+  console.log(_edit.editPeoplePopup);
   const result = await (0, _edit.editPeoplePopup)(newPerson);
 
   if (result) {
@@ -19720,278 +19593,63 @@ async function addingPeople(myPeople) {
     myPeople.push(result);
     (0, _displayList.displayPeople)(myPeople);
     (0, _localStorage.updateLocalStorage)(myPeople);
-  } // return new Promise(async function(resolve) {
-  //     const popup = document.createElement("div")
-  //     const html = `
-  //             <form class="form">
-  //                 <ul>
-  //                     <li>
-  //                         <label>Last name</label>
-  //                         <input type="text" name="lastName" required>
-  //                     </li>
-  //                     <li>
-  //                         <label>First name</label>
-  //                         <input type="text" name="firstname" required>
-  //                     </li>
-  //                     <li>
-  //                         <label>Birthday</label>
-  //                         <input type="date" name="birthday" required>
-  //                     </li>
-  //                     <li>
-  //                         <label>Picture</label>
-  //                         <input type="url" name="image" required>
-  //                     </li>
-  //                 </ul>
-  //                 <div class="popup-btn-container">
-  //                     <button type="submit" class="submit">Save</button>
-  //                     <button type="button" name="cancel" class="cancel">Cancel</button>
-  //                 </div>
-  //             </form>
-  //     `;
-  //     popup.innerHTML = html;
-  //     popup.classList.add('popup');
-  //     parent.appendChild(popup);
-  //     // grab inputs when submit
-  //     const myForm = popup.querySelector('form');
-  //     popup.appendChild(myForm)
-  //     myForm.addEventListener('submit', e => {
-  //         e.preventDefault();
-  //         let el = e.currentTarget.closest('.form');
-  //         const newPerson = {
-  //             id: Date.now(),
-  //             lastName: el.lastName.value,
-  //             firstName: el.firstname.value,
-  //             birthday: el.birthday.value,
-  //             picture: el.image.value,
-  //         }
-  //         resolve();
-  //         myPeople.push(newPerson);
-  //         displayPeople(myPeople);
-  //         destroyPopup(popup);
-  //         container.dispatchEvent(new CustomEvent('itemsUpdated'));
-  //     });
-  //     // cancel
-  //     if (myForm.cancel) {
-  //         myForm.cancel.addEventListener('click', function() {
-  //             destroyPopup(popup);
-  //         }, { once: true });
-  //     }
-  //     resolve();
-  // });
+  }
+};
 
-}
-
-;
-},{"./edit":"fileSrc/edit.js","./displayList":"fileSrc/displayList.js","./localStorage":"fileSrc/localStorage.js"}],"script.js":[function(require,module,exports) {
+exports.addingPeople = addingPeople;
+},{"./edit":"fileSrc/edit.js","./displayList":"fileSrc/displayList.js","./localStorage":"fileSrc/localStorage.js"}],"fileSrc/script.js":[function(require,module,exports) {
 "use strict";
 
-var _localStorage = require("./fileSrc/localStorage");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.handleClick = void 0;
 
-var _delete = require("./fileSrc/delete");
+var _localStorage = require("./localStorage");
 
-var _edit = require("./fileSrc/edit");
+var _delete = require("./delete");
 
-var _add = require("./fileSrc/add");
+var _edit = require("./edit");
 
-var _filters = require("./fileSrc/filters");
+var _add = require("./add");
 
-var _displayList = require("./fileSrc/displayList");
+var _displayList = require("./displayList");
+
+var _variables = require("./variables");
 
 let myPeople = (0, _localStorage.init)();
-console.log(myPeople); // import { addingPeople } from './fileSrc/add.js';
-// import { editPeople } from './fileSrc/edit.js';
-// import { deletePerson } from './fileSrc/delete.js';
-// import { deleteIcon, editIcon } from './fileSrc/svgs.js';
-// //import { displayPeople } from './fileSrc/displayList.js';
-// import { filterByMonth, filterPeople, resetFilter } from './fileSrc/filters.js';
-// // import { storeFromLocalStorage, mirrorLocalStorage } from './fileSrc/localStorage.js';
-// import { container, filterInputName, filterByMonthSelect, addBtn, buttonFilter } from './fileSrc/variables.js';
-// let myPeople = []; // mama array
-// export { myPeople }
-// ///////////////////// FETCHING FUNCTION ///////////////////////////
-// // fetch data
-// const url = "https://gist.githubusercontent.com/Pinois/e1c72b75917985dc77f5c808e876b67f/raw/93debb7463fbaaec29622221b8f9e719bd5b119f/birthdayPeople.json"
-// async function fetchPeople() {
-//     const response = await fetch(url);
-//     const data = await response.json();
-//     myPeople = [...data];
-//     console.log(myPeople)
-//     storeFromLocalStorage(myPeople);
-//     displayPeople(myPeople);
-//     container.dispatchEvent(new CustomEvent('itemsUpdated'));
-//     return data;
-// }
-// function mirrorLocalStorage() {
-//     console.info('Saving items to LS');
-//     localStorage.setItem('myPeople', JSON.stringify(myPeople));
-// };
-// // store from LS
-// async function storeFromLocalStorage() {
-//     // if there is data in the LS
-//     const listItem = JSON.parse(localStorage.getItem('myPeople'));
-//     if (listItem) {
-//         myPeople = listItem;
-//     }
-//     // if there is no data in the local, then fetch again
-//     if (!listItem) {
-//         const response = await fetch(url);
-//         const data = await response.json();
-//         myPeople = [...data];
-//         displayPeople(myPeople);
-//     }
-//     container.dispatchEvent(new CustomEvent('itemsUpdated'));
-// }
-// /////////////////////// DISPLAY PEOPLE LIST//////////////////////////////////
-// // display people list
-// export async function displayPeople(myPeople) {
-//     // sort by birthday
-//     // let sortedPeople = myPeople.sort((a, b) => a.birthday - b.birthday);
-//     // if (filterByName) {
-//     //     sortedPeople = sortedPeople.filter(person => {
-//     //         let lowerCaseTitle = person.lastName.toLowerCase();
-//     //         // jerusalem
-//     //         let lowerCaseFilter = filterByName.toLowerCase();
-//     //         // jeru
-//     //         if (lowerCaseTitle.includes(lowerCaseFilter)) {
-//     //             return true;
-//     //         } else {
-//     //             return false;
-//     //         }
-//     //     });
-//     // }
-//     let sortedPeople = myPeople;
-//     // sortedPeople = sortedPeople.sort((a, b) => a.birthday - b.birthday);
-//     if (filterInputName.value !== "") {
-//         sortedPeople = sortedPeople.filter(person => {
-//             const fullNameLowercase =
-//                 person.firstName.toLowerCase() + ' ' + person.lastName.toLowerCase();
-//             return fullNameLowercase.includes(filterInputName.value.toLowerCase());
-//         });
-//     }
-//     if (filterByMonthSelect.value !== "") {
-//         sortedPeople = sortedPeople.filter(person => {
-//             let birthday = new Date(person.birthday);
-//             return birthday.getMonth() === Number(filterByMonthSelect.value);
-//         });
-//     }
-//     const html = sortedPeople
-//         .map(people => {
-//             ///////////////DATE FUNCTION/////////////////////
-//             let age = new Date().getFullYear() - new Date(people.birthday).getFullYear();
-//             // dayOfbirth
-//             let dateOfBirth = new Date(people.birthday).getDate();
-//             let date;
-//             let month;
-//             // set the condition to set the right date symbols
-//             if (dateOfBirth > 3) {
-//                 date = `${dateOfBirth}th`;
-//             }
-//             switch (dateOfBirth % 10) {
-//                 case 1:
-//                     date = `${dateOfBirth}st`;
-//                     break;
-//                 case 2:
-//                     date = `${dateOfBirth}nd`;
-//                     break;
-//                 case 3:
-//                     date = `${dateOfBirth}rd`;
-//             };
-//             // find the current month of birth
-//             const monthOfBirth = new Date(people.birthday).getMonth();
-//             switch (monthOfBirth) {
-//                 case 0:
-//                     month = "January";
-//                     break;
-//                 case 1:
-//                     month = "February";
-//                     break;
-//                 case 2:
-//                     month = "March";
-//                     break;
-//                 case 3:
-//                     month = "April";
-//                     break;
-//                 case 4:
-//                     month = "May";
-//                     break;
-//                 case 5:
-//                     month = "June";
-//                     break;
-//                 case 6:
-//                     month = "July";
-//                 case 7:
-//                     month = "August";
-//                     break;
-//                 case 8:
-//                     month = "September";
-//                     break;
-//                 case 9:
-//                     month = "October";
-//                     break;
-//                 case 10:
-//                     month = "November";
-//                     break;
-//                 case 11:
-//                     month = "December";
-//             };
-//             // calculate one day
-//             const oneDay = 24 * 60 * 60 * 1000;
-//             // today = date now
-//             let today = new Date();
-//             let year;
-//             // if the current month is bigger than the month of birth, then add one more month
-//             if (today.getMonth() > monthOfBirth) {
-//                 year = today.getFullYear() + 1;
-//                 // if it's the same, then stay the same
-//             } else if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
-//                 year = today.getFullYear();
-//             } else {
-//                 // the same as the before
-//                 year = today.getFullYear();
-//             }
-//             // calculate the day of birth
-//             let dayOfBirth = new Date(year, monthOfBirth, dateOfBirth);
-//             if (today.getMonth() === monthOfBirth && today.getDate() > dateOfBirth) {
-//                 dayOfBirth.setFullYear(dayOfBirth.getFullYear() + 1);
-//                 age = (new Date().getFullYear() + 1) - new Date(people.birthday).getFullYear();
-//             };
-//             // claulcation of the day difference from now(today)
-//             let dayDiffer = Math.round(Math.abs((new Date(dayOfBirth) - new Date(today)) / oneDay));
-//             return `
-//                 <tr data-id="${people.id}">
-//                     <td class="image">
-//                         <img src="${people.picture}" alt="photo">
-//                     </td>
-//                     <td class="name">
-//                         ${people.lastName} ${people.firstName}<br>
-//                         <span>Turn ${age} on the ${date} of ${month} </span>
-//                     </td>
-//                     <td class="days-left">${dayDiffer} days</td>
-//                     <td>
-//                         <button class="edit" value="${people.id}">
-//                             ${editIcon}                    
-//                         </button>
-//                         <button class="delete" value="${people.id}">
-//                             ${deleteIcon}                    
-//                         </button>
-//                     </td>
-//                 </tr>
-//             `
-//         }).join(' ');
-//     container.innerHTML = html;
-//     // container.dispatchEvent(new CustomEvent('itemsUpdated'));
-// }
-// //buttonFilter.addEventListener('click', resetFilter);
-// window.addEventListener('click', editPeople);
-// filterByMonthSelect.addEventListener("input", displayPeople(myPeople))
-// filterInputName.addEventListener('keyup', displayPeople(myPeople));
-// addBtn.addEventListener('click', addingPeople);
-// window.addEventListener('click', deletePerson);
-// displayPeople(myPeople);
-// container.addEventListener('itemsUpdated', mirrorLocalStorage);
-// storeFromLocalStorage();
-// fetchPeople();
-},{"./fileSrc/localStorage":"fileSrc/localStorage.js","./fileSrc/delete":"fileSrc/delete.js","./fileSrc/edit":"fileSrc/edit.js","./fileSrc/add":"fileSrc/add.js","./fileSrc/filters":"fileSrc/filters.js","./fileSrc/displayList":"fileSrc/displayList.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+console.log(myPeople);
+
+const handleClick = e => {
+  const deleteButton = e.target.closest('button.delete');
+
+  if (deleteButton) {
+    const idToDelete = deleteButton.dataset.id;
+    console.log(idToDelete);
+    (0, _delete.deletePerson)(idToDelete, myPeople);
+  }
+
+  const editButton = e.target.closest('button.edit');
+
+  if (editButton) {
+    const idToEdit = editButton.dataset.id;
+    (0, _edit.editPeople)(idToEdit, myPeople);
+  }
+
+  const addButton = e.target.closest('button.add');
+
+  if (addButton) {
+    (0, _add.addingPeople)(myPeople);
+  }
+};
+
+exports.handleClick = handleClick;
+document.body.addEventListener('click', handleClick);
+
+_variables.filterInputName.addEventListener('input', () => (0, _displayList.displayPeople)(myPeople));
+
+_variables.filterByMonthSelect.addEventListener('change', () => (0, _displayList.displayPeople)(myPeople));
+},{"./localStorage":"fileSrc/localStorage.js","./delete":"fileSrc/delete.js","./edit":"fileSrc/edit.js","./add":"fileSrc/add.js","./displayList":"fileSrc/displayList.js","./variables":"fileSrc/variables.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -20019,7 +19677,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64418" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51564" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -20195,5 +19853,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","script.js"], null)
-//# sourceMappingURL=/script.75da7f30.js.map
+},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","fileSrc/script.js"], null)
+//# sourceMappingURL=/script.7da7e9aa.js.map

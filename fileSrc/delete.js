@@ -1,56 +1,52 @@
-import { myPeople } from '../script.js';
-import { parent, container } from './variables.js';
-import { displayPeople } from './displayList.js';
-import { destroyPopup } from './utils.js';
+import { displayPeople } from './displayList';
+import { updateLocalStorage } from './localStorage';
+import { destroyPopup } from './utils';
 
+import wait from 'waait';
 
-// delete a person
-export const deletePerson = e => {
-    const iconDelete = e.target.closest('button.delete');
-    if (iconDelete) {
-        const tableRow = e.target.closest('tr');
-        const idToDelete = tableRow.dataset.id;
-        deletePersonPopup(idToDelete);
+// FUNCTION DELETE PERSON 
+export const deletePerson = async(id, myPeople) => {
+    const person = myPeople.find(person => person.id === id);
+    const result = await deletePersonPopup(person);
+    console.log(result, id)
+    if (result) {
+        myPeople = myPeople.filter(person => person.id !== result.id);
+        displayPeople(myPeople);
+        updateLocalStorage(myPeople);
     }
-    parent.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
-// show delete popup and delete a specific person
-const deletePersonPopup = idToDelete => {
-    return new Promise(async function(resolve) {
-        const popup = document.createElement('div');
-        let personToDelete = myPeople.find(person => person.id == idToDelete);
+// POPUP DELETE PERSON AN EDIT PERSON
+
+export const deletePersonPopup = person => {
+    return new Promise(async resolve => {
+        const popup = document.createElement('form');
         popup.classList.add('popup');
-        // popup delete
         const html = `
-                    <div class="delete-popup-content">
-                        <p class="reminder-par">Do you really want to delete ${personToDelete.lastName} ${personToDelete.firstName}?</p>
-                        <ul>
-                            <li>
-                                <button class="yes">Yes</button>
-                            </li>
-                            <li>
-                                <button class="cancel">Cancel</button>
-                            </li>
-                        </ul>
-                    </div>
-        `;
+                  <div class="delete-popup-content">
+                    <p class="reminder-par">Do you really want to delete ${person?.lastName} ${person?.firstName}?</p>
+                    <button class="yes">Yes</button>
+                  </div>
+      `;
         popup.insertAdjacentHTML('afterbegin', html);
-        popup.addEventListener('click', e => {
-            if (e.target.matches('.yes')) {
-                const people = myPeople.filter(person => person.id != idToDelete);
-                myPeople = people
-                displayPeople(myPeople);
-                destroyPopup(popup);
-            }
-            if (e.target.matches('.cancel')) {
-                destroyPopup(popup);
-            }
-            container.dispatchEvent(new CustomEvent('itemsUpdated'));
-        });
-        // resolve promise
-        resolve();
-        parent.appendChild(popup);
-        container.dispatchEvent(new CustomEvent('itemsUpdated'));
-    });
+        const cancelButton = document.createElement('button');
+        cancelButton.type = 'button'; // so it doesn't submit
+        cancelButton.textContent = 'Cancel';
+        cancelButton.classList.add('cancel');
+        popup.lastElementChild.appendChild(cancelButton);
+        cancelButton.addEventListener('click', () => {
+            resolve(null);
+            destroyPopup(popup);
+        }, { once: true });
+
+        popup.addEventListener('submit', (e) => {
+            e.preventDefault();
+            resolve(person);
+            destroyPopup(popup);
+        }, { once: true })
+
+        document.body.appendChild(popup);
+        await wait(10);
+        popup.classList.add('open');
+    })
 }
