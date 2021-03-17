@@ -22,29 +22,30 @@ export async function editPeoplePopup(person) {
                 const popup = document.createElement('div');
                 popup.classList.add('popup');
 
-                // let personToEdit = myPeople.find(peop => peop.id == idToEdit);
                 // popup edit= form
                 const html = `
                 <div class="content">
+                <form>
                     <h3 class="reminder-par">${person.birthday ? `${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</h3>
                     <fieldset>
                         <label for="lastName">Last Name:</label>
-                        <input type="text" name="lastName" id="lastname" value="${person.lastName ? `${person.lastName}` : ''}">
+                        <input type="text" name="lastName" id="lastname" value="${person.lastName ? `${person.lastName}` : ''}" required>
                         <label for="firstName">First Name:</label>
                         <input type="text" name="firstName" id="firstname" value="${
                                 person.firstName ? person.firstName : ''
-                        }">
+                        }" required>
                         <label for="birthday">Birthday:</label>
                         <input type="date" name="birthday" id="birthday" value="${
                                 person.birthday ? new Date(person.birthday).toISOString().substring(0, 10) : ''
-                        }">
+                        }" required>
                         
                         <label for="image">Image:</label>
-                        <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo">
+                        <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo" required>
                         <div class="btn_container">
                             <button type="submit" class="submit">Submit</button>
                         </div>
                     </fieldset>
+                </form>
                 </div>
         `;
         popup.insertAdjacentHTML('afterbegin', html);
@@ -56,13 +57,12 @@ export async function editPeoplePopup(person) {
         const content = popup.querySelector('.btn_container');
         console.log(content)
         content.insertAdjacentElement('beforeend',cancelButton);
-        //popup.insertAdjacentElement('', cancelButton);
         cancelButton.addEventListener('click', () => {
             resolve(null);
             destroyPopup(popup);
         }, { once: true })
-
-        popup.addEventListener('submit', (e) => {
+        const form = popup.querySelector('form')
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
             // popup.input.value;
             person.firstName = e.target.firstName.value;

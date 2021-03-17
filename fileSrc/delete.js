@@ -23,7 +23,7 @@ export const deletePersonPopup = person => {
         const popup = document.createElement('form');
         popup.classList.add('popup');
         const html = `
-                  <div class="delete-popup-content">
+                  <div class="content">
                     <p class="reminder-par">Do you really want to delete ${person?.lastName} ${person?.firstName}?</p>
                     <button class="yes">Yes</button>
                   </div>

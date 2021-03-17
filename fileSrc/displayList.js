@@ -95,20 +95,20 @@ export function displayPeople(myPeople) {
                                     <img src="${person.picture}" alt="photo">
                                 </li>
                                 <li class="list_item">
-                                    <span>${person.lastName} ${person.firstName}</span>
+                                    <span class="name">${person.lastName} ${person.firstName}</span>
                                     ${daysToBirthday == 0
                                         ? 
-                                   `<span>
-                                        She/He is ${differenceInCalendarYears(new Date(), birthdayDate) + 1}
+                                   `<span class="birthday">
+                                        She/He is <b>${differenceInCalendarYears(new Date(), birthdayDate) + 1}
                                         </b> today
                                         
                                     </span>`
                                     :
-                                    `<span>Turns ${age + 1}  on the ${date} of ${month} </span>`
+                                    `<span class="birthday">Turns <b>${age + 1}</b>  on the ${date} of ${month} </span>`
                                } 
                                </li>
                                 <li class="list_item">
-                                    <span>${daysToBirthday === 0 ? `🎂🎂🎂` : `in ${daysToBirthday} days`}</span>
+                                    <span class="future_birthday">${daysToBirthday === 0 ? `🎂🎂🎂` : `<b>in ${daysToBirthday} days</b>`}</span>
                                     <ul class="button_container">
                                         <li>
                                             <button class="edit" data-id="${person.id}">
