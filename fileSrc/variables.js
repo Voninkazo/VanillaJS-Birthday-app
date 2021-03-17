@@ -1,4 +1,4 @@
-export const container = document.querySelector('tbody');
+export const container = document.querySelector('.parent');
 export const parent = document.querySelector('body');
 export const form = document.querySelector('form');
 export const addBtn = document.querySelector('.add');

@@ -19,42 +19,33 @@ export async function editPeople(id, myPeople) {
 // show popup and edit data
 export async function editPeoplePopup(person) {
     return new Promise(async resolve => {
-                const popup = document.createElement('form');
+                const popup = document.createElement('div');
                 popup.classList.add('popup');
 
                 // let personToEdit = myPeople.find(peop => peop.id == idToEdit);
                 // popup edit= form
                 const html = `
-        <div class="popup2">
-            <form class="form">
-                <p class="reminder-par">${person.birthday ? `${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</p>
-                <ul>
-                    <li>
+                <div class="content">
+                    <h3 class="reminder-par">${person.birthday ? `${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</h3>
+                    <fieldset>
                         <label for="lastName">Last Name:</label>
                         <input type="text" name="lastName" id="lastname" value="${person.lastName ? `${person.lastName}` : ''}">
-                    </li>
-                    <li>
                         <label for="firstName">First Name:</label>
                         <input type="text" name="firstName" id="firstname" value="${
-                            person.firstName ? person.firstName : ''
+                                person.firstName ? person.firstName : ''
                         }">
-                    </li>
-                    <li>
                         <label for="birthday">Birthday:</label>
                         <input type="date" name="birthday" id="birthday" value="${
-                            person.birthday ? new Date(person.birthday).toISOString().substring(0, 10) : ''
-                    }">
-                    </li>
-                    <li>
+                                person.birthday ? new Date(person.birthday).toISOString().substring(0, 10) : ''
+                        }">
+                        
                         <label for="image">Image:</label>
                         <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo">
-                    </li>
-                </ul>
-                <div class="popup-btn-container">
-                    <button type="submit" class="submit">Submit</button>
+                        <div class="btn_container">
+                            <button type="submit" class="submit">Submit</button>
+                        </div>
+                    </fieldset>
                 </div>
-            </form>
-        </div>
         `;
         popup.insertAdjacentHTML('afterbegin', html);
 
@@ -62,7 +53,10 @@ export async function editPeoplePopup(person) {
         cancelButton.type = 'button'; // so it doesn't submit
         cancelButton.textContent = 'Cancel';
         cancelButton.classList.add('cancel');
-        popup.lastElementChild.appendChild(cancelButton);
+        const content = popup.querySelector('.btn_container');
+        console.log(content)
+        content.insertAdjacentElement('beforeend',cancelButton);
+        //popup.insertAdjacentElement('', cancelButton);
         cancelButton.addEventListener('click', () => {
             resolve(null);
             destroyPopup(popup);

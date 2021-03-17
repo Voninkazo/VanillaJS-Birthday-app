@@ -90,32 +90,39 @@ export function displayPeople(myPeople) {
                 };
 
                 return `
-                        <tr data-id="${person.id}">
-                            <td class="image">
-                                <img src="${person.picture}" alt="photo">
-                            </td>
-                            <td class="name">
-                                ${person.lastName} ${person.firstName}<br>
-                            </td>
-                            <td class="days-left">
-                            ${daysToBirthday == 0
-                            ? `She/He is ${differenceInCalendarYears(new Date(), birthdayDate) + 1}
-                            </b> today`
-                            :
-                            `<span>Turn ${age + 1}  on the ${date} of ${month} </span>`
-                        } </td>
-                            <td>
-                            ${daysToBirthday === 0 ? `🎂🎂🎂` : `🎂 in ${daysToBirthday} days`}
-                            </td>
-                            <td>
-                                <button class="edit" data-id="${person.id}">
-                                    ${editIcon}                    
-                                </button>
-                                <button class="delete" data-id="${person.id}">
-                                    ${deleteIcon}                    
-                                </button>
-                            </td>
-                        </tr>
+                            <ul class="list_container">
+                                <li class="list_item">
+                                    <img src="${person.picture}" alt="photo">
+                                </li>
+                                <li class="list_item">
+                                    <span>${person.lastName} ${person.firstName}</span>
+                                    ${daysToBirthday == 0
+                                        ? 
+                                   `<span>
+                                        She/He is ${differenceInCalendarYears(new Date(), birthdayDate) + 1}
+                                        </b> today
+                                        
+                                    </span>`
+                                    :
+                                    `<span>Turns ${age + 1}  on the ${date} of ${month} </span>`
+                               } 
+                               </li>
+                                <li class="list_item">
+                                    <span>${daysToBirthday === 0 ? `🎂🎂🎂` : `in ${daysToBirthday} days`}</span>
+                                    <ul class="button_container">
+                                        <li>
+                                            <button class="edit" data-id="${person.id}">
+                                                ${editIcon}                    
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="delete" data-id="${person.id}">
+                                                ${deleteIcon}                    
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                     `;
                 }).join(' ');
                 container.innerHTML = html;

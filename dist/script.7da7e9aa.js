@@ -19155,10 +19155,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.editIcon = exports.deleteIcon = void 0;
-const deleteIcon = `<svg class="w-6 h-6" fill="none" stroke="#EF4565" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"></path></svg>
+const deleteIcon = `<svg class="w-6 h-6" fill="none" fill="red" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"></path></svg>
 `;
 exports.deleteIcon = deleteIcon;
-const editIcon = `<svg class="w-6 h-6" fill="none" stroke="#094067" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>`;
+const editIcon = `<svg class="w-6 h-6" fill="none" fill="blue" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>`;
 exports.editIcon = editIcon;
 },{}],"fileSrc/filters.js":[function(require,module,exports) {
 "use strict";
@@ -19208,7 +19208,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.filterByMonthSelect = exports.filterForm = exports.buttonFilter = exports.filterInputName = exports.addBtn = exports.form = exports.parent = exports.container = void 0;
-const container = document.querySelector('tbody');
+const container = document.querySelector('.parent');
 exports.container = container;
 const parent = document.querySelector('body');
 exports.parent = parent;
@@ -19336,28 +19336,34 @@ function displayPeople(myPeople) {
 
     ;
     return `
-                        <tr data-id="${person.id}">
-                            <td class="image">
-                                <img src="${person.picture}" alt="photo">
-                            </td>
-                            <td class="name">
-                                ${person.lastName} ${person.firstName}<br>
-                            </td>
-                            <td class="days-left">
-                            ${daysToBirthday == 0 ? `She/He is ${(0, _dateFns.differenceInCalendarYears)(new Date(), birthdayDate) + 1}
-                            </b> today` : `<span>Turn ${age + 1}  on the ${date} of ${month} </span>`} </td>
-                            <td>
-                            ${daysToBirthday === 0 ? `🎂🎂🎂` : `🎂 in ${daysToBirthday} days`}
-                            </td>
-                            <td>
-                                <button class="edit" data-id="${person.id}">
-                                    ${_svgs.editIcon}                    
-                                </button>
-                                <button class="delete" data-id="${person.id}">
-                                    ${_svgs.deleteIcon}                    
-                                </button>
-                            </td>
-                        </tr>
+                            <ul class="list_container">
+                                <li class="list_item">
+                                    <img src="${person.picture}" alt="photo">
+                                </li>
+                                <li class="list_item">
+                                    <span>${person.lastName} ${person.firstName}</span>
+                                    ${daysToBirthday == 0 ? `<span>
+                                        She/He is ${(0, _dateFns.differenceInCalendarYears)(new Date(), birthdayDate) + 1}
+                                        </b> today
+                                        
+                                    </span>` : `<span>Turns ${age + 1}  on the ${date} of ${month} </span>`} 
+                               </li>
+                                <li class="list_item">
+                                    <span>${daysToBirthday === 0 ? `🎂🎂🎂` : `in ${daysToBirthday} days`}</span>
+                                    <ul class="button_container">
+                                        <li>
+                                            <button class="edit" data-id="${person.id}">
+                                                ${_svgs.editIcon}                    
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="delete" data-id="${person.id}">
+                                                ${_svgs.deleteIcon}                    
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                     `;
   }).join(' ');
   _variables.container.innerHTML = html;
@@ -19505,37 +19511,28 @@ async function editPeople(id, myPeople) {
 
 async function editPeoplePopup(person) {
   return new Promise(async resolve => {
-    const popup = document.createElement('form');
+    const popup = document.createElement('div');
     popup.classList.add('popup'); // let personToEdit = myPeople.find(peop => peop.id == idToEdit);
     // popup edit= form
 
     const html = `
-        <div class="popup2">
-            <form class="form">
-                <p class="reminder-par">${person.birthday ? `${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</p>
-                <ul>
-                    <li>
+                <div class="content">
+                    <h3 class="reminder-par">${person.birthday ? `${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</h3>
+                    <fieldset>
                         <label for="lastName">Last Name:</label>
                         <input type="text" name="lastName" id="lastname" value="${person.lastName ? `${person.lastName}` : ''}">
-                    </li>
-                    <li>
                         <label for="firstName">First Name:</label>
                         <input type="text" name="firstName" id="firstname" value="${person.firstName ? person.firstName : ''}">
-                    </li>
-                    <li>
                         <label for="birthday">Birthday:</label>
                         <input type="date" name="birthday" id="birthday" value="${person.birthday ? new Date(person.birthday).toISOString().substring(0, 10) : ''}">
-                    </li>
-                    <li>
+                        
                         <label for="image">Image:</label>
                         <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo">
-                    </li>
-                </ul>
-                <div class="popup-btn-container">
-                    <button type="submit" class="submit">Submit</button>
+                        <div class="btn_container">
+                            <button type="submit" class="submit">Submit</button>
+                        </div>
+                    </fieldset>
                 </div>
-            </form>
-        </div>
         `;
     popup.insertAdjacentHTML('afterbegin', html);
     const cancelButton = document.createElement('button');
@@ -19543,7 +19540,10 @@ async function editPeoplePopup(person) {
 
     cancelButton.textContent = 'Cancel';
     cancelButton.classList.add('cancel');
-    popup.lastElementChild.appendChild(cancelButton);
+    const content = popup.querySelector('.btn_container');
+    console.log(content);
+    content.insertAdjacentElement('beforeend', cancelButton); //popup.insertAdjacentElement('', cancelButton);
+
     cancelButton.addEventListener('click', () => {
       resolve(null);
       (0, _utils.destroyPopup)(popup);
@@ -19677,7 +19677,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51564" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57262" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
