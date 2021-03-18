@@ -99,8 +99,8 @@ h5 {
   background: none;
 }
 .parent .button_container button svg {
-  height: 20px;
-  width: 27px;
+  height: 40px;
+  width: 40px;
 }
 .parent .button_container .delete svg {
   color: red;
