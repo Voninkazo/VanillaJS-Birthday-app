@@ -199,8 +199,9 @@ h5 {
     .content {
         border-radius: 5px;
         background-color: white;
+        margin-top: 50px;
         form {
-            width: 70%;
+            width: 375px;
             margin: auto;
         }
         fieldset {
@@ -232,7 +233,7 @@ h5 {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-                padding-top: 10px;
+                padding-top: 30px;
                 button {
                     font-weight: 500;
                     font-size: 18px;
@@ -246,7 +247,7 @@ h5 {
                 button.submit {
                     background: #EF4565;
                     color: #FFFFFE;
-                    width: 100%;
+                    width: 50%;
                 }
                 button.cancel {
                     color: #5F6C7B;
@@ -302,6 +303,8 @@ h5 {
     }
     .popup .content {
         padding: 3rem;
+        padding-top: 0;
+        // max-width: 700px;
     }
     .parent {
         .button_container {

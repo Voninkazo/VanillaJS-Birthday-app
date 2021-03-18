@@ -19508,7 +19508,7 @@ async function editPeoplePopup(person) {
     const html = `
                 <div class="content">
                 <form>
-                    <h3 class="reminder-par">${person.birthday ? `${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</h3>
+                    <h3 class="reminder-par">${person.birthday ? `Edit ${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</h3>
                     <fieldset>
                         <label for="lastName">Last Name:</label>
                         <input type="text" name="lastName" id="lastname" value="${person.lastName ? `${person.lastName}` : ''}" required>
