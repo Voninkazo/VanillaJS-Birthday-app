@@ -37,17 +37,18 @@ export async function editPeoplePopup(person) {
                         <label for="birthday">Birthday:</label>
                         <input type="date" name="birthday" id="birthday" value="${
                                 person.birthday ? new Date(person.birthday).toISOString().substring(0, 10) : ''
-                        }" required>
+                        }" max=${new Date().toISOString().substring(0, 10)} required>
                         
                         <label for="image">Image:</label>
                         <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo" required>
                         <div class="btn_container">
                             <button type="submit" class="submit">Submit</button>
                         </div>
-                    </fieldset>
+                    </fieldset> 
                 </form>
                 </div>
         `;
+
         popup.insertAdjacentHTML('afterbegin', html);
 
         const cancelButton = document.createElement('button');

@@ -19207,22 +19207,13 @@ exports.filterByMonth = filterByMonth;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.filterByMonthSelect = exports.filterForm = exports.buttonFilter = exports.filterInputName = exports.addBtn = exports.form = exports.parent = exports.container = void 0;
+exports.filterByMonthSelect = exports.filterInputName = exports.parent = exports.container = void 0;
 const container = document.querySelector('.parent');
 exports.container = container;
 const parent = document.querySelector('body');
 exports.parent = parent;
-const form = document.querySelector('form');
-exports.form = form;
-const addBtn = document.querySelector('.add');
-exports.addBtn = addBtn;
 const filterInputName = document.querySelector('#filter-name');
 exports.filterInputName = filterInputName;
-const buttonFilter = document.querySelector('#reset'); // btn reset
-
-exports.buttonFilter = buttonFilter;
-const filterForm = document.querySelector('.filter-form');
-exports.filterForm = filterForm;
 const filterByMonthSelect = document.querySelector('#filter-month');
 exports.filterByMonthSelect = filterByMonthSelect;
 },{}],"fileSrc/displayList.js":[function(require,module,exports) {
@@ -19524,14 +19515,14 @@ async function editPeoplePopup(person) {
                         <label for="firstName">First Name:</label>
                         <input type="text" name="firstName" id="firstname" value="${person.firstName ? person.firstName : ''}" required>
                         <label for="birthday">Birthday:</label>
-                        <input type="date" name="birthday" id="birthday" value="${person.birthday ? new Date(person.birthday).toISOString().substring(0, 10) : ''}" required>
+                        <input type="date" name="birthday" id="birthday" value="${person.birthday ? new Date(person.birthday).toISOString().substring(0, 10) : ''}" max=${new Date().toISOString().substring(0, 10)} required>
                         
                         <label for="image">Image:</label>
                         <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo" required>
                         <div class="btn_container">
                             <button type="submit" class="submit">Submit</button>
                         </div>
-                    </fieldset>
+                    </fieldset> 
                 </form>
                 </div>
         `;
