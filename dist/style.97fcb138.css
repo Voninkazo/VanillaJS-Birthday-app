@@ -15,8 +15,8 @@ body {
 }
 
 h1 {
-  font-size: 64px;
-  line-height: 76px;
+  font-size: 32px;
+  line-height: 32px;
   color: #094067;
 }
 
@@ -48,10 +48,8 @@ h5 {
 }
 .parent .list_container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
   background-color: #FFFFFE;
   padding-top: 22px;
   padding-left: 43px;
@@ -70,15 +68,15 @@ h5 {
 }
 .parent .list_container .list_item .name {
   font-weight: 500;
-  font-size: 36px;
-  line-height: 43px;
+  font-size: 22px;
+  line-height: 28px;
   /* identical to box height */
   color: #000000;
 }
 .parent .list_container .list_item .birthday {
   font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 22px;
   color: #5F6C7B;
   padding-top: 10px;
 }
@@ -87,14 +85,15 @@ h5 {
 }
 .parent .list_container .list_item .future_birthday {
   font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 22px;
   color: #5F6C7B;
 }
 .parent .button_container {
   display: flex;
   flex-direction: row;
   gap: 22px;
+  padding-top: 10px;
 }
 .parent .button_container button {
   background: none;
@@ -155,24 +154,24 @@ h5 {
   background-color: #f31039;
 }
 
-.popup {
-  background: rgba(255, 255, 255, 0.8);
+.popup.open {
+  background: white;
   position: fixed;
   width: 100vw;
   height: 100vh;
   transition: all 0.25s;
   top: 0;
 }
-.popup .fieldset_delete {
+.popup.open .fieldset_delete {
   background-color: white;
-  max-width: 50%;
+  max-width: 400px;
   margin: auto;
-  margin-top: 20%;
+  margin-top: 50px;
 }
-.popup .fieldset_delete h5 b {
+.popup.open .fieldset_delete h5 b {
   color: #EF4565;
 }
-.popup .fieldset_delete button {
+.popup.open .fieldset_delete button {
   padding: 1rem 2rem;
   border-radius: 5px;
   font-family: "Rubik";
@@ -180,42 +179,41 @@ h5 {
   line-height: 22px;
   font-weight: bold;
 }
-.popup .fieldset_delete .delete {
+.popup.open .fieldset_delete .delete {
   background-color: #EF4565;
   color: white;
 }
-.popup .fieldset_delete .delete:hover {
+.popup.open .fieldset_delete .delete:hover {
   background-color: #f51d44;
 }
-.popup .fieldset_delete .cancel {
+.popup.open .fieldset_delete .cancel {
   margin-left: 20px;
 }
-.popup .fieldset_delete .cancel:hover {
+.popup.open .fieldset_delete .cancel:hover {
   background-color: #EF4565;
   color: white;
 }
-.popup .content {
-  border: 1px solid #eae7e7;
+.popup.open .content {
   border-radius: 5px;
   background-color: white;
 }
-.popup .content form {
+.popup.open .content form {
   width: 70%;
   margin: auto;
 }
-.popup .content fieldset {
+.popup.open .content fieldset {
   display: flex;
   flex-direction: column;
   border: none;
 }
-.popup .content fieldset input,
-.popup .content fieldset label {
+.popup.open .content fieldset input,
+.popup.open .content fieldset label {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
   color: #094067;
 }
-.popup .content fieldset input {
+.popup.open .content fieldset input {
   padding-left: 20px;
   padding-top: 15px;
   padding-bottom: 14px;
@@ -224,18 +222,18 @@ h5 {
   border: none;
   outline: none;
 }
-.popup .content fieldset label {
+.popup.open .content fieldset label {
   padding-top: 11px;
   padding-bottom: 12px;
 }
-.popup .content fieldset .btn_container {
+.popup.open .content fieldset .btn_container {
   padding-top: 63px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-top: 10px;
 }
-.popup .content fieldset .btn_container button {
+.popup.open .content fieldset .btn_container button {
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
@@ -245,12 +243,12 @@ h5 {
   padding-left: 20px;
   padding-right: 16px;
 }
-.popup .content fieldset .btn_container button.submit {
+.popup.open .content fieldset .btn_container button.submit {
   background: #EF4565;
   color: #FFFFFE;
   width: 100%;
 }
-.popup .content fieldset .btn_container button.cancel {
+.popup.open .content fieldset .btn_container button.cancel {
   color: #5F6C7B;
   background: #FFFFFF;
   border: 2px solid #5F6C7B;
@@ -258,12 +256,35 @@ h5 {
   border-radius: 5px;
   margin-left: 30px;
 }
-.popup .content fieldset .btn_container button.cancel:hover {
+.popup.open .content fieldset .btn_container button.cancel:hover {
   background: #EF4565;
   color: #FFFFFE;
 }
 
 @media (min-width: 768px) {
+  h1 {
+    font-size: 64px;
+    line-height: 76px;
+  }
+
+  .parent .list_container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .parent .list_container .list_item .name {
+    font-size: 36px;
+    line-height: 43px;
+  }
+  .parent .list_container .list_item .birthday {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .parent .list_container .list_item .future_birthday {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
   .section_filtering {
     display: grid;
     grid-auto-flow: column;
