@@ -36,6 +36,10 @@ button {
   cursor: pointer;
 }
 
+h5 {
+  font-size: 1.2em;
+}
+
 .parent {
   display: flex;
   flex-direction: column;
@@ -147,6 +151,9 @@ button {
   border-radius: 5px;
   margin-top: 12px;
 }
+.section_filtering .add_btn:hover {
+  background-color: #f31039;
+}
 
 .popup {
   background: rgba(255, 255, 255, 0.8);
@@ -155,6 +162,37 @@ button {
   height: 100vh;
   transition: all 0.25s;
   top: 0;
+}
+.popup .fieldset_delete {
+  background-color: white;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 20%;
+}
+.popup .fieldset_delete h5 b {
+  color: #EF4565;
+}
+.popup .fieldset_delete button {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-family: "Rubik";
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: bold;
+}
+.popup .fieldset_delete .delete {
+  background-color: #EF4565;
+  color: white;
+}
+.popup .fieldset_delete .delete:hover {
+  background-color: #f51d44;
+}
+.popup .fieldset_delete .cancel {
+  margin-left: 20px;
+}
+.popup .fieldset_delete .cancel:hover {
+  background-color: #EF4565;
+  color: white;
 }
 .popup .content {
   border: 1px solid #eae7e7;
@@ -223,36 +261,6 @@ button {
 .popup .content fieldset .btn_container button.cancel:hover {
   background: #EF4565;
   color: #FFFFFE;
-}
-
-.reminder-par {
-  font-weight: 500;
-  font-size: 38px;
-  line-height: 47px;
-  color: #094067;
-  padding: 0;
-  padding-bottom: 26px;
-  margin: 0;
-}
-
-.delete-popup-content .reminder-par {
-  font-size: 20px;
-  line-height: 25px;
-}
-
-.delete-popup-content ul {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
-.delete-popup-content .yes {
-  background-color: blue;
-  color: #FFFFFF;
-}
-
-.delete-popup-content button {
-  padding: 12px 18px;
 }
 
 @media (min-width: 768px) {

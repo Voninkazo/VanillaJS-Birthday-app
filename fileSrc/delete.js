@@ -22,12 +22,13 @@ export const deletePersonPopup = person => {
     return new Promise(async resolve => {
         const popup = document.createElement('form');
         popup.classList.add('popup');
-        const html = `
-                  <div class="content">
-                    <p class="reminder-par">Do you really want to delete ${person?.lastName} ${person?.firstName}?</p>
-                    <button class="yes">Yes</button>
-                  </div>
-      `;
+        const html =
+            `    <fieldset class="fieldset_delete">
+                    <h5>Delete <b>${person.firstName} ${person.lastName}</b> 🙈</h5>
+                    <p>Are you sure you want to delete this person from the list?</p>
+                    <button type="submit" class="delete">Bye 👋 🗑</button>
+                </fieldset>
+            `;
         popup.insertAdjacentHTML('afterbegin', html);
         const cancelButton = document.createElement('button');
         cancelButton.type = 'button'; // so it doesn't submit

@@ -37,6 +37,10 @@ button {
     cursor: pointer;
 }
 
+h5 {
+    font-size: 1.2em;
+}
+
 .parent {
     display: flex;
     flex-direction: column;
@@ -44,8 +48,6 @@ button {
     padding-top: 47px;
     .list_container {
         display: flex;
-        // flex-direction: column;
-        // gap: 10px;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -149,6 +151,9 @@ button {
         border-radius: 5px;
         margin-top: 12px;
     }
+    .add_btn:hover {
+        background-color: #f31039;
+    }
 }
 
 .popup {
@@ -158,6 +163,39 @@ button {
     height: 100vh;
     transition: all 0.25s;
     top: 0;
+    .fieldset_delete {
+        background-color: white;
+        max-width: 50%;
+        margin: auto;
+        margin-top: 20%;
+        h5 {
+            b {
+                color: #EF4565;
+            }
+        }
+        button {
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-family: 'Rubik';
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: bold;
+        }
+        .delete {
+            background-color: #EF4565;
+            color: white;
+        }
+        .delete:hover {
+            background-color: #f51d44;
+        }
+        .cancel {
+            margin-left: 20px;
+        }
+        .cancel:hover {
+            background-color: #EF4565;
+            color: white;
+        }
+    }
     .content {
         border: 1px solid #eae7e7;
         border-radius: 5px;
@@ -226,36 +264,6 @@ button {
             }
         }
     }
-}
-
-.reminder-par {
-    font-weight: 500;
-    font-size: 38px;
-    line-height: 47px;
-    color: #094067;
-    padding: 0;
-    padding-bottom: 26px;
-    margin: 0;
-}
-
-.delete-popup-content .reminder-par {
-    font-size: 20px;
-    line-height: 25px;
-}
-
-.delete-popup-content ul {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-}
-
-.delete-popup-content .yes {
-    background-color: blue;
-    color: #FFFFFF;
-}
-
-.delete-popup-content button {
-    padding: 12px 18px;
 }
 
 @media(min-width:768px) {
