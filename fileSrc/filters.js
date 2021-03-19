@@ -14,12 +14,9 @@ export const filterByName = (myPeople) => {
 }
 
 export const filterByMonth = (myPeople) => {
-    console.log('value', filterByMonthSelect.value)
     if (filterByMonthSelect.value !== "empty") {
-        console.log(filterByMonthSelect.value, 'triggers filtering')
         myPeople = myPeople.filter(person => {
             let birthday = new Date(person.birthday);
-            console.log(person.birthday)
             return birthday.getMonth() === Number(filterByMonthSelect.value);
         });
     }

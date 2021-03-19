@@ -104,7 +104,7 @@ export function displayPeople(myPeople) {
                                         
                                     </span>`
                                     :
-                                    `<span class="birthday">Turns <b>${age + 1}</b>  on the ${date} of ${month} </span>`
+                                    `<span class="birthday">Turns <b>${age}</b>  on the ${date} of ${month} </span>`
                                } 
                                </li>
                                 <li class="list_item">

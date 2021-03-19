@@ -8,13 +8,11 @@ import { displayPeople } from './displayList';
 import { filterInputName, filterByMonthSelect } from './variables';
 
 let myPeople = init();
-console.log(myPeople);
 
 export const handleClick = e => {
     const deleteButton = e.target.closest('button.delete');
     if (deleteButton) {
         const idToDelete = deleteButton.dataset.id;
-        console.log(idToDelete)
         deletePerson(idToDelete, myPeople);
     }
 

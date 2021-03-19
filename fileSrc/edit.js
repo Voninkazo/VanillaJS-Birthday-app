@@ -56,7 +56,6 @@ export async function editPeoplePopup(person) {
         cancelButton.textContent = 'Cancel';
         cancelButton.classList.add('cancel');
         const content = popup.querySelector('.btn_container');
-        console.log(content)
         content.insertAdjacentElement('beforeend',cancelButton);
         cancelButton.addEventListener('click', () => {
             resolve(null);

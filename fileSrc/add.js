@@ -7,7 +7,6 @@ import { updateLocalStorage } from './localStorage';
 
 export const addingPeople = async myPeople => {
     const newPerson = {};
-    console.log(editPeoplePopup);
     const result = await editPeoplePopup(newPerson);
 
     if (result) {

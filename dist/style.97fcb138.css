@@ -179,11 +179,11 @@ h5 {
   line-height: 22px;
   font-weight: bold;
 }
-.popup.open .fieldset_delete .delete {
+.popup.open .fieldset_delete .remove {
   background-color: #EF4565;
   color: white;
 }
-.popup.open .fieldset_delete .delete:hover {
+.popup.open .fieldset_delete .remove:hover {
   background-color: #f51d44;
 }
 .popup.open .fieldset_delete .cancel {

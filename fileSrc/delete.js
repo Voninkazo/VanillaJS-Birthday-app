@@ -8,7 +8,7 @@ import wait from 'waait';
 export const deletePerson = async(id, myPeople) => {
     const person = myPeople.find(person => person.id === id);
     const result = await deletePersonPopup(person);
-    console.log(result, id)
+
     if (result) {
         myPeople = myPeople.filter(person => person.id !== result.id);
         displayPeople(myPeople);
@@ -24,9 +24,9 @@ export const deletePersonPopup = person => {
         popup.classList.add('popup');
         const html =
             `    <fieldset class="fieldset_delete">
-                    <h5>Delete <b>${person.firstName} ${person.lastName}</b> 🙈</h5>
+                    <h5>Delete <b>${person && person.firstName} ${person && person.lastName}</b> 🙈</h5>
                     <p>Are you sure you want to delete this person from the list?</p>
-                    <button type="submit" class="delete">Bye 👋 🗑</button>
+                    <button type="submit" class="remove" data-id=${person.id}>Bye 👋 🗑</button>
                 </fieldset>
             `;
         popup.insertAdjacentHTML('afterbegin', html);

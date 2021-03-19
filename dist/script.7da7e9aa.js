@@ -19186,13 +19186,9 @@ const filterByName = myPeople => {
 exports.filterByName = filterByName;
 
 const filterByMonth = myPeople => {
-  console.log('value', filterByMonthSelect.value);
-
   if (filterByMonthSelect.value !== "empty") {
-    console.log(filterByMonthSelect.value, 'triggers filtering');
     myPeople = myPeople.filter(person => {
       let birthday = new Date(person.birthday);
-      console.log(person.birthday);
       return birthday.getMonth() === Number(filterByMonthSelect.value);
     });
   }
@@ -19337,7 +19333,7 @@ function displayPeople(myPeople) {
                                         She/He is <b>${(0, _dateFns.differenceInCalendarYears)(new Date(), birthdayDate) + 1}
                                         </b> today
                                         
-                                    </span>` : `<span class="birthday">Turns <b>${age + 1}</b>  on the ${date} of ${month} </span>`} 
+                                    </span>` : `<span class="birthday">Turns <b>${age}</b>  on the ${date} of ${month} </span>`} 
                                </li>
                                 <li class="list_item">
                                     <span class="future_birthday">${daysToBirthday === 0 ? `🎂🎂🎂` : `<b>in ${daysToBirthday} days</b>`}</span>
@@ -19420,7 +19416,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const deletePerson = async (id, myPeople) => {
   const person = myPeople.find(person => person.id === id);
   const result = await deletePersonPopup(person);
-  console.log(result, id);
 
   if (result) {
     myPeople = myPeople.filter(person => person.id !== result.id);
@@ -19437,9 +19432,9 @@ const deletePersonPopup = person => {
     const popup = document.createElement('form');
     popup.classList.add('popup');
     const html = `    <fieldset class="fieldset_delete">
-                    <h5>Delete <b>${person.firstName} ${person.lastName}</b> 🙈</h5>
+                    <h5>Delete <b>${person && person.firstName} ${person && person.lastName}</b> 🙈</h5>
                     <p>Are you sure you want to delete this person from the list?</p>
-                    <button type="submit" class="delete">Bye 👋 🗑</button>
+                    <button type="submit" class="remove" data-id=${person.id}>Bye 👋 🗑</button>
                 </fieldset>
             `;
     popup.insertAdjacentHTML('afterbegin', html);
@@ -19533,7 +19528,6 @@ async function editPeoplePopup(person) {
     cancelButton.textContent = 'Cancel';
     cancelButton.classList.add('cancel');
     const content = popup.querySelector('.btn_container');
-    console.log(content);
     content.insertAdjacentElement('beforeend', cancelButton);
     cancelButton.addEventListener('click', () => {
       resolve(null);
@@ -19576,7 +19570,6 @@ var _localStorage = require("./localStorage");
 ///////////////////////// ADD A NEW PERSON /////////////////////////
 const addingPeople = async myPeople => {
   const newPerson = {};
-  console.log(_edit.editPeoplePopup);
   const result = await (0, _edit.editPeoplePopup)(newPerson);
 
   if (result) {
@@ -19610,14 +19603,12 @@ var _displayList = require("./displayList");
 var _variables = require("./variables");
 
 let myPeople = (0, _localStorage.init)();
-console.log(myPeople);
 
 const handleClick = e => {
   const deleteButton = e.target.closest('button.delete');
 
   if (deleteButton) {
     const idToDelete = deleteButton.dataset.id;
-    console.log(idToDelete);
     (0, _delete.deletePerson)(idToDelete, myPeople);
   }
 
@@ -19669,7 +19660,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61318" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53758" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
