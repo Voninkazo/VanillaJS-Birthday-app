@@ -19324,10 +19324,10 @@ function displayPeople(myPeople) {
     ;
     return `
                             <ul class="list_container">
-                                <li class="list_item">
+                                <li class="list_item img_container">
                                     <img src="${person.picture}" alt="photo">
                                 </li>
-                                <li class="list_item">
+                                <li class="list_item title_container">
                                     <span class="name">${person.lastName} ${person.firstName}</span>
                                     ${daysToBirthday == 0 ? `<span class="birthday">
                                         She/He is <b>${(0, _dateFns.differenceInCalendarYears)(new Date(), birthdayDate) + 1}
@@ -19336,7 +19336,7 @@ function displayPeople(myPeople) {
                                     </span>` : `<span class="birthday">Turns <b>${age}</b>  on the ${date} of ${month} </span>`} 
                                </li>
                                 <li class="list_item">
-                                    <span class="future_birthday">${daysToBirthday === 0 ? `🎂🎂🎂` : `<b>in ${daysToBirthday} days</b>`}</span>
+                                    <span class="future_birthday daysleft">${daysToBirthday === 0 ? `🎂🎂🎂` : `in ${daysToBirthday} days`}</span>
                                     <ul class="button_container">
                                         <li>
                                             <button class="edit" data-id="${person.id}">
@@ -19514,10 +19514,11 @@ async function editPeoplePopup(person) {
                         
                         <label for="image">Image:</label>
                         <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo" required>
-                        <div class="btn_container">
-                            <button type="submit" class="submit">Submit</button>
-                        </div>
+                        
                     </fieldset> 
+                    <div class="btn_container">
+                            <button type="submit" class="submit">Submit</button>
+                    </div>
                 </form>
                 </div>
         `;
@@ -19660,7 +19661,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53758" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51294" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

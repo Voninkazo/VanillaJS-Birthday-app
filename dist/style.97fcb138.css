@@ -18,6 +18,7 @@ h1 {
   font-size: 32px;
   line-height: 32px;
   color: #094067;
+  margin: 0;
 }
 
 ul {
@@ -27,13 +28,27 @@ ul {
 }
 
 div.container {
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+header > .header_container {
+  padding-bottom: 0;
+  padding-top: 63px;
+}
+
+main > .main_container {
+  padding-top: 42px;
 }
 
 button {
   outline: none;
   border: none;
   cursor: pointer;
+}
+
+h3 {
+  margin: 0;
 }
 
 h5 {
@@ -49,18 +64,20 @@ h5 {
 .parent .list_container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   background-color: #FFFFFE;
   padding-top: 22px;
   padding-left: 43px;
   padding-right: 25px;
-  padding-bottom: 22px;
+  padding-bottom: 23px;
   border-radius: 5px;
 }
-.parent .list_container img {
+.parent .list_container .img_container {
   width: 92px;
   height: 94px;
+}
+.parent .list_container .img_container img {
   border-radius: 5px;
+  width: 100%;
 }
 .parent .list_container .list_item {
   display: flex;
@@ -70,7 +87,6 @@ h5 {
   font-weight: 500;
   font-size: 22px;
   line-height: 28px;
-  /* identical to box height */
   color: #000000;
 }
 .parent .list_container .list_item .birthday {
@@ -84,23 +100,22 @@ h5 {
   color: #EF4565;
 }
 .parent .list_container .list_item .future_birthday {
-  font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   color: #5F6C7B;
+  font-weight: 500;
 }
 .parent .button_container {
   display: flex;
   flex-direction: row;
-  gap: 22px;
   padding-top: 10px;
 }
 .parent .button_container button {
   background: none;
 }
 .parent .button_container button svg {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 .parent .button_container .delete svg {
   color: red;
@@ -155,10 +170,11 @@ h5 {
 }
 
 .popup.open {
-  background: white;
-  position: fixed;
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 1090px;
+  display: block;
   transition: all 0.25s;
   top: 0;
 }
@@ -196,16 +212,55 @@ h5 {
 .popup.open .content {
   border-radius: 5px;
   background-color: white;
-  margin-top: 50px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-top: 3rem;
+  margin: auto;
 }
 .popup.open .content form {
   width: 375px;
   margin: auto;
 }
+.popup.open .content .btn_container {
+  padding-top: 46px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.popup.open .content .btn_container button {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  border-radius: 5px;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  padding-left: 21px;
+  padding-right: 16px;
+  width: 50%;
+}
+.popup.open .content .btn_container button.submit {
+  background: #EF4565;
+  color: #FFFFFE;
+}
+.popup.open .content .btn_container button.cancel {
+  color: #5F6C7B;
+  background: #FFFFFF;
+  border: 2px solid #5F6C7B;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.popup.open .content .btn_container button.cancel:hover {
+  background: #EF4565;
+  color: #FFFFFE;
+}
 .popup.open .content fieldset {
   display: flex;
   flex-direction: column;
   border: none;
+  padding-top: calc(27px - 11px);
+  padding-left: 0;
+  max-width: 265px;
 }
 .popup.open .content fieldset input,
 .popup.open .content fieldset label {
@@ -225,41 +280,7 @@ h5 {
 }
 .popup.open .content fieldset label {
   padding-top: 11px;
-  padding-bottom: 12px;
-}
-.popup.open .content fieldset .btn_container {
-  padding-top: 63px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: 30px;
-}
-.popup.open .content fieldset .btn_container button {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
-  border-radius: 5px;
-  padding-top: 12px;
-  padding-bottom: 11px;
-  padding-left: 20px;
-  padding-right: 16px;
-}
-.popup.open .content fieldset .btn_container button.submit {
-  background: #EF4565;
-  color: #FFFFFE;
-  width: 50%;
-}
-.popup.open .content fieldset .btn_container button.cancel {
-  color: #5F6C7B;
-  background: #FFFFFF;
-  border: 2px solid #5F6C7B;
-  box-sizing: border-box;
-  border-radius: 5px;
-  margin-left: 30px;
-}
-.popup.open .content fieldset .btn_container button.cancel:hover {
-  background: #EF4565;
-  color: #FFFFFE;
+  padding-bottom: 8px;
 }
 
 @media (min-width: 768px) {
@@ -268,10 +289,15 @@ h5 {
     line-height: 76px;
   }
 
+  .popup.open .content {
+    max-width: 1079px;
+  }
+  .popup.open .content .btn_container {
+    flex-wrap: nowrap;
+  }
+
   .parent .list_container {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   }
   .parent .list_container .list_item .name {
     font-size: 36px;
@@ -280,16 +306,24 @@ h5 {
   .parent .list_container .list_item .birthday {
     font-size: 24px;
     line-height: 28px;
+    white-space: nowrap;
   }
   .parent .list_container .list_item .future_birthday {
     font-size: 24px;
     line-height: 28px;
   }
+  .parent .list_container .title_container {
+    padding-left: 39px;
+    margin-right: auto;
+  }
+  .parent .list_container .daysleft {
+    white-space: nowrap;
+  }
 
   .section_filtering {
     display: grid;
     grid-auto-flow: column;
-    gap: 20px;
+    gap: 35px;
     align-items: end;
   }
 
@@ -297,19 +331,17 @@ h5 {
     margin-right: 0;
   }
 
-  .popup .content {
-    padding: 3rem;
-    padding-top: 0;
-  }
-
   .parent .button_container {
     padding-top: 38px;
+    padding-left: 42px;
   }
 }
 @media (min-width: 1114px) {
   div.container {
-    max-width: 900px;
+    max-width: 779px;
     margin: auto;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

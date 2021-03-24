@@ -41,10 +41,11 @@ export async function editPeoplePopup(person) {
                         
                         <label for="image">Image:</label>
                         <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo" required>
-                        <div class="btn_container">
-                            <button type="submit" class="submit">Submit</button>
-                        </div>
+                        
                     </fieldset> 
+                    <div class="btn_container">
+                            <button type="submit" class="submit">Submit</button>
+                    </div>
                 </form>
                 </div>
         `;

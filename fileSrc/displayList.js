@@ -91,10 +91,10 @@ export function displayPeople(myPeople) {
 
                 return `
                             <ul class="list_container">
-                                <li class="list_item">
+                                <li class="list_item img_container">
                                     <img src="${person.picture}" alt="photo">
                                 </li>
-                                <li class="list_item">
+                                <li class="list_item title_container">
                                     <span class="name">${person.lastName} ${person.firstName}</span>
                                     ${daysToBirthday == 0
                                         ? 
@@ -108,7 +108,7 @@ export function displayPeople(myPeople) {
                                } 
                                </li>
                                 <li class="list_item">
-                                    <span class="future_birthday">${daysToBirthday === 0 ? `🎂🎂🎂` : `<b>in ${daysToBirthday} days</b>`}</span>
+                                    <span class="future_birthday daysleft">${daysToBirthday === 0 ? `🎂🎂🎂` : `in ${daysToBirthday} days`}</span>
                                     <ul class="button_container">
                                         <li>
                                             <button class="edit" data-id="${person.id}">
