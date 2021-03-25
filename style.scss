@@ -54,6 +54,8 @@ h3 {
 
 h5 {
     font-size: 1.2em;
+    line-height: 2rem;
+    margin: 0;
 }
 
 .parent {
@@ -139,6 +141,11 @@ h5 {
     }
     select {
         padding-right: 20px;
+        -webkit-appearance: none;
+        background-image: url(./icons/arrowdown.svg);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position: 85% center;
     }
     .filtering_input {
         font-weight: 500;
@@ -172,17 +179,35 @@ h5 {
 
 .popup.open {
     background: rgba(255, 255, 255, 0.8);
-    position: absolute;
+    position: fixed;
+    height: 100vh;
     width: 100vw;
-    height: 10000vh;
-    display: block;
     transition: all 0.25s;
     top: 0;
+    .close_icon__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        button {
+            background: none;
+        }
+        .cancel {
+            background: none;
+        }
+    }
     .fieldset_delete {
         background-color: white;
         max-width: 400px;
         margin: auto;
         margin-top: 200px;
+        border: none;
+        padding: 3rem;
+        .button_container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: baseline;
+        }
         h5 {
             b {
                 color: #EF4565;
@@ -210,13 +235,17 @@ h5 {
             background-color: #EF4565;
             color: white;
         }
+        .close {
+            padding: 0;
+            background: none;
+        }
+        .close:hover {
+            background: none;
+        }
     }
     .content {
         border-radius: 5px;
         background-color: white;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        margin-top: 3rem;
         margin: auto;
         form {
             width: 375px;
@@ -226,7 +255,6 @@ h5 {
             padding-top: 46px;
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
             gap: 20px;
             button {
                 font-weight: 500;
@@ -291,8 +319,21 @@ h5 {
         font-size: 64px;
         line-height: 76px;
     }
+    h3 {
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 57px;
+        /* identical to box height */
+        color: #094067;
+        white-space: nowrap;
+    }
     .popup.open .content {
-        max-width: 1079px;
+        max-width: 1000px;
+        padding-top: 1rem;
+        padding-left: 3rem;
+        padding-bottom: 3rem;
+        padding-right: 3rem;
+        margin-top: 1rem;
         .btn_container {
             flex-wrap: nowrap;
         }

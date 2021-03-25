@@ -1,6 +1,8 @@
 import { displayPeople } from './displayList';
 import { updateLocalStorage } from './localStorage';
 import { destroyPopup } from './utils';
+import { showScroll } from './script';
+import { iconClose } from './svgs';
 
 import wait from 'waait';
 
@@ -23,27 +25,35 @@ export const deletePersonPopup = person => {
         const popup = document.createElement('form');
         popup.classList.add('popup');
         const html =
-            `    <fieldset class="fieldset_delete">
+            `
+            <fieldset class="fieldset_delete">
+                    <div class="close_icon__container">
+                        <button type="button" class="cancel close"> 
+                            ${iconClose}
+                        </button>
+                    </div>    
                     <h5>Delete <b>${person && person.firstName} ${person && person.lastName}</b> 🙈</h5>
                     <p>Are you sure you want to delete this person from the list?</p>
-                    <button type="submit" class="remove" data-id=${person.id}>Bye 👋 🗑</button>
-                </fieldset>
+                    <div class="button_container">
+                        <button type="submit" class="remove" data-id=${person.id}>Bye</button>
+                        <button type="button" class="cancel">Cancel</button> 
+                    </div>
+             </fieldset>
             `;
         popup.insertAdjacentHTML('afterbegin', html);
-        const cancelButton = document.createElement('button');
-        cancelButton.type = 'button'; // so it doesn't submit
-        cancelButton.textContent = 'Cancel';
-        cancelButton.classList.add('cancel');
-        popup.lastElementChild.appendChild(cancelButton);
-        cancelButton.addEventListener('click', () => {
+        const cancelButton = popup.querySelectorAll('.cancel')
+        cancelButton.forEach((button) => button.addEventListener('click', () => {
             resolve(null);
             destroyPopup(popup);
-        }, { once: true });
+            showScroll()
+
+        }, { once: true }));
 
         popup.addEventListener('submit', (e) => {
             e.preventDefault();
             resolve(person);
             destroyPopup(popup);
+            showScroll();
         }, { once: true })
 
         document.body.appendChild(popup);

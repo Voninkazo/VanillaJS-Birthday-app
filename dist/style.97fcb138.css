@@ -53,6 +53,8 @@ h3 {
 
 h5 {
   font-size: 1.2em;
+  line-height: 2rem;
+  margin: 0;
 }
 
 .parent {
@@ -139,6 +141,11 @@ h5 {
 }
 .section_filtering select {
   padding-right: 20px;
+  -webkit-appearance: none;
+  background-image: url(/arrowdown.8924af1d.svg);
+  background-repeat: no-repeat;
+  background-size: 12px;
+  background-position: 85% center;
 }
 .section_filtering .filtering_input {
   font-weight: 500;
@@ -171,18 +178,36 @@ h5 {
 
 .popup.open {
   background: rgba(255, 255, 255, 0.8);
-  position: absolute;
+  position: fixed;
+  height: 100vh;
   width: 100vw;
-  height: 10000vh;
-  display: block;
   transition: all 0.25s;
   top: 0;
+}
+.popup.open .close_icon__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.popup.open .close_icon__container button {
+  background: none;
+}
+.popup.open .close_icon__container .cancel {
+  background: none;
 }
 .popup.open .fieldset_delete {
   background-color: white;
   max-width: 400px;
   margin: auto;
   margin-top: 200px;
+  border: none;
+  padding: 3rem;
+}
+.popup.open .fieldset_delete .button_container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: baseline;
 }
 .popup.open .fieldset_delete h5 b {
   color: #EF4565;
@@ -209,12 +234,16 @@ h5 {
   background-color: #EF4565;
   color: white;
 }
+.popup.open .fieldset_delete .close {
+  padding: 0;
+  background: none;
+}
+.popup.open .fieldset_delete .close:hover {
+  background: none;
+}
 .popup.open .content {
   border-radius: 5px;
   background-color: white;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  margin-top: 3rem;
   margin: auto;
 }
 .popup.open .content form {
@@ -225,7 +254,6 @@ h5 {
   padding-top: 46px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   gap: 20px;
 }
 .popup.open .content .btn_container button {
@@ -289,8 +317,22 @@ h5 {
     line-height: 76px;
   }
 
+  h3 {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 57px;
+    /* identical to box height */
+    color: #094067;
+    white-space: nowrap;
+  }
+
   .popup.open .content {
-    max-width: 1079px;
+    max-width: 1000px;
+    padding-top: 1rem;
+    padding-left: 3rem;
+    padding-bottom: 3rem;
+    padding-right: 3rem;
+    margin-top: 1rem;
   }
   .popup.open .content .btn_container {
     flex-wrap: nowrap;

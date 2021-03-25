@@ -19154,12 +19154,15 @@ async function destroyPopup(popup) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.editIcon = exports.deleteIcon = void 0;
+exports.iconClose = exports.editIcon = exports.deleteIcon = void 0;
 const deleteIcon = `<svg class="w-6 h-6" fill="none" fill="red" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"></path></svg>
 `;
 exports.deleteIcon = deleteIcon;
 const editIcon = `<svg class="w-6 h-6" fill="none" fill="blue" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/200/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>`;
 exports.editIcon = editIcon;
+const iconClose = `<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M17.778.808l1.414 1.414L11.414 10l7.778 7.778-1.414 1.414L10 11.414l-7.778 7.778-1.414-1.414L8.586 10 .808 2.222 2.222.808 10 8.586 17.778.808z" fill="#000" fill-rule="evenodd"/></svg>
+`;
+exports.iconClose = iconClose;
 },{}],"fileSrc/filters.js":[function(require,module,exports) {
 "use strict";
 
@@ -19408,6 +19411,10 @@ var _localStorage = require("./localStorage");
 
 var _utils = require("./utils");
 
+var _script = require("./script");
+
+var _svgs = require("./svgs");
+
 var _waait = _interopRequireDefault(require("waait"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -19431,29 +19438,35 @@ const deletePersonPopup = person => {
   return new Promise(async resolve => {
     const popup = document.createElement('form');
     popup.classList.add('popup');
-    const html = `    <fieldset class="fieldset_delete">
+    const html = `
+            <fieldset class="fieldset_delete">
+                    <div class="close_icon__container">
+                        <button type="button" class="cancel close"> 
+                            ${_svgs.iconClose}
+                        </button>
+                    </div>    
                     <h5>Delete <b>${person && person.firstName} ${person && person.lastName}</b> 🙈</h5>
                     <p>Are you sure you want to delete this person from the list?</p>
-                    <button type="submit" class="remove" data-id=${person.id}>Bye 👋 🗑</button>
-                </fieldset>
+                    <div class="button_container">
+                        <button type="submit" class="remove" data-id=${person.id}>Bye</button>
+                        <button type="button" class="cancel">Cancel</button> 
+                    </div>
+             </fieldset>
             `;
     popup.insertAdjacentHTML('afterbegin', html);
-    const cancelButton = document.createElement('button');
-    cancelButton.type = 'button'; // so it doesn't submit
-
-    cancelButton.textContent = 'Cancel';
-    cancelButton.classList.add('cancel');
-    popup.lastElementChild.appendChild(cancelButton);
-    cancelButton.addEventListener('click', () => {
+    const cancelButton = popup.querySelectorAll('.cancel');
+    cancelButton.forEach(button => button.addEventListener('click', () => {
       resolve(null);
       (0, _utils.destroyPopup)(popup);
+      (0, _script.showScroll)();
     }, {
       once: true
-    });
+    }));
     popup.addEventListener('submit', e => {
       e.preventDefault();
       resolve(person);
       (0, _utils.destroyPopup)(popup);
+      (0, _script.showScroll)();
     }, {
       once: true
     });
@@ -19464,7 +19477,7 @@ const deletePersonPopup = person => {
 };
 
 exports.deletePersonPopup = deletePersonPopup;
-},{"./displayList":"fileSrc/displayList.js","./localStorage":"fileSrc/localStorage.js","./utils":"fileSrc/utils.js","waait":"node_modules/waait/index.js"}],"fileSrc/edit.js":[function(require,module,exports) {
+},{"./displayList":"fileSrc/displayList.js","./localStorage":"fileSrc/localStorage.js","./utils":"fileSrc/utils.js","./script":"fileSrc/script.js","./svgs":"fileSrc/svgs.js","waait":"node_modules/waait/index.js"}],"fileSrc/edit.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19478,6 +19491,10 @@ var _displayList = require("./displayList");
 var _utils = require("./utils");
 
 var _localStorage = require("./localStorage");
+
+var _svgs = require("./svgs");
+
+var _script = require("./script");
 
 var _waait = _interopRequireDefault(require("waait"));
 
@@ -19502,6 +19519,11 @@ async function editPeoplePopup(person) {
 
     const html = `
                 <div class="content">
+                <div class="close_icon__container">
+                    <button type="button" class="cancel"> 
+                        ${_svgs.iconClose}
+                    </button>
+                </div>
                 <form>
                     <h3 class="reminder-par">${person.birthday ? `Edit ${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</h3>
                     <fieldset>
@@ -19518,24 +19540,20 @@ async function editPeoplePopup(person) {
                     </fieldset> 
                     <div class="btn_container">
                             <button type="submit" class="submit">Submit</button>
+                            <button type="button" class="cancel">Cancel</button>
                     </div>
                 </form>
                 </div>
         `;
     popup.insertAdjacentHTML('afterbegin', html);
-    const cancelButton = document.createElement('button');
-    cancelButton.type = 'button'; // so it doesn't submit
-
-    cancelButton.textContent = 'Cancel';
-    cancelButton.classList.add('cancel');
-    const content = popup.querySelector('.btn_container');
-    content.insertAdjacentElement('beforeend', cancelButton);
-    cancelButton.addEventListener('click', () => {
+    const cancelButton = Array.from(popup.querySelectorAll('.cancel'));
+    cancelButton.forEach(button => button.addEventListener('click', () => {
       resolve(null);
       (0, _utils.destroyPopup)(popup);
+      (0, _script.showScroll)();
     }, {
       once: true
-    });
+    }));
     const form = popup.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault(); // popup.input.value;
@@ -19554,7 +19572,7 @@ async function editPeoplePopup(person) {
     popup.classList.add('open');
   });
 }
-},{"./displayList":"fileSrc/displayList.js","./utils":"fileSrc/utils.js","./localStorage":"fileSrc/localStorage.js","waait":"node_modules/waait/index.js"}],"fileSrc/add.js":[function(require,module,exports) {
+},{"./displayList":"fileSrc/displayList.js","./utils":"fileSrc/utils.js","./localStorage":"fileSrc/localStorage.js","./svgs":"fileSrc/svgs.js","./script":"fileSrc/script.js","waait":"node_modules/waait/index.js"}],"fileSrc/add.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19589,6 +19607,8 @@ exports.addingPeople = addingPeople;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.closeScroll = closeScroll;
+exports.showScroll = showScroll;
 exports.handleClick = void 0;
 
 var _localStorage = require("./localStorage");
@@ -19604,6 +19624,16 @@ var _displayList = require("./displayList");
 var _variables = require("./variables");
 
 let myPeople = (0, _localStorage.init)();
+const body = document.body;
+
+function closeScroll() {
+  body.style.overflow = "hidden";
+}
+
+function showScroll() {
+  body.style.overflow = "visible";
+  console.log("Show");
+}
 
 const handleClick = e => {
   const deleteButton = e.target.closest('button.delete');
@@ -19611,6 +19641,7 @@ const handleClick = e => {
   if (deleteButton) {
     const idToDelete = deleteButton.dataset.id;
     (0, _delete.deletePerson)(idToDelete, myPeople);
+    closeScroll();
   }
 
   const editButton = e.target.closest('button.edit');
@@ -19618,12 +19649,14 @@ const handleClick = e => {
   if (editButton) {
     const idToEdit = editButton.dataset.id;
     (0, _edit.editPeople)(idToEdit, myPeople);
+    closeScroll();
   }
 
   const addButton = e.target.closest('button.add');
 
   if (addButton) {
     (0, _add.addingPeople)(myPeople);
+    closeScroll();
   }
 };
 
@@ -19661,7 +19694,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51294" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55482" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

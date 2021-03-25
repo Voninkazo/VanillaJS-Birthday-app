@@ -1,6 +1,8 @@
 import { displayPeople } from './displayList';
 import { destroyPopup } from './utils';
 import { updateLocalStorage } from './localStorage';
+import { iconClose } from './svgs';
+import { showScroll } from './script';
 
 
 import wait from 'waait';
@@ -25,6 +27,11 @@ export async function editPeoplePopup(person) {
                 // popup edit= form
                 const html = `
                 <div class="content">
+                <div class="close_icon__container">
+                    <button type="button" class="cancel"> 
+                        ${iconClose}
+                    </button>
+                </div>
                 <form>
                     <h3 class="reminder-par">${person.birthday ? `Edit ${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</h3>
                     <fieldset>
@@ -45,26 +52,25 @@ export async function editPeoplePopup(person) {
                     </fieldset> 
                     <div class="btn_container">
                             <button type="submit" class="submit">Submit</button>
+                            <button type="button" class="cancel">Cancel</button>
                     </div>
                 </form>
                 </div>
         `;
 
         popup.insertAdjacentHTML('afterbegin', html);
-
-        const cancelButton = document.createElement('button');
-        cancelButton.type = 'button'; // so it doesn't submit
-        cancelButton.textContent = 'Cancel';
-        cancelButton.classList.add('cancel');
-        const content = popup.querySelector('.btn_container');
-        content.insertAdjacentElement('beforeend',cancelButton);
-        cancelButton.addEventListener('click', () => {
-            resolve(null);
-            destroyPopup(popup);
-        }, { once: true })
+       const cancelButton = Array.from(popup.querySelectorAll('.cancel'));
+        
+        cancelButton.forEach((button) => button.addEventListener('click', () => {
+                resolve(null);
+                destroyPopup(popup);
+                showScroll();
+            
+        }, { once: true }))
         const form = popup.querySelector('form')
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+
             // popup.input.value;
             person.firstName = e.target.firstName.value;
             person.lastName = e.target.lastName.value;
