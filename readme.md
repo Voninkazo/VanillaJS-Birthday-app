@@ -3,7 +3,7 @@
 This propect is showing list of people and their birthdays.
 
 ## Project Overview
-![assets/Screenshot_2020-09-12_at_16.57.18.png](assets/Screenshot_2020-09-12_at_16.57.18.png)
+![Overview](assets/screenshot.jpg)
 
 ## Description:
 
@@ -18,6 +18,9 @@ This propect is showing list of people and their birthdays.
 
 - You wil need to clone this repo https://github.com/Voninkazo/birthday-app
 - You'll also need to use live server in order to preview it in your browser.
+
+## Design
+https://www.figma.com/file/bb1Mie5R3mUhR77PtGG8bJ/Birthday-App?node-id=0%3A1
 
 ## Live app
 

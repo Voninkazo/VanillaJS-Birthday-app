@@ -35,7 +35,7 @@ export const deletePersonPopup = person => {
                     <h5>Delete <b>${person && person.firstName} ${person && person.lastName}</b> 🙈</h5>
                     <p>Are you sure you want to delete this person from the list?</p>
                     <div class="button_container">
-                        <button type="submit" class="remove" data-id=${person.id}>Bye</button>
+                        <button type="submit" class="remove" data-id=${person.id}>Delete</button>
                         <button type="button" class="cancel">Cancel</button> 
                     </div>
              </fieldset>
