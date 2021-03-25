@@ -35,18 +35,18 @@ export async function editPeoplePopup(person) {
                 <form>
                     <h3 class="reminder-par">${person.birthday ? `Edit ${person.firstName + ' ' + person.lastName}` : 'Add somebody new 🤗'}</h3>
                     <fieldset>
-                        <label for="lastName">Last Name:</label>
+                        <label for="lastName">Lastname</label>
                         <input type="text" name="lastName" id="lastname" value="${person.lastName ? `${person.lastName}` : ''}" required>
-                        <label for="firstName">First Name:</label>
+                        <label for="firstName">Firstname</label>
                         <input type="text" name="firstName" id="firstname" value="${
                                 person.firstName ? person.firstName : ''
                         }" required>
-                        <label for="birthday">Birthday:</label>
+                        <label for="birthday">Birthday</label>
                         <input type="date" name="birthday" id="birthday" value="${
                                 person.birthday ? new Date(person.birthday).toISOString().substring(0, 10) : ''
                         }" max=${new Date().toISOString().substring(0, 10)} required>
                         
-                        <label for="image">Image:</label>
+                        <label for="image">Image</label>
                         <input type="url" name="image" id="img" value="${person.picture ? `${person.picture}` : ''}" alt="photo" required>
                         
                     </fieldset> 
