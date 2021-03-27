@@ -389,5 +389,16 @@ h5 {
         margin: auto;
         padding-left: 0;
         padding-right: 0;
+        .section_filtering {
+            .filtering_input {
+                width: 265px;
+            }
+            select {
+                width: 283px;
+            }
+            button {
+                width: 158px;
+            }
+        }
     }
 }

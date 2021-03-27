@@ -386,6 +386,15 @@ h5 {
     padding-left: 0;
     padding-right: 0;
   }
+  div.container .section_filtering .filtering_input {
+    width: 265px;
+  }
+  div.container .section_filtering select {
+    width: 283px;
+  }
+  div.container .section_filtering button {
+    width: 158px;
+  }
 }
 
 /*# sourceMappingURL=/style.97fcb138.css.map */
