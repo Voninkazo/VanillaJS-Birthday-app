@@ -111,8 +111,10 @@ h5 {
         display: flex;
         flex-direction: row;
         padding-top: 10px;
+        gap: 19px;
         button {
             background: none;
+            padding: 0;
             svg {
                 height: 30px;
                 width: 30px;
@@ -145,7 +147,7 @@ h5 {
         background-image: url(./icons/arrowdown.svg);
         background-repeat: no-repeat;
         background-size: 12px;
-        background-position: 85% center;
+        background-position: 88% center;
     }
     .filtering_input {
         font-weight: 500;
@@ -250,9 +252,10 @@ h5 {
         form {
             width: 375px;
             margin: auto;
+            padding-left: 10px;
         }
         .btn_container {
-            padding-top: 46px;
+            padding-top: 3px;
             display: flex;
             flex-direction: row;
             gap: 20px;
@@ -265,7 +268,6 @@ h5 {
                 padding-bottom: 15px;
                 padding-left: 21px;
                 padding-right: 16px;
-                width: 50%;
             }
             button.submit {
                 background: #EF4565;
@@ -329,13 +331,12 @@ h5 {
     }
     .popup.open .content {
         max-width: 1000px;
-        padding-top: 1rem;
-        padding-left: 3rem;
-        padding-bottom: 3rem;
-        padding-right: 3rem;
-        margin-top: 1rem;
         .btn_container {
             flex-wrap: nowrap;
+            padding-top: 46px;
+            button {
+                width: 50%;
+            }
         }
     }
     .parent {
