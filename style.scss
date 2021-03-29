@@ -182,7 +182,7 @@ h5 {
 .popup.open {
     background: rgba(255, 255, 255, 0.8);
     position: fixed;
-    height: 100vh;
+    height: 1000vh;
     width: 100vw;
     transition: all 0.25s;
     top: 0;
@@ -246,6 +246,7 @@ h5 {
         }
     }
     .content {
+        max-width: 500px;
         border-radius: 5px;
         background-color: white;
         margin: auto;
@@ -325,12 +326,16 @@ h5 {
         font-weight: 500;
         font-size: 48px;
         line-height: 57px;
-        /* identical to box height */
         color: #094067;
         white-space: nowrap;
     }
     .popup.open .content {
-        max-width: 1000px;
+        max-width: 700px;
+        // padding-right: 298px;
+        form {
+            padding-right: 5rem;
+            padding-left: 5rem;
+        }
         .btn_container {
             flex-wrap: nowrap;
             padding-top: 46px;
