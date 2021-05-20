@@ -17,6 +17,7 @@
     },
     "homepage": "https://github.com/Voninkazo/birthday-app#readme",
     "devDependencies": {
+        "parcel": "^2.0.0-beta.2",
         "sass": "^1.30.0"
     },
     "browserslist": [
