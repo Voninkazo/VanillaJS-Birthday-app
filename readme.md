@@ -1,18 +1,17 @@
 # Term 3 JS Project : Birthday App
 
-This propect is showing list of people and their birthdays.
+This propect shows a list of people and their birthdays.
 
 ## Project Overview
 ![Overview](assets/screenshot.jpg)
 
 ## Description:
 
-- When loading, a list of people is displayed on the page and sorted by the nearest future birthday
-- The list is initialised with the data from local storage
-- Users can add people to the list, they can edit and delete from the list
-- They can also filter the list by their first names, last names and by birthday month.
+- When loading, a list of people is displayed on the page and sorted by the nearest future birthday.
+- The list is initialised with the data from local storage.
+- Users can add, edit and delete people from the list
+- Users can filter the list by their first names, last names and by birthday month.
 - Every action is persisted into the local storage.
-
 
 ## How to use
 
